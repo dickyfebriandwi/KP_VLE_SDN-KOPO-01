@@ -6,7 +6,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-graduation-cap"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">VLE SDN Kopo 01 </div>
+        <div class="sidebar-brand-text mx-3"> SDN Kopo 01 </div>
     </a>
 
     <!-- Divider -->
