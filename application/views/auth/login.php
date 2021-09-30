@@ -3,7 +3,7 @@
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
-        <div class="col-lg-7">
+        <div class="col-lg-5">
 
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
@@ -29,7 +29,7 @@
                                     </div>
                                     <hr>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
-                                        Login
+                                        Masuk
                                     </button>
                                 </form>
                                 <div class="text-center">
