@@ -24,18 +24,16 @@
                                         <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password">
                                         <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
                                     </div>
-                                    *kasih sekat di atas button login*
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Lupa Password?</a>
+                                    </div>
+                                    <hr>
                                     <button type="submit" class="btn btn-primary btn-user btn-block">
                                         Login
                                     </button>
-                                    <hr>
                                 </form>
                                 <div class="text-center">
-                                *Forgot password PINDAH dibawah kolom password*
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                * Pindahkan create account ke menu admin *
+                                    * Pindahkan create account ke menu admin *
                                     <a class="small" href="<?= base_url('auth/registration') ?>">Create an Account!</a>
                                 </div>
                             </div>
