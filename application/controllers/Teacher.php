@@ -7,6 +7,7 @@ class Teacher extends CI_Controller
     {
         parent::__construct();
         login_privilege();
+        $this->load->model('Materi_model', '', true);
     }
 
     public function index()
@@ -22,6 +23,8 @@ class Teacher extends CI_Controller
     {
         $data['title'] = 'Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['materi'] = $this->Materi_model->getAllMateri();
+
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/materi', $data);
         $this->loadtemplateslast();
