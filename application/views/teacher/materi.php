@@ -13,7 +13,7 @@
                         <th scope="col">No.</th>
                         <th scope="col">Judul Materi</th>
                         <th scope="col">Waktu Unggah</th>
-                        <th scope="col">Materi Aktif</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
@@ -32,9 +32,11 @@
                                 }
                                 ?></td>
                             <td>
-                                <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
-                                <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
-                                <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                <h5>
+                                    <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
+                                    <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
+                                    <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                </h5>
                             </td>
                         </tr>
                         <?php $i++; ?>
