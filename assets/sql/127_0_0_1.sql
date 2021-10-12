@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2021 at 04:52 AM
+-- Generation Time: Oct 12, 2021 at 07:58 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -27,6 +27,31 @@ USE `kp_vle_sdn_kopo`;
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `materi`
+--
+
+CREATE TABLE `materi` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `tema_id` int(11) NOT NULL,
+  `kelas_id` int(11) NOT NULL,
+  `nama_file` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `is_active` int(1) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `materi`
+--
+
+INSERT INTO `materi` (`id`, `user_id`, `tema_id`, `kelas_id`, `nama_file`, `url`, `is_active`, `date_created`) VALUES
+(1, 1, 1, 1, 'Subtema 1 : Pembelajaran 1.1', 'testfile1.pdf', 1, 1631208163),
+(2, 1, 2, 1, 'Subtema 1 : Pembelajaran 1.2', 'testfile2.pdf', 0, 1631400000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `user`
 --
 
@@ -46,7 +71,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_active`, `date_created`) VALUES
-(3, 'Dicky Febrian Dwiputra', 'febriandwiputra@gmail.com', 'default.jpg', '$2y$10$tKTwfWRfQnkHBPOlgJyZyOpdYqgkdb6ethtXMxoAY6aOnHDQw3vi6', 3, 1, 1631208163),
+(3, 'Dicky Febrian Dwiputra', 'febriandwiputra@gmail.com', 'default.jpg', '$2y$10$tKTwfWRfQnkHBPOlgJyZyOpdYqgkdb6ethtXMxoAY6aOnHDQw3vi6', 2, 1, 1631208163),
 (4, 'SHANINA AISYAH WARDHANI', 'shaninawardhani@gmail.com', 'default.jpg', '$2y$10$5X5FTPEcdGztrmHa032EDOJMQjJHS/e7KQqdrAoCna5lXXB93sn2e', 1, 1, 1631695344);
 
 -- --------------------------------------------------------
@@ -67,8 +92,8 @@ CREATE TABLE `user_access_menu` (
 
 INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (1, 1, 1),
-(2, 1, 2),
-(3, 3, 2);
+(2, 2, 2),
+(3, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -86,8 +111,10 @@ CREATE TABLE `user_menu` (
 --
 
 INSERT INTO `user_menu` (`id`, `menu`) VALUES
-(1, 'Admin'),
-(2, 'User');
+(1, 'Kelola Akun (Admin)'),
+(2, 'Guru'),
+(3, 'Siswa'),
+(4, 'Test Menu');
 
 -- --------------------------------------------------------
 
@@ -129,13 +156,27 @@ CREATE TABLE `user_sub_menu` (
 --
 
 INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active`) VALUES
-(1, 1, 'Dashboard', 'admin', 'fas fa-columns fa-fv', 1),
-(2, 2, 'Profilku', 'user', 'fas fa-address-card fa-fv', 1),
-(3, 2, 'Edit Profil', 'user/edit', 'fas fa-user-edit fa-fw', 1);
+(1, 1, 'Beranda', 'admin', 'fas fa-home fa-fw', 1),
+(2, 1, 'Akun', 'admin/akun', 'fas fa-user fa-fw', 1),
+(3, 1, 'Kelas', 'admin/kelas', 'fas fa-chalkboard-teacher fa-fw', 1),
+(4, 2, 'Beranda', 'teacher', 'fas fa-home fa-fw', 1),
+(5, 2, 'Materi', 'teacher/materi', 'fas fa-book-reader fa-fw', 1),
+(6, 2, 'Penugasan', 'teacher/penugasan', 'fas fa-tasks fa-fw', 1),
+(7, 2, 'Kuis', 'teacher/kuis', 'fab fa-quora fa-fw', 1),
+(8, 3, 'Beranda', 'student', 'fas fa-home fa-fw', 1),
+(9, 3, 'Materi', 'student/tugas', 'fas fa-book-reader fa-fw', 1),
+(10, 3, 'Tugas', 'student/tugas', 'fas fa-tasks fa-fw', 1),
+(11, 3, 'Kuis', 'student/kuis', 'fab fa-quora fa-fw', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `materi`
+--
+ALTER TABLE `materi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -172,6 +213,12 @@ ALTER TABLE `user_sub_menu`
 --
 
 --
+-- AUTO_INCREMENT for table `materi`
+--
+ALTER TABLE `materi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
@@ -187,7 +234,7 @@ ALTER TABLE `user_access_menu`
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -199,7 +246,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
