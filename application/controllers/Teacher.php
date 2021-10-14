@@ -81,6 +81,16 @@ class Teacher extends CI_Controller
         $this->load->view('teacher/penugasan', $data);
         $this->loadtemplateslast();
     }
+    public function tambah_penugasan()
+    {
+        $data['title'] = 'Tambah Penugasan Baru';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_tambah_penugasan', $data);
+        $this->loadtemplateslast();
+    }
 
     #PenugasanEnd
 

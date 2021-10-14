@@ -9,7 +9,7 @@
             <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a>
         </div>
         <div class="col">
-            <div class="dropdown">
+            <div class="dropdown float-right">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kelas</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item" type="button">Kelas 1</button>
