@@ -28,7 +28,7 @@
                                         <a class="small" href="forgot-password.html">Lupa Password?</a>
                                     </div>
                                     <hr>
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">
+                                    <button type="submit" class="btn btn-success btn-user btn-block">
                                         Masuk
                                     </button>
                                 </form>
