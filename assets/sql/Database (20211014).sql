@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 12, 2021 at 07:58 AM
+-- Generation Time: Oct 14, 2021 at 05:53 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -23,6 +23,31 @@ SET time_zone = "+00:00";
 DROP DATABASE IF EXISTS `kp_vle_sdn_kopo`;
 CREATE DATABASE IF NOT EXISTS `kp_vle_sdn_kopo` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `kp_vle_sdn_kopo`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelas`
+--
+
+CREATE TABLE `kelas` (
+  `id` int(11) NOT NULL,
+  `tingkat` int(1) NOT NULL,
+  `rombel` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `kelas`
+--
+
+INSERT INTO `kelas` (`id`, `tingkat`, `rombel`) VALUES
+(1, 1, 'A'),
+(2, 1, 'B'),
+(3, 2, 'A'),
+(4, 3, 'A'),
+(5, 4, 'A'),
+(6, 5, 'A'),
+(7, 6, 'A');
 
 -- --------------------------------------------------------
 
@@ -48,6 +73,33 @@ CREATE TABLE `materi` (
 INSERT INTO `materi` (`id`, `user_id`, `tema_id`, `kelas_id`, `nama_file`, `url`, `is_active`, `date_created`) VALUES
 (1, 1, 1, 1, 'Subtema 1 : Pembelajaran 1.1', 'testfile1.pdf', 1, 1631208163),
 (2, 1, 2, 1, 'Subtema 1 : Pembelajaran 1.2', 'testfile2.pdf', 0, 1631400000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `penugasan`
+--
+
+CREATE TABLE `penugasan` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `tema_id` int(11) NOT NULL,
+  `kelas_id` int(11) NOT NULL,
+  `judul_penugasan` varchar(128) NOT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tema`
+--
+
+CREATE TABLE `tema` (
+  `id` int(11) NOT NULL,
+  `kelas_id` int(11) NOT NULL,
+  `nama_tema` varchar(128) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -173,9 +225,27 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 --
 
 --
+-- Indexes for table `kelas`
+--
+ALTER TABLE `kelas`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `materi`
 --
 ALTER TABLE `materi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `penugasan`
+--
+ALTER TABLE `penugasan`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tema`
+--
+ALTER TABLE `tema`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -213,10 +283,28 @@ ALTER TABLE `user_sub_menu`
 --
 
 --
+-- AUTO_INCREMENT for table `kelas`
+--
+ALTER TABLE `kelas`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `materi`
 --
 ALTER TABLE `materi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `penugasan`
+--
+ALTER TABLE `penugasan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tema`
+--
+ALTER TABLE `tema`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
