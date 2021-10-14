@@ -91,6 +91,30 @@ class Teacher extends CI_Controller
         $this->load->view('teacher/form_tambah_penugasan', $data);
         $this->loadtemplateslast();
     }
+    public function ubah_penugasan()
+    {
+        $data['title'] = 'Ubah Data Penugasan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_ubah_penugasan', $data);
+        $this->loadtemplateslast();
+    }
+    public function hapus_penugasan()
+    {
+
+    }
+    public function buka_daftar_tugas()
+    {
+        $data['title'] = 'Daftar Tugas Siswa : *judul tugasnya apa*';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/daftar_tugas', $data);
+        $this->loadtemplateslast();
+    }
 
     #PenugasanEnd
 

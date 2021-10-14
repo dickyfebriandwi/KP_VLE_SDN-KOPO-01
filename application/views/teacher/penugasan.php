@@ -9,7 +9,7 @@
             <a href="<?= base_url(); ?>teacher/tambah_penugasan" class="btn btn-primary mb-3">Tambah Penugasan</a>
         </div>
         <div class="col-8">
-            <a href="<?= base_url(); ?>teacher/buka_tabel_nilai_tugas" class="btn btn-success mb-3">Tabel Nilai Tugas</a>
+            <a href="<?= base_url(); ?>teacher/buka_tabel_nilai_tugas" class="btn btn-success mb-3">Tabel Nilai Tugas</a> *adain dropdown untuk seleksi tema atau ngga?
         </div>
         <div class="col">
             <div class="dropdown float-right">
@@ -42,9 +42,9 @@
                             <td><?= date('d F Y', $mtr['date_created']); ?></td>
                             <td>
                                 <h5>
-                                    <a href="<?= base_url(); ?>teacher/buka_penugasan/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
-                                    <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
-                                    <a href="<?= base_url(); ?>teacher/hapus_penugasan/<?= $mtr['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                    <a href="<?= base_url(); ?>teacher/buka_daftar_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
+                                    <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
+                                    <a href="<?= base_url(); ?>teacher/hapus_penugasan/<?= $pngs['id']; ?>" data-toggle="modal" data-target="#hapus_penugasan" class="badge badge-danger"> Hapus </a>
                                 </h5>
                             </td>
                         </tr>
@@ -57,6 +57,25 @@
 </div>
 
 <!-- /.container-fluid -->
+
+<!-- Hapus Penugasan Modal-->
+<div class="modal fade" id="hapus_penugasan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hapus penugasan *judul penugasan*</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Apakah Anda yakin mau menghapus penugasan ini?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Kembali</button>
+                <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Hapus</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
 <!-- End of Main Content -->

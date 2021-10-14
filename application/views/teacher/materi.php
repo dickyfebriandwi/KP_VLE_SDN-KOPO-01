@@ -5,8 +5,18 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
     <div class="row">
-        <div class="col-10">
-            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a>
+        <div class="col-9">
+            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a> *adain dropdown untuk seleksi tema atau ngga?
+        </div>
+        <div class="col">
+        <div class="dropdown float-right">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tema</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Tema 1</button>
+                    <button class="dropdown-item" type="button">Tema 2</button>
+                    <button class="dropdown-item" type="button">Tema 3</button>
+                </div>
+            </div>
         </div>
         <div class="col">
             <div class="dropdown float-right">
@@ -49,7 +59,7 @@
                                 <h5>
                                     <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
                                     <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
-                                    <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                    <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" data-toggle="modal" data-target="#hapus_materi" class="badge badge-danger"> Hapus </a>
                                 </h5>
                             </td>
                         </tr>
@@ -63,6 +73,25 @@
 </div>
 
 <!-- /.container-fluid -->
+
+<!-- Hapus Materi Modal-->
+<div class="modal fade" id="hapus_materi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Hapus materi *judul materi*</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Apakah Anda yakin mau menghapus materi ini?</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Kembali</button>
+                <a class="btn btn-danger" href="<?= base_url('auth/logout'); ?>">Hapus</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </div>
 <!-- End of Main Content -->
