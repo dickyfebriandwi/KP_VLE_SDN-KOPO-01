@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
     
-    <form>
+    <form> *semua dropdown otomatis milih data yg sebelumnya udah dipilih/disimpan*
     <div class="form-group">
         <div class="form-row">
             <div class="col-1">
@@ -36,9 +36,8 @@
         </div>
     </div>
     <div class="form-group">
-            <label for="exampleInputEmail1">Judul Materi</label>
+            <label for="exampleInputEmail1">Judul Materi</label> *nampilin data judul yg mau diubah*
             <input type="text" class="form-control col-9" id="judulMateri" placeholder="...">
-            <small id="contohJudul" class="form-text text-muted">CONTOH: Subtema 1 :  Pembelajaran 1.1</small>
     </div>
     <div class="form-group">
         <div class="form-row">

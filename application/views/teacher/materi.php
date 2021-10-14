@@ -5,8 +5,22 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
 
     <div class="row">
+        <div class="col-10">
+            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a>
+        </div>
+        <div class="col">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kelas</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <button class="dropdown-item" type="button">Kelas 1</button>
+                    <button class="dropdown-item" type="button">Kelas 2</button>
+                    <button class="dropdown-item" type="button">Kelas 3</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-lg-12">
-            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a> *Tambahkan pilihan kelas*
             <table class="table table-hover">
                 <thead>
                     <tr>
