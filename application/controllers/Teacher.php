@@ -20,6 +20,8 @@ class Teacher extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    #MateriBegin
+
     public function materi()
     {
         $data['title'] = 'Materi';
@@ -30,6 +32,10 @@ class Teacher extends CI_Controller
         $this->load->view('teacher/materi', $data);
         $this->loadtemplateslast();
     }
+
+    #MateriEnd
+
+    #PenugasanBegin
 
     public function penugasan()
     {
@@ -42,6 +48,10 @@ class Teacher extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    #PenugasanEnd
+
+    #KuisBegin
+
     public function kuis()
     {
         $data['title'] = 'Kuis';
@@ -50,6 +60,8 @@ class Teacher extends CI_Controller
         $this->load->view('teacher/kuis', $data);
         $this->loadtemplateslast();
     }
+
+    #KuisEnd
 
     public function loadtemplatesfirst($data)
     {
