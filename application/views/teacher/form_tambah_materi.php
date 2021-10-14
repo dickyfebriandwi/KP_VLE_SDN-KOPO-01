@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
-
+    
     <form>
     <div class="form-group">
         <div class="form-row">
@@ -37,18 +37,25 @@
     </div>
     <div class="form-group">
             <label for="exampleInputEmail1">Judul Materi</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="...">
-            <small id="emailHelp" class="form-text text-muted">Contoh :  Subtema 1 :  Pembelajaran 1.1</small>
+            <input type="text" class="form-control col-9" id="judulMateri" placeholder="...">
+            <small id="contohJudul" class="form-text text-muted">Contoh :  Subtema 1 :  Pembelajaran 1.1</small>
     </div>
     <div class="form-group">
-        <div class="custom-file col-4">
-            <input type="file" class="custom-file-input" id="customFile">
-            <label class="custom-file-label" for="customFile">Pilih file materi</label>
+        <div class="form-row">
+            <div class="col-auto">
+                <div class="custom-file col-auto">
+                    <input type="file" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Pilih file materi</label>
+                </div>
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-success" href="#" role="button">Simpan</a>
+            </div>
         </div>
     </div>
+    <br><br><br><br><br><br><br><br>
     <div class="form-group">
         <a class="btn btn-primary" href="#" role="button">Kembali</a>
-        <a class="btn btn-success" href="#" role="button">Simpan</a>
     </div>
         
     </form>
