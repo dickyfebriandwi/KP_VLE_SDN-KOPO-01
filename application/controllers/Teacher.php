@@ -32,6 +32,16 @@ class Teacher extends CI_Controller
         $this->load->view('teacher/materi', $data);
         $this->loadtemplateslast();
     }
+    public function tambah_materi()
+    {
+        $data['title'] = 'Unggah Materi Baru';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['materi'] = $this->Materi_model->getAllMateri();
+
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_tambah_materi', $data);
+        $this->loadtemplateslast();
+    }
 
     #MateriEnd
 
