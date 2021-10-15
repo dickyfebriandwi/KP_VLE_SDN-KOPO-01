@@ -4,9 +4,7 @@ function login_privilege()
     $ci = get_instance();
     if (!$ci->session->userdata('email')) {
         redirect('auth');
-    }
-    /* 
-    else {
+    } else {
         $role_id = $ci->session->userdata('role_id');
         $menu = $ci->uri->segment(1);
 
@@ -22,5 +20,4 @@ function login_privilege()
             redirect('auth/blocked');
         }
     }
-    */
 }
