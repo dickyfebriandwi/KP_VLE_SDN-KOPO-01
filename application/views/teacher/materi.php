@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-9">
-            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a> *adain dropdown untuk seleksi tema atau ngga?
+            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a>
         </div>
         <div class="col">
         <div class="dropdown float-right">

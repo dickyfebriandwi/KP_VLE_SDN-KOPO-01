@@ -112,7 +112,7 @@ class Teacher extends CI_Controller
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
 
         $this->loadtemplatesfirst($data);
-        $this->load->view('teacher/daftar_tugas', $data);
+        $this->load->view('teacher/halaman_daftar_tugas', $data);
         $this->loadtemplateslast();
     }
 
