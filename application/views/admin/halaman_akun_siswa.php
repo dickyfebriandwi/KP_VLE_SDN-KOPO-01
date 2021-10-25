@@ -27,29 +27,22 @@
                         <th scope="col">No.</th>
                         <th scope="col">NISN</th>
                         <th scope="col">Nama</th>
-                        <th scope="col">Alamat e-mail</th>
+                        <th scope="col">Kelas</th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
-                    <?php foreach ($materi as $mtr) : ?>
+                    <?php foreach ($siswa as $sw) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?= $mtr['nama_file']; ?></td>
-                            <td><?= date('d F Y', $mtr['date_created']); ?></td>
-                            <td><?php $aktif = $mtr['is_active'];
-                                if ($aktif) {
-                                    echo '<button type="button" class="btn btn-primary btn-sm">Aktif</button>';
-                                } else {
-                                    echo '<button type="button" class="btn btn-secondary btn-sm">Tidak Aktif</button>';
-                                }
-                                ?></td>
+                            <td><?= $sw['nisn']; ?></td>
+                            <td><?= $sw['nama_siswa']; ?></td>
+                            <td><?= $sw['kelas']; ?></td>
                             <td>
                                 <h5>
-                                    <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
-                                    <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
-                                    <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" data-toggle="modal" data-target="#hapus_materi" class="badge badge-danger"> Hapus </a>
+                                    <a href="<?= base_url(); ?>admin/buka_akun_siswa/<?= $sw['id']; ?>" class="badge badge-success"> Buka </a>
+                                    <a href="<?= base_url(); ?>admin/hapus_akun_siswa/<?= $sw['id']; ?>" data-toggle="modal" data-target="#hapus_akun_siswa" class="badge badge-danger"> Hapus </a>
                                 </h5>
                             </td>
                         </tr>
@@ -65,7 +58,7 @@
 <!-- /.container-fluid -->
 
 <!-- Hapus Akun Siswa Modal-->
-<div class="modal fade" id="hapus_materi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="hapus_akun_siswa" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
