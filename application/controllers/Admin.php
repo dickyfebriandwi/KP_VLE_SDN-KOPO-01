@@ -18,6 +18,8 @@ class Admin extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    #AkunBegin
+
     public function akun()
     {
         $data['title'] = 'Akun';
@@ -27,6 +29,28 @@ class Admin extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    public function buka_halaman_akun_guru()
+    {
+        $data['title'] = 'Akun Guru';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/halaman_akun_guru', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function buka_halaman_akun_siswa()
+    {
+        $data['title'] = 'Akun Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/halaman_akun_siswa', $data);
+        $this->loadtemplateslast();
+    }
+
+    #AkunEnd
+
+    #KelasBegin
+
     public function kelas()
     {
         $data['title'] = 'Kelas';
@@ -35,6 +59,8 @@ class Admin extends CI_Controller
         $this->load->view('admin/kelas', $data);
         $this->loadtemplateslast();
     }
+
+    #KelasEnd
 
     public function loadtemplatesfirst($data)
     {
