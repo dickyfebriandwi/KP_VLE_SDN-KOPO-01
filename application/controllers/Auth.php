@@ -62,6 +62,7 @@ class Auth extends CI_Controller
         }
     }
 
+    /*
     public function registration()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
@@ -96,6 +97,7 @@ class Auth extends CI_Controller
             redirect('auth');
         }
     }
+    */
 
     public function logout()
     {
