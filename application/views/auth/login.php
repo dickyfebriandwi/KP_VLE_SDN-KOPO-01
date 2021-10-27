@@ -32,10 +32,6 @@
                                         Masuk
                                     </button>
                                 </form>
-                                <div class="text-center">
-                                    * Pindahkan create account ke menu admin *
-                                    <a class="small" href="<?= base_url('auth/registration') ?>">Create an Account!</a>
-                                </div>
                             </div>
                         </div>
                     </div>

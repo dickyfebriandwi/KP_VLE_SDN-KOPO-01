@@ -6,11 +6,7 @@
 
     <div class="row">
         <div class="col-9">
-<<<<<<< Updated upstream
-            <a href="<?= base_url(); ?>admin/tambah_akun_guru" class="btn btn-primary mb-3">Tambah Akun Guru</a>
-=======
             <a href="<?= base_url(); ?>admin/registration" class="btn btn-primary mb-3">Tambah Akun Guru</a>
->>>>>>> Stashed changes
         </div>
     </div>
     <div class="row">
