@@ -4,7 +4,7 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
 
-    <form class="user" method="post" action="<?= base_url('admin/proses_ubah_kelas' . $kelas->id) ?>">
+    <form class="user" method="post" action="<?= base_url('admin/proses_ubah_kelas/' . $kelas->id) ?>">
         <div class="form-group">
             <div class="form-row">
                 <div class="input-group mb-3">
