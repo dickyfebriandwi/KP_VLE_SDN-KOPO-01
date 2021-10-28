@@ -7,6 +7,7 @@ class Admin extends CI_Controller
     {
         parent::__construct();
         login_privilege();
+        $this->load->model('Kelas_model', '', true);
     }
 
     public function index()
@@ -106,8 +107,10 @@ class Admin extends CI_Controller
 
     public function kelas()
     {
+
         $data['title'] = 'Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Kelas_model->getAllKelas();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/kelas', $data);
         $this->loadtemplateslast();
