@@ -109,7 +109,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['kelas'] = $this->Kelas_model->getKelas();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/kelas', $data);
         $this->loadtemplateslast();
@@ -132,6 +132,33 @@ class Admin extends CI_Controller
         } else {
             redirect(site_url("admin/tambah_kelas"));
         }
+    }
+
+    public function ubah_kelas($id)
+    {
+        $data['title'] = 'Kelas';
+        $data['subtitle'] = 'Ubah Kelas';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Kelas_model->getKelas();
+        $data['kelas'] = $this->Kelas_model->getKelasById($id)->row();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/ubah_kelas', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_kelas($id)
+    {
+        if ($this->Kelas_model->updateKelas($id)) {
+            redirect(site_url("admin/kelas"));
+        } else {
+            redirect(site_url("admin/ubah_kelas/$id"));
+        }
+    }
+
+    public function hapus_kelas($id)
+    {
+        $this->Kelas_model->deleteKelas($id);
+        redirect(site_url("admin/kelas"));
     }
 
     #KelasEnd

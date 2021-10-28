@@ -29,7 +29,7 @@
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>admin/ubah_kelas/<?= $kls['id']; ?>" class="badge badge-success"> Ubah </a>
-                                    <a href="<?= base_url(); ?>admin/hapus_kelas/<?= $kls['id']; ?>" data-toggle="modal" data-target="#hapus_kelas" class="badge badge-danger"> Hapus </a>
+                                    <a href="<?= base_url(); ?>admin/hapus_kelas/<?= $kls['id']; ?>" class="badge badge-danger"> Hapus </a>
                                 </h5>
                             </td>
                         </tr>

@@ -38,7 +38,7 @@
         </div>
         <br><br><br><br><br><br><br><br>
         <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi" role="button">Kembali</a>
+            <a class="btn btn-primary" href="<?= base_url(); ?>admin/kelas" role="button">Kembali</a>
         </div>
 
     </form>
