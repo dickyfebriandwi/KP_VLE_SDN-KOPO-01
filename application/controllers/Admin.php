@@ -107,13 +107,31 @@ class Admin extends CI_Controller
 
     public function kelas()
     {
-
         $data['title'] = 'Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['kelas'] = $this->Kelas_model->getAllKelas();
+        $data['kelas'] = $this->Kelas_model->getKelas();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/kelas', $data);
         $this->loadtemplateslast();
+    }
+
+    public function tambah_kelas()
+    {
+        $data['title'] = 'Kelas';
+        $data['subtitle'] = 'Tambah Kelas';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/tambah_kelas', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_tambah_kelas()
+    {
+        if ($this->Kelas_model->insertKelas()) {
+            redirect(site_url("admin/kelas"));
+        } else {
+            redirect(site_url("admin/tambah_kelas"));
+        }
     }
 
     #KelasEnd
