@@ -6,7 +6,7 @@
 
     <div class="row">
         <div class="col-9">
-            <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Akun Siswa</a>
+            <a href="<?= base_url(); ?>admin/tambah_akun_siswa" class="btn btn-primary mb-3">Tambah Akun Siswa</a>
         </div>
         <div class="col">
             <div class="dropdown float-right">
@@ -36,9 +36,9 @@
                     <?php foreach ($siswa as $sw) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?= $sw['nisn']; ?></td>
-                            <td><?= $sw['nama_siswa']; ?></td>
-                            <td><?= $sw['kelas']; ?></td>
+                            <td><?= $sw['nuptk_nisn']; ?></td>
+                            <td><?= $sw['name']; ?></td>
+                            <td><?= $sw['kelas_id']; ?></td>
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>admin/buka_akun_siswa/<?= $sw['id']; ?>" class="badge badge-success"> Buka </a>
