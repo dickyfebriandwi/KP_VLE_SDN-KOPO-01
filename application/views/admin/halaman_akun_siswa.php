@@ -38,7 +38,13 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $sw['nuptk_nisn']; ?></td>
                             <td><?= $sw['name']; ?></td>
-                            <td><?= $sw['kelas_id']; ?></td>
+                            <td><?php foreach ($kelas as $kls) : ?>
+                                    <?php if ($sw['kelas_id'] == $kls['id']) {
+                                        echo "Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'];
+                                    } ?>
+                                <?php endforeach; ?>
+                            </td>
+
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>admin/buka_akun_siswa/<?= $sw['id']; ?>" class="badge badge-success"> Buka </a>

@@ -69,6 +69,9 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUserGuru();
         $data['akun'] = $this->User_model->getUserById($id)->row();
+        #$id_kelas = $this->db->query("SELECT kelas_id FROM user WHERE id = $id");
+        #$data['kelas'] = $this->Kelas_model->getKelasById($id_kelas);
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/halaman_detail_akun_guru', $data);
         $this->loadtemplateslast();
@@ -82,6 +85,7 @@ class Admin extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUserGuru();
         $data['akun'] = $this->User_model->getUserById($id)->row();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/form_ubah_akun_guru', $data);
         $this->loadtemplateslast();
@@ -89,32 +93,36 @@ class Admin extends CI_Controller
 
     public function proses_ubah_akun_guru($id)
     {
-        $data = array(
-            "id" => $id,
-            "name" => $this->input->post("name"),
-            "email" => $this->input->post("email"),
-            "kelas_id" => $this->input->post("kelas_id"),
-            "nuptk_nisn" => $this->input->post("nuptk"),
-            "jabatan" => $this->input->post("jabatan")
-        );
-        $config['upload_path'] = './assets/img/profile/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size'] = 2000;
-        $config['max_width'] = 2000;
-        $config['max_height'] = 2000;
-        $this->load->library('upload', $config);
-        if (!$this->upload->do_upload('pp')) {
-            echo $this->upload->display_errors();
-        } else {
-            $upload_data = $this->upload->data();
-            $data['image'] = base_url("/assets/img/profile/") . $upload_data['file_name'];
-        }
 
-        if ($this->User_model->updateGuru($data)) {
+        #$config['upload_path'] = './assets/img/profile/';
+        #$config['allowed_types'] = 'gif|jpg|png';
+        #$config['max_size'] = 2000;
+        #$config['max_width'] = 2000;
+        #$config['max_height'] = 2000;
+        #$this->load->library('upload', $config);
+        #if (!$this->upload->do_upload('pp')) {
+        #    echo $this->upload->display_errors();
+        #} else {
+        #    $upload_data = $this->upload->data();
+        #    $data['image'] = base_url("/assets/img/profile/") . $upload_data['file_name'];
+        #}
+
+        if ($this->User_model->updateGuru($id)) {
             redirect(site_url("admin/buka_akun_guru/$id"));
         } else {
             redirect(site_url("admin/ubah_akun_guru/$id"));
         }
+    }
+    public function ubah_password_akun($id)
+    {
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Form Ubah Akun Guru';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUser();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/form_password_akun', $data);
+        $this->loadtemplateslast();
     }
 
     public function buka_halaman_akun_siswa()
@@ -123,6 +131,7 @@ class Admin extends CI_Controller
         $data['subtitle'] = 'Akun Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->User_model->getUserSiswa();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/halaman_akun_siswa', $data);
         $this->loadtemplateslast();
@@ -132,9 +141,73 @@ class Admin extends CI_Controller
         $data['title'] = 'Akun';
         $data['subtitle'] = 'Form Tambah Akun Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/form_tambah_akun_siswa', $data);
         $this->loadtemplateslast();
+    }
+
+    public function proses_tambah_akun_siswa()
+    {
+        if ($this->User_model->insertUserSiswa()) {
+            redirect(site_url("admin/buka_halaman_akun_siswa"));
+        } else {
+            redirect(site_url("admin/tambah_akun_siswa"));
+        }
+    }
+
+    public function buka_akun_siswa($id)
+    {
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Data Akun Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        #$id_kelas = $this->db->query("SELECT kelas_id FROM user WHERE id = $id");
+        #$data['kelas'] = $this->Kelas_model->getKelasById($id_kelas);
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/halaman_detail_akun_siswa', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function ubah_akun_siswa($id)
+    {
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Form Ubah Akun Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/form_ubah_akun_siswa', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_akun_siswa($id)
+    {
+        if ($this->User_model->updateSiswa($id)) {
+            redirect(site_url("admin/buka_akun_siswa/$id"));
+        } else {
+            redirect(site_url("admin/ubah_akun_siswa/$id"));
+        }
+    }
+
+    public function proses_ubah_password_akun($id)
+    {
+        $this->form_validation->set_rules('password', 'password', 'required|trim|min_length[8]|matches[password2]', [
+            'matches' => 'password tidak sama!!',
+            'min_length' => 'password harus minimal 8 karakter!!'
+        ]);
+        $this->form_validation->set_rules('password2', 'password2', 'required|trim|matches[password]');
+        if ($this->form_validation->run() == false) {
+            redirect(site_url("admin/ubah_password_akun/$id"));
+        } else {
+            $this->User_model->updatePassword($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">
+            Password berhasil diganti!! </div>');
+            redirect(site_url("admin/akun"));
+        }
     }
 
     public function registration()

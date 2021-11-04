@@ -5,19 +5,19 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
         <div class="col-9">
-            <a href="<?= base_url(); ?>admin/ubah_akun_guru/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Akun Guru</a>
+            <a href="<?= base_url(); ?>admin/ubah_akun_siswa/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Akun Siswa</a>
         </div>
     </div>
     <div class="row">
         <div class="col-9">
-            <a href="<?= base_url(); ?>admin/ubah_password_akun/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Password Guru</a>
+            <a href="<?= base_url(); ?>admin/ubah_password_akun/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Password Siswa</a>
         </div>
     </div>
 
 
     <form>
         <div class="form-group">
-            <label for="exampleInputEmail1">NUPTK</label>
+            <label for="exampleInputEmail1">NISN</label>
             <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?> " readonly>
         </div>
         <div class="form-group">
@@ -42,10 +42,6 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail1">Jabatan</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>" readonly>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
