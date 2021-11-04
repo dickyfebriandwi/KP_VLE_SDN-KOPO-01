@@ -63,6 +63,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Akun Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['siswa'] = $this->User_model->getUserSiswa();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/halaman_akun_siswa', $data);
         $this->loadtemplateslast();
