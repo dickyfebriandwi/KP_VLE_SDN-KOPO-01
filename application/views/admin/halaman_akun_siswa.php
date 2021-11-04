@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
 
     <div class="row">
         <div class="col-9">
@@ -51,14 +51,14 @@
                                                     <h5 class="modal-title" id="exampleModalLabel">Hapus akun *nama user*</h5>
                                                     <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 </div>
-                                            <div class="modal-body">Apakah Anda yakin mau menghapus akun ini?</div>
-                                        <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Kembali</button>
-                <a class="btn btn-danger" href="<?= base_url(); ?>admin/hapus_akun_siswa/<?= $sw['id']; ?>">Hapus</a>
-            </div>
-        </div>
-    </div>
-</div>
+                                                <div class="modal-body">Apakah Anda yakin mau menghapus akun ini?</div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Kembali</button>
+                                                    <a class="btn btn-danger" href="<?= base_url(); ?>admin/hapus_akun_siswa/<?= $sw['id']; ?>">Hapus</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </h5>
                             </td>
                         </tr>

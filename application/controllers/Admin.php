@@ -33,7 +33,8 @@ class Admin extends CI_Controller
 
     public function buka_halaman_akun_guru()
     {
-        $data['title'] = 'Akun Guru';
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Akun Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->User_model->getUserGuru();
         $this->loadtemplatesfirst($data);
@@ -43,34 +44,83 @@ class Admin extends CI_Controller
 
     public function tambah_akun_guru()
     {
-        $data['title'] = 'Form Tambah Akun Guru';
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Form Tambah Akun Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/form_tambah_akun_guru', $data);
         $this->loadtemplateslast();
     }
 
-    public function ubah_akun_guru()
+    public function proses_tambah_akun_guru()
     {
-        $data['title'] = 'Form Ubah Akun Guru';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->loadtemplatesfirst($data);
-        $this->load->view('admin/form_ubah_akun_guru', $data);
-        $this->loadtemplateslast();
+        if ($this->User_model->insertUserGuru()) {
+            redirect(site_url("admin/buka_halaman_akun_guru"));
+        } else {
+            redirect(site_url("admin/tambah_akun_guru"));
+        }
     }
 
-    public function buka_detail_akun_guru()
+    public function buka_akun_guru($id)
     {
-        $data['title'] = 'Data Akun Guru';
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Data Akun Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserGuru();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/halaman_detail_akun_guru', $data);
         $this->loadtemplateslast();
     }
 
+
+    public function ubah_akun_guru($id)
+    {
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Form Ubah Akun Guru';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserGuru();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/form_ubah_akun_guru', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_akun_guru($id)
+    {
+        $data = array(
+            "id" => $id,
+            "name" => $this->input->post("name"),
+            "email" => $this->input->post("email"),
+            "kelas_id" => $this->input->post("kelas_id"),
+            "nuptk_nisn" => $this->input->post("nuptk"),
+            "jabatan" => $this->input->post("jabatan")
+        );
+        $config['upload_path'] = './assets/img/profile/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_size'] = 2000;
+        $config['max_width'] = 2000;
+        $config['max_height'] = 2000;
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('pp')) {
+            echo $this->upload->display_errors();
+        } else {
+            $upload_data = $this->upload->data();
+            $data['image'] = base_url("/assets/img/profile/") . $upload_data['file_name'];
+        }
+
+        if ($this->User_model->updateGuru($data)) {
+            redirect(site_url("admin/buka_akun_guru/$id"));
+        } else {
+            redirect(site_url("admin/ubah_akun_guru/$id"));
+        }
+    }
+
     public function buka_halaman_akun_siswa()
     {
-        $data['title'] = 'Akun Siswa';
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Akun Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['siswa'] = $this->User_model->getUserSiswa();
         $this->loadtemplatesfirst($data);
@@ -79,7 +129,8 @@ class Admin extends CI_Controller
     }
     public function tambah_akun_siswa()
     {
-        $data['title'] = 'Form Tambah Akun Siswa';
+        $data['title'] = 'Akun';
+        $data['subtitle'] = 'Form Tambah Akun Siswa';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/form_tambah_akun_siswa', $data);

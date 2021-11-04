@@ -20,26 +20,31 @@ class User_model extends CI_model
 
     function insertUserGuru()
     {
-        $kelas = array(
-            "tingkat" => $this->input->post("tingkat"),
-            "rombel" => $this->input->post("rombel")
+        $user = array(
+            "name" => $this->input->post("name"),
+            "email" => $this->input->post("email"),
+            "image" => "default.jpg",
+            "password" => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
+            "role_id" => 2,
+            "is_active" => 1,
+            "kelas_id" => $this->input->post("kelas_id"),
+            "nuptk_nisn" => $this->input->post("nuptk"),
+            "jabatan" => $this->input->post("jabatan"),
+            "date_created" => time()
         );
-        return $this->db->insert("kelas", $kelas);
+        return $this->db->insert("user", $user);
     }
 
-    function getKelasById($id)
+    function getUserById($id)
     {
         $this->db->where("id", $id);
-        return $this->db->get('kelas');
+        return $this->db->get('user');
     }
-    function updateKelas($id)
+
+    function updateGuru($data)
     {
-        $data = array(
-            "tingkat" => $this->input->post("tingkat"),
-            "rombel" => $this->input->post("rombel")
-        );
-        $this->db->where("id", $id);
-        return $this->db->update("Kelas", $data);
+        $this->db->where("id", $data->id);
+        return $this->db->update("user", $data);
     }
 
     function deleteKelas($id)

@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
 
     <div class="row">
         <div class="col-9">
@@ -29,7 +29,7 @@
                             <td><?= $gr['name']; ?></td>
                             <td>
                                 <h5>
-                                    <a href="<?= base_url(); ?>admin/buka_detail_akun_guru/<?= $gr['id']; ?>" class="badge badge-success"> Buka </a>
+                                    <a href="<?= base_url(); ?>admin/buka_akun_guru/<?= $gr['id']; ?>" class="badge badge-success"> Buka </a>
                                     <a href="<?= base_url(); ?>admin/hapus_akun_guru/<?= $gr['id']; ?>" data-toggle="modal" data-target="#hapus_akun_guru" class="badge badge-danger"> Hapus </a>
                                 </h5>
                             </td>
