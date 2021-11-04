@@ -77,6 +77,14 @@ class Admin extends CI_Controller
         $this->load->view('admin/halaman_akun_siswa', $data);
         $this->loadtemplateslast();
     }
+    public function tambah_akun_siswa()
+    {
+        $data['title'] = 'Form Tambah Akun Siswa';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/form_tambah_akun_siswa', $data);
+        $this->loadtemplateslast();
+    }
 
     public function registration()
     {
