@@ -50,6 +50,15 @@ class Admin extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    public function ubah_akun_guru()
+    {
+        $data['title'] = 'Form Ubah Akun Guru';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/form_ubah_akun_guru', $data);
+        $this->loadtemplateslast();
+    }
+
     public function buka_detail_akun_guru()
     {
         $data['title'] = 'Data Akun Guru';
