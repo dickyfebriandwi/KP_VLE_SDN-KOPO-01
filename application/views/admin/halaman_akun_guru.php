@@ -25,12 +25,12 @@
                     <?php foreach ($guru as $gr) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
-                            <td><?= $gr['nama_guru']; ?></td>
-                            <td></td>
+                            <td><?= $gr['nuptk_nisn']; ?></td>
+                            <td><?= $gr['name']; ?></td>
                             <td>
                                 <h5>
-                                    <a href="<?= base_url(); ?>admin/buka_detail_akun_guru/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
-                                    <a href="<?= base_url(); ?>admin/hapus_akun_guru/<?= $mtr['id']; ?>" data-toggle="modal" data-target="#hapus_akun_guru" class="badge badge-danger"> Hapus </a>
+                                    <a href="<?= base_url(); ?>admin/buka_detail_akun_guru/<?= $gr['id']; ?>" class="badge badge-success"> Buka </a>
+                                    <a href="<?= base_url(); ?>admin/hapus_akun_guru/<?= $gr['id']; ?>" data-toggle="modal" data-target="#hapus_akun_guru" class="badge badge-danger"> Hapus </a>
                                 </h5>
                             </td>
                         </tr>

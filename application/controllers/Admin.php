@@ -8,6 +8,7 @@ class Admin extends CI_Controller
         parent::__construct();
         login_privilege();
         $this->load->model('Kelas_model', '', true);
+        $this->load->model('User_model', '', true);
     }
 
     public function index()
@@ -34,6 +35,7 @@ class Admin extends CI_Controller
     {
         $data['title'] = 'Akun Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->User_model->getUserGuru();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/halaman_akun_guru', $data);
         $this->loadtemplateslast();
