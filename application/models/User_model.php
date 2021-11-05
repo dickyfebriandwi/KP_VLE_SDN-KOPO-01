@@ -105,6 +105,6 @@ class User_model extends CI_model
     function deleteAkun($id)
     {
         $this->db->where("id", $id);
-        return $this->db->delete("akun");
+        return $this->db->delete("user");
     }
 }

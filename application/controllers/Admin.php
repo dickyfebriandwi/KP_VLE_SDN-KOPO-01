@@ -210,6 +210,12 @@ class Admin extends CI_Controller
         }
     }
 
+    public function hapus_akun($id)
+    {
+        $this->User_model->deleteAkun($id);
+        redirect(site_url("admin/akun"));
+    }
+
     public function registration()
     {
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
