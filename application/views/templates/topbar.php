@@ -6,7 +6,14 @@
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            <h1>Halo, <?= $user['name']; ?></h1> *bisa diganti jadi "Halaman Guru"
+            <h3><?php
+                if ($user['role_id'] == 1) {
+                    echo "Halaman Admin";
+                } elseif ($user['role_id'] == 2) {
+                    echo "Halaman Guru";
+                } else {
+                    echo "Halaman Siswa";
+                } ?></h3>
 
             <!-- Sidebar Toggle (Topbar) -->
             <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
