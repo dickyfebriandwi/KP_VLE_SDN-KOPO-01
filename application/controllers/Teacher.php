@@ -44,7 +44,7 @@ class Teacher extends CI_Controller
     }
     public function buka_materi()
     {
-        $data['title'] = 'Materi'; 
+        $data['title'] = 'Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
 
@@ -64,7 +64,6 @@ class Teacher extends CI_Controller
     }
     public function hapus_materi()
     {
-
     }
 
     #MateriEnd
@@ -103,7 +102,6 @@ class Teacher extends CI_Controller
     }
     public function hapus_penugasan()
     {
-
     }
     public function buka_daftar_tugas()
     {
