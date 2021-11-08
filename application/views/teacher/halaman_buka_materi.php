@@ -6,7 +6,7 @@
 
     <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi" role="button">Kembali</a>
     <br><br>
-    <iframe src="<?= $materi['file_materi']; ?>" style="width: 100%;height: 100%;border: none;"></iframe>
+    <iframe src="<?= $materi['file_materi']; ?>" style="width: 100%;height: 500px;"></iframe>
     <br>
 
 
