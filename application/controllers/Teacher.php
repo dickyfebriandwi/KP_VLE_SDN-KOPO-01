@@ -76,7 +76,7 @@ class Teacher extends CI_Controller
                 redirect(site_url("teacher/materi"));
             } else {
                 $upload_data = $this->upload->data();
-                $data['fiel_materi'] = base_url("assets/file/materi/") . $upload_data['file_name'];
+                $data['file_materi'] = base_url("assets/file/materi/") . $upload_data['file_name'];
                 if ($this->Materi_model->insertMateri($data)) {
                     $this->session->set_flashdata('success', 'Materi berhasil ditambahkan');
                     redirect(site_url("teacher/materi"));
