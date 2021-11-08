@@ -12,6 +12,7 @@ class Teacher extends CI_Controller
         $this->load->model('Kelas_model', '', true);
         $this->load->model('User_model', '', true);
         $this->load->model('Tema_model', '', true);
+        $this->load->model('Tugas_model', '', true);
     }
 
     public function index()
@@ -194,29 +195,59 @@ class Teacher extends CI_Controller
         }
     }
 
-    public function ubah_penugasan()
+    public function ubah_penugasan($id)
     {
         $data['title'] = 'Penugasan';
         $data['subtitle'] = 'Ubah Data Penugasan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
-
+        $data['penugasan'] = $this->Penugasan_model->getPenugasanById($id)->row();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/form_ubah_penugasan', $data);
         $this->loadtemplateslast();
     }
 
-    public function hapus_penugasan()
+    public function proses_ubah_penugasan($id)
     {
+        if ($this->Penugasan_model->updatePenugasan($id)) {
+            redirect(site_url("teacher/penugasan"));
+        } else {
+            redirect(site_url("teacher/ubah_penugasan/" . $id));
+        }
     }
-    public function buka_daftar_tugas()
-    {
-        $data['title'] = 'Daftar Tugas Siswa : *judul tugasnya apa*';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
 
+    public function hapus_penugasan($id)
+    {
+        $this->Penugasan_model->deletePenugasan($id);
+        redirect(site_url("teacher/penugasan"));
+    }
+
+    public function buka_daftar_tugas($id)
+    {
+        $data['title'] = 'Penugasan';
+        $data['subtitle'] = 'Penugasan';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
+        $data['penugasan'] = $this->Penugasan_model->getPenugasanById($id)->row();
+        $data['tugas'] = $this->Tugas_model->getTugas();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_daftar_tugas', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function buka_detail_tugas($id)
+    {
+        $data['title'] = 'Materi';
+        $data['subtitle'] = 'Buka Materi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
+        $data['tugas'] = $this->Tugas_model->getTugasById($id);
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/halaman_buka_tugas', $data);
         $this->loadtemplateslast();
     }
 

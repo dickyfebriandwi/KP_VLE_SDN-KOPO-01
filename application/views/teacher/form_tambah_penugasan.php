@@ -17,7 +17,7 @@
                         <?php foreach ($kelas as $kls) : ?>
                             <?php
                             if ($kls['id'] == $user['kelas_id']) {
-                                echo "<option selected readonly>" . "Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
+                                echo "<option selected readonly value='" . $kls['id'] . "'>" . "Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
                                 break;
                             }
                             ?>

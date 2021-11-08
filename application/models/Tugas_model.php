@@ -1,14 +1,14 @@
 <?php
-class Penugasan_model extends CI_model
+class Tugas_model extends CI_model
 {
-    public function getAllPenugasan()
+    public function getTugas()
     {
-        return $this->db->get('penugasan')->result_array();
+        return $this->db->get('tugas')->result_array();
     }
-    public function getPenugasanKelas($id)
+    public function getTugasById($id)
     {
         $this->db->where("id", $id);
-        $this->db->get("penugasan")->result_array();
+        $this->db->get('tugas');
     }
     public function insertPenugasan()
     {
@@ -22,11 +22,6 @@ class Penugasan_model extends CI_model
         );
         $this->db->set($data);
         return $this->db->insert("penugasan");
-    }
-    function getPenugasanById($id)
-    {
-        $this->db->where("id", $id);
-        return $this->db->get('penugasan');
     }
 
     public function updatePenugasan($id)
