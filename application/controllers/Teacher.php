@@ -165,7 +165,8 @@ class Teacher extends CI_Controller
         $data['title'] = 'Penugasan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
-
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/penugasan', $data);
         $this->loadtemplateslast();
@@ -177,10 +178,20 @@ class Teacher extends CI_Controller
         $data['subtitle'] = 'Tambah Penugasan Baru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
-
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/form_tambah_penugasan', $data);
         $this->loadtemplateslast();
+    }
+
+    public function proses_tambah_penugasan()
+    {
+        if ($this->Penugasan_model->insertPenugasan()) {
+            redirect(site_url("teacher/penugasan"));
+        } else {
+            redirect(site_url("teacher/tambah_tugas"));
+        }
     }
 
     public function ubah_penugasan()
