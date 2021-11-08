@@ -52,6 +52,7 @@ class Teacher extends CI_Controller
     {
         $data = array(
             "user_id" => $this->input->post("user_id"),
+            "nama_file" => $this->input->post("nama_file"),
             "tema_id" => $this->input->post("tema_id"),
             "kelas_id" => $this->input->post("kelas_id"),
             "is_active" => 1
