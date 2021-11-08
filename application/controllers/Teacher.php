@@ -34,7 +34,8 @@ class Teacher extends CI_Controller
     }
     public function tambah_materi()
     {
-        $data['title'] = 'Unggah Materi Baru';
+        $data['title'] = 'Materi';
+        $data['subtitle'] = 'Unggah Materi Baru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
 
@@ -45,6 +46,7 @@ class Teacher extends CI_Controller
     public function buka_materi()
     {
         $data['title'] = 'Materi';
+        $data['subtitle'] = 'Buka Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
 
@@ -54,7 +56,8 @@ class Teacher extends CI_Controller
     }
     public function ubah_materi()
     {
-        $data['title'] = 'Ubah Data Materi';
+        $data['title'] = 'Materi';
+        $data['subtitle'] = 'Ubah Data Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
 
