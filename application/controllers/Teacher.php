@@ -97,19 +97,63 @@ class Teacher extends CI_Controller
         $this->load->view('teacher/halaman_buka_materi', $data);
         $this->loadtemplateslast();
     }
-    public function ubah_materi()
+    public function ubah_materi($id)
     {
         $data['title'] = 'Materi';
         $data['subtitle'] = 'Ubah Data Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
-
+        $data['materi'] = $this->Materi_model->getMateriById($id)->row();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['tema'] = $this->Tema_model->getTema();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/form_ubah_materi', $data);
         $this->loadtemplateslast();
     }
-    public function hapus_materi()
+
+    public function proses_ubah_materi($id)
     {
+        $data = array(
+            "nama_file" => $this->input->post("nama_file"),
+            "tema_id" => $this->input->post("tema_id"),
+            "kelas_id" => $this->input->post("kelas_id"),
+            "is_active" => 1
+        );
+
+        #config file upload
+        $config['upload_path'] = './assets/file/materi';
+        $config['allowed_types'] = 'jpg|png|jpeg|mp4|docx|pptx|ppt|mkv|doc|pdf';
+
+        $this->load->library('upload', $config);
+        if (empty($_FILES['file_materi']['name'])) {
+            //
+            if ($this->Materi_model->updateMateri($data, $id)) {
+                $this->session->set_flashdata('success', 'Materi berhasil ditambahkan');
+                redirect(site_url("teacher/materi"));
+            } else {
+                redirect(site_url("teacher/ubah_materi/" . $id));
+            }
+        } else {
+            if (!$this->upload->do_upload('file_materi')) {
+                $this->session->set_flashdata('error', 'File yang dinputkan tidak sesuai. Masukan file dengan format yang diterima');
+                redirect(site_url("teacher/materi"));
+            } else {
+                $upload_data = $this->upload->data();
+                $data['file_materi'] = base_url("assets/file/materi/") . $upload_data['file_name'];
+                if ($this->Materi_model->updateMateri($data, $id)) {
+                    $this->session->set_flashdata('success', 'Materi berhasil ditambahkan');
+                    redirect(site_url("teacher/materi"));
+                } else {
+                    redirect(site_url("teacher/ubah_materi/" . $id));
+                }
+            }
+        }
+    }
+
+    public function hapus_materi($id)
+    {
+        $this->Materi_model->deleteMateri($id);
+        redirect(site_url("teacher/materi"));
     }
 
     #MateriEnd

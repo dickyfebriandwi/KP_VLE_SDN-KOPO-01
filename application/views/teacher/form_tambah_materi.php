@@ -43,7 +43,7 @@
                     <div class="custom-file col-auto">
                         <input type="file" class="custom-file-input" id="customFile" name="file_materi">
                         <label class="custom-file-label" for="customFile">Pilih file materi</label>
-                        <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, dan doc</small>
+                        <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>
                     </div>
                 </div>
                 <div class="col-auto">

@@ -14,4 +14,14 @@ class Materi_model extends CI_model
         $this->db->where("id", $id);
         return $this->db->get('materi');
     }
+    function updateMateri($data, $id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->update('materi', $data);
+    }
+    function deleteMateri($id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->delete("materi");
+    }
 }
