@@ -2,14 +2,15 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?> . . . *tambahin script untuk get Judul Materi*</h1>
-    
+    <h1 class="h3 mb-4 text-gray-800"><?php echo $materi['nama_file']; ?></h1>
+
     <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi" role="button">Kembali</a>
     <br><br>
-    <iframe src="#" width="100%" height="500px">
-    </iframe>
+    <iframe src="<?= $materi['file_materi']; ?>" style="width: 100%;height: 100%;border: none;"></iframe>
+    <br>
 
-    
+
+
 </div>
 
 <!-- /.container-fluid -->

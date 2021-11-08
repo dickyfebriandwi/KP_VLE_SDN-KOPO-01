@@ -2,62 +2,64 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
-    
-    <form>
-    <div class="form-group">
-        <div class="form-row">
-            <div class="col-1">
-                <label>Pilih Kelas</label>
-            </div>
-            <div class="col-1">
-                <div class="dropdown">
-                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kelas</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Kelas 1</a>
-                        <a class="dropdown-item" href="#">Kelas 2</a>
-                        <a class="dropdown-item" href="#">Kelas 3</a>
+    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <?php echo form_open_multipart(site_url('teacher/proses_tambah_materi')) ?>
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" class="" name='user_id' value="<?= $user['id']; ?>">
+        <div class="form-group">
+            <div class="form-row">
+                <div class="input-group mb-2 col-4">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Kelas</label>
                     </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="kelas_id">
+                        <?php foreach ($kelas as $kls) : ?>
+                            <option value="<?= $kls['id']; ?>">Kelas <?= $kls['tingkat']; ?> Rombel <?= $kls['rombel']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
-             </div>
-            <div class="col-1">
-                <label>Pilih Tema</label>
             </div>
-            <div class="col">
-                <div class="dropdown">
-                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tema</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Tema 1</a>
-                        <a class="dropdown-item" href="#">Tema 2</a>
-                        <a class="dropdown-item" href="#">Tema 3</a>
+            <div class="form-row">
+                <div class="input-group mb-2 col-4">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect01">Tema</label>
                     </div>
+                    <select class="custom-select" id="inputGroupSelect01" name="tema_id">
+                        <?php foreach ($tema as $tm) : ?>
+                            <option value="<?= $tm['id']; ?>"><?= $tm['nama_tema']; ?></option>
+                        <?php endforeach; ?>
+                    </select>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="form-group">
+        <div class="form-group">
             <label for="exampleInputEmail1">Judul Materi</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="...">
-            <small id="contohJudul" class="form-text text-muted">CONTOH: Subtema 1 :  Pembelajaran 1.1</small>
-    </div>
-    <div class="form-group">
-        <div class="form-row">
-            <div class="col-auto">
-                <div class="custom-file col-auto">
-                    <input type="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Pilih file materi</label>
+            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="judul">
+            <small id="contohJudul" class="form-text text-muted">CONTOH: Subtema 1 : Pembelajaran 1.1</small>
+        </div>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col-auto">
+                    <div class="custom-file col-auto">
+                        <input type="file" class="custom-file-input" id="customFile" name="file_materi">
+                        <label class="custom-file-label" for="customFile">Pilih file materi</label>
+                        <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, dan doc</small>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">
+                        Simpan
+                    </button>
                 </div>
             </div>
-            <div class="col-auto">
-                <a class="btn btn-success" href="#" role="button">Simpan</a>
+        </div>
+        <br><br><br><br><br><br><br><br>
+        <div class="form-group">
+            <div class="form-group">
+                <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi" role="button">Kembali</a>
             </div>
         </div>
-    </div>
-    <br><br><br><br><br><br><br><br>
-    <div class="form-group">
-        <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi" role="button">Kembali</a>
-    </div>
-        
+        <?php echo form_close() ?>
     </form>
 
 </div>

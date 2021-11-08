@@ -9,7 +9,7 @@
             <a href="<?= base_url(); ?>teacher/tambah_materi" class="btn btn-primary mb-3">Tambah Materi</a>
         </div>
         <div class="col">
-        <div class="dropdown float-right">
+            <div class="dropdown float-right">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tema</button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                     <button class="dropdown-item" type="button">Tema 1</button>
@@ -47,7 +47,7 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $mtr['nama_file']; ?></td>
-                            <td><?= date('d F Y', $mtr['date_created']); ?></td>
+                            <td><?= $mtr['date_created']; ?></td>
                             <td><?php $aktif = $mtr['is_active'];
                                 if ($aktif) {
                                     echo '<button type="button" class="btn btn-primary btn-sm">Aktif</button>';
