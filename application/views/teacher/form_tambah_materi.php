@@ -34,7 +34,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Judul Materi</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="judul">
+            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nama_file">
             <small id="contohJudul" class="form-text text-muted">CONTOH: Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group">
