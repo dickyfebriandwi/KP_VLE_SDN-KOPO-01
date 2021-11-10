@@ -18,17 +18,19 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($materi as $mtr) : ?>
-                        <tr>
-                            <th scope="row"><?= $i; ?></th>
-                            <td><?= $mtr['nama_file']; ?></td>
-                            <td><?= $mtr['date_created']; ?></td>
-                            <td>
-                                <h5>
-                                    <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
-                                </h5>
-                            </td>
-                        </tr>
-                        <?php $i++; ?>
+                        <?php if ($user['kelas_id'] == $mtr['kelas_id']) : ?>
+                            <tr>
+                                <th scope="row"><?= $i; ?></th>
+                                <td><?= $mtr['nama_file']; ?></td>
+                                <td><?= $mtr['date_created']; ?></td>
+                                <td>
+                                    <h5>
+                                        <a href="<?= base_url(); ?>student/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
+                                    </h5>
+                                </td>
+                            </tr>
+                            <?php $i++; ?>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>

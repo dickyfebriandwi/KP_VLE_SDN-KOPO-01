@@ -40,7 +40,7 @@ class Student extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getMateriById($id)->row_array();
         $this->loadtemplatesfirst($data);
-        $this->load->view('siswa/halaman_buka_materi', $data);
+        $this->load->view('student/halaman_buka_materi', $data);
         $this->loadtemplateslast();
     }
 
