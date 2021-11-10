@@ -10,4 +10,13 @@ class Tugas_model extends CI_model
         $this->db->where("id", $id);
         return $this->db->get('tugas');
     }
+
+    public function updateNilai($id)
+    {
+        $data = array(
+            "nilai" => $this->input->post("nilai")
+        );
+        $this->db->where("id", $id);
+        return $this->db->update("tugas", $data);
+    }
 }

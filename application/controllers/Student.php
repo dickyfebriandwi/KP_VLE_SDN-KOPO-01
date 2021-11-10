@@ -33,6 +33,17 @@ class Student extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    public function buka_materi($id)
+    {
+        $data['title'] = 'Materi';
+        $data['subtitle'] = 'Buka Materi';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['materi'] = $this->Materi_model->getMateriById($id)->row_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('siswa/halaman_buka_materi', $data);
+        $this->loadtemplateslast();
+    }
+
     #MateriEnd
 
     #TugasBegin
@@ -72,7 +83,7 @@ class Student extends CI_Controller
     }
 
     #KuisEnd
-    
+
     public function loadtemplatesfirst($data)
     {
         $this->load->view('templates/header', $data);

@@ -266,6 +266,15 @@ class Teacher extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    public function proses_nilai_tugas($id)
+    {
+        if ($this->Tugas_model->updateNilai($id)) {
+            redirect(site_url("teacher/buka_detail_tugas/$id"));
+        } else {
+            redirect(site_url("teacher/buka_detail_tugas/$id"));
+        }
+    }
+
     #PenugasanEnd
 
     #KuisBegin

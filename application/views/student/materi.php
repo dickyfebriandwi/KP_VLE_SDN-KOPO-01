@@ -21,7 +21,7 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $mtr['nama_file']; ?></td>
-                            <td><?= date('d F Y', $mtr['date_created']); ?></td>
+                            <td><?= $mtr['date_created']; ?></td>
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
