@@ -27,31 +27,33 @@
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($penugasan as $pngs) : ?>
-                        <tr>
-                            <?php foreach ($kelas as $kls) : ?>
-                                <?php if ($kls['id'] == $user['kelas_id']) : ?>
-                                    <th scope="row"><?= $i; ?></th>
-                                    <td><?php foreach ($tema as $tm) : ?>
-                                            <?php
-                                            if ($tm['id'] == $pngs['tema_id']) {
-                                                echo $tm['nama_tema'];
-                                            }
-                                            ?>
-                                        <?php endforeach; ?>
-                                    </td>
-                                    <td><?= $pngs['judul_penugasan']; ?></td>
-                                    <td><?= $pngs['due_date']; ?></td>
-                                    <td>
-                                        <h5>
-                                            <a href="<?= base_url(); ?>teacher/buka_daftar_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
-                                            <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
-                                            <a href="<?= base_url(); ?>teacher/hapus_penugasan/<?= $pngs['id']; ?>" class="badge badge-danger"> Hapus </a>
-                                        </h5>
-                                    </td>
-                        </tr>
-                    <?php endif; ?>
-                <?php endforeach; ?>
-                <?php $i++; ?>
+                        <?php if ($pngs['kelas_id'] == $user['kelas_id']) : ?>
+                            <tr>
+                                <?php foreach ($kelas as $kls) : ?>
+                                    <?php if ($kls['id'] == $user['kelas_id']) : ?>
+                                        <th scope="row"><?= $i; ?></th>
+                                        <td><?php foreach ($tema as $tm) : ?>
+                                                <?php
+                                                if ($tm['id'] == $pngs['tema_id']) {
+                                                    echo $tm['nama_tema'];
+                                                }
+                                                ?>
+                                            <?php endforeach; ?>
+                                        </td>
+                                        <td><?= $pngs['judul_penugasan']; ?></td>
+                                        <td><?= $pngs['due_date']; ?></td>
+                                        <td>
+                                            <h5>
+                                                <a href="<?= base_url(); ?>teacher/buka_daftar_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
+                                                <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
+                                                <a href="<?= base_url(); ?>teacher/hapus_penugasan/<?= $pngs['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                            </h5>
+                                        </td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php $i++; ?>
+                <?php endif; ?>
             <?php endforeach; ?>
                 </tbody>
             </table>

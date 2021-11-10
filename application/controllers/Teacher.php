@@ -245,7 +245,8 @@ class Teacher extends CI_Controller
         $data['subtitle'] = 'Tugas Detail';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUserSiswa();
-        $data['tugas'] = $this->Tugas_model->getTugasById($id);
+        $data['tugas'] = $this->Tugas_model->getTugasById($id)->row_array();
+        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_buka_tugas', $data);
         $this->loadtemplateslast();
