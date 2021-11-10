@@ -28,7 +28,7 @@ class Teacher extends CI_Controller
 
     public function materi()
     {
-        $data['title'] = 'Materi';
+        $data['title'] = 'Daftar Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
 
@@ -39,7 +39,7 @@ class Teacher extends CI_Controller
     public function tambah_materi()
     {
         $data['title'] = 'Materi';
-        $data['subtitle'] = 'Unggah Materi Baru';
+        $data['subtitle'] = 'Form Tambah Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
@@ -74,7 +74,7 @@ class Teacher extends CI_Controller
             }
         } else {
             if (!$this->upload->do_upload('file_materi')) {
-                $this->session->set_flashdata('error', 'File yang dinputkan tidak sesuai. Masukan file dengan format yang diterima');
+                $this->session->set_flashdata('error', 'File tidak sesuai. Masukkan file dengan format yang diterima');
                 redirect(site_url("teacher/materi"));
             } else {
                 $upload_data = $this->upload->data();
