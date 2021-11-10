@@ -5,7 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800">
         <?php foreach ($akun as $ak) : ?>
             <?php
-            if ($ak['id'] == $tugas->user_id) {
+            if ($ak['id'] == $tugas['user_id']) {
                 echo "Nama Siswa : " . $ak['name'];
             } ?>
         <?php endforeach; ?></h1>

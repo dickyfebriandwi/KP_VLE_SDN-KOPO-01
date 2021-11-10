@@ -241,13 +241,27 @@ class Teacher extends CI_Controller
 
     public function buka_detail_tugas($id)
     {
-        $data['title'] = 'Materi';
-        $data['subtitle'] = 'Buka Materi';
+        $data['title'] = 'Penugasan';
+        $data['subtitle'] = 'Tugas Detail';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUserSiswa();
         $data['tugas'] = $this->Tugas_model->getTugasById($id);
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_buka_tugas', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function buka_tabel_nilai_tugas()
+    {
+        $data['title'] = 'Penugasan';
+        $data['subtitle'] = 'Tabel Nilai';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+        $data['tugas'] = $this->Tugas_model->getTugas();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/halaman_tabel_nilai_tugas', $data);
         $this->loadtemplateslast();
     }
 
