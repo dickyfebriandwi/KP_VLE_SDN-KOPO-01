@@ -12,7 +12,7 @@
         <input type="hidden" class="" name='penugasan_id' value="<?= $penugasan->id; ?>">
         <input type="hidden" class="" name='nilai' value="0">
         <div class="form-group">
-            <h1 class="h3 mb-4 text-gray-800"><?= $penugasan->deskripsi_tugas ?></h1>
+            <h7 class="h7 mb-4 text-gray-800"><?= $penugasan->deskripsi_tugas ?></h7>
         </div>
         <div class="form-group">
             <div class="form-row">
@@ -20,8 +20,8 @@
                     <div class="custom-file col-auto">
                         <input type="file" class="custom-file-input" id="customFile" name="url">
                         <label class="custom-file-label" for="customFile">Pilih file tugas</label>
-                        <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>
                     </div>
+                    <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>
                 </div>
                 <div class="col-auto">
                     <button type='submit' class='btn btn-success'>Unggah</button>
