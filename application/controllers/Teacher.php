@@ -33,7 +33,8 @@ class Teacher extends CI_Controller
         $data['subtitle'] = 'Daftar Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
-
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['tema'] = $this->Tema_model->getTema();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/materi', $data);
         $this->loadtemplateslast();
@@ -306,17 +307,14 @@ class Teacher extends CI_Controller
 
     public function buka_daftar_kuis()
     {
-
     }
 
     public function ubah_kuis()
     {
-
     }
 
     public function hapus_kuis()
     {
-
     }
 
     #KuisEnd
