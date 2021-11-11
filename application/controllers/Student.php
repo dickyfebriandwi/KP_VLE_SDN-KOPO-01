@@ -142,6 +142,7 @@ class Student extends CI_Controller
     public function kuis()
     {
         $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Daftar Kuis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->loadtemplatesfirst($data);
         $this->load->view('student/kuis', $data);
