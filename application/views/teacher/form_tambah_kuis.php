@@ -81,7 +81,7 @@
                 <a class="btn btn-primary" href="<?= base_url(); ?>teacher/kuis" role="button">Kembali</a>
             </div>
             <div class="col-2">
-                <button type="submit" class="btn btn-success">Simpan</button>
+                <button type="submit" class="btn btn-success" href="<?= base_url(); ?>teacher/buat_soal_kuis">Simpan</button>
             </div>
         </div>
         <?php echo form_close() ?>

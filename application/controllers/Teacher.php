@@ -335,6 +335,16 @@ class Teacher extends CI_Controller
         $this->loadtemplateslast();
     }
 
+    public function buat_soal_kuis()
+    {
+
+    }
+
+    public function ubah_soal_kuis()
+    {
+        
+    }
+
     #KuisEnd
 
     public function loadtemplatesfirst($data)
