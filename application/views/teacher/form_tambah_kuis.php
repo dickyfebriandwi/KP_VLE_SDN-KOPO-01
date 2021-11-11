@@ -62,13 +62,12 @@
                 </div>
             </div>
             <div class="col-2">
-                <label class="sr-only" for="inlineFormInputGroup">Username</label>
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
                             Jumlah Soal
                         </div>
-                        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="">
+                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="">
                     </div>
                 </div>
             </div>

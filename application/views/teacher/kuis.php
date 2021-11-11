@@ -5,11 +5,11 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
 
     <div class="row">
-        <div class="col-2">
+        <div class="col-10">
             <a href="<?= base_url(); ?>teacher/tambah_kuis" class="btn btn-primary mb-3">Tambah Kuis</a>
         </div>
-        <div class="col-7">
-            <a href="<?= base_url(); ?>teacher/buka_tabel_nilai_kuis" class="btn btn-success mb-3">Tabel Nilai Tugas</a>
+        <div class="col-auto">
+            <a href="<?= base_url(); ?>teacher/buka_tabel_nilai_kuis" class="btn btn-success mb-3">Tabel Nilai Kuis</a>
         </div>
     </div>
     <div class="row">
@@ -63,5 +63,5 @@
 
 <!-- /.container-fluid -->
 
-
+</div>
 <!-- End of Main Content -->

@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Tabel Nilai Tugas - Kelas 
+    <h1 class="h3 mb-4 text-gray-800">Tabel Nilai Kuis - Kelas 
         <?php foreach ($kelas as $kls) : ?>
             <?php if ($kls['id'] == $user['kelas_id']) {
                 echo $kls['tingkat'] . " Rombel " . $kls['rombel'];
@@ -11,7 +11,7 @@
     </h1>
     <div class="row">
         <div class="col-2">
-            <a href="<?= base_url(); ?>teacher/penugasan" class="btn btn-primary mb-3">Kembali</a>
+            <a href="<?= base_url(); ?>teacher/kuis" class="btn btn-primary mb-3">Kembali</a>
         </div>
     </div>
     <div class="row">
@@ -24,11 +24,11 @@
                         <th scope="col">Nama Siswa</th>
                         <?php
                         $j = 1;
-                        foreach ($penugasan as $pngs) :
+                        foreach ($kuis as $ks) :
                         ?>
                             <?php
-                            if ($pngs['kelas_id'] == $user['kelas_id']) {
-                                echo "<th scope='col'>Tugas-" . $j . "</th>";
+                            if ($ks['kelas_id'] == $user['kelas_id']) {
+                                echo "<th scope='col'>Kuis-" . $j . "</th>";
                                 $j = $j + 1;
                             } ?>
                         <?php endforeach; ?>
@@ -42,7 +42,7 @@
                                 <th scope="row"><?= $i; ?></th>
                                 <td><?= $ak['nuptk_nisn']; ?></td>
                                 <td><?= $ak['name']; ?></td>
-                                <?php foreach ($penugasan as $pngs) : ?>
+                                <?php foreach ($kuis as $ks) : ?>
                                     <?php if ($pngs['kelas_id'] == $user['kelas_id']) : ?>
                                         <?php foreach ($tugas as $tgs) : ?>
                                             <?php if ($tgs['penugasan_id'] == $pngs['id'] && $ak['id'] == $tgs['user_id']) : ?>

@@ -317,6 +317,24 @@ class Teacher extends CI_Controller
     {
     }
 
+    public function buka_detail_kuis()
+    {
+
+    }
+
+    public function buka_tabel_nilai_kuis()
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Tabel Nilai Kuis';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/halaman_tabel_nilai_kuis', $data);
+        $this->loadtemplateslast();
+    }
+
     #KuisEnd
 
     public function loadtemplatesfirst($data)
