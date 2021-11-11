@@ -43,7 +43,7 @@
                                 <?php foreach ($penugasan as $pngs) : ?>
                                     <?php if ($pngs['kelas_id'] == $user['kelas_id']) : ?>
                                         <?php foreach ($tugas as $tgs) : ?>
-                                            <?php if ($tgs['penugasan_id'] == $pngs['id']) : ?>
+                                            <?php if ($tgs['penugasan_id'] == $pngs['id'] && $ak['id'] == $tgs['user_id']) : ?>
                                                 <?= "<td>" . $tgs['nilai'] . "</td>"; ?>
                                             <?php endif; ?>
                                         <?php endforeach; ?>

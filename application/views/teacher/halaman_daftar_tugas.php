@@ -32,34 +32,36 @@
                     <?php foreach ($tugas as $tgs) : ?>
                         <tr>
                             <?php if ($penugasan->id == $tgs['penugasan_id']) : ?>
-                                <th scope="row"><?= $i; ?></th>
-                                <td>
-                                    <?php foreach ($akun as $ak) : ?>
+                                <?php if ($tgs['kelas_id'] == $penugasan->kelas_id) : ?>
+                                    <th scope="row"><?= $i; ?></th>
+                                    <td>
+                                        <?php foreach ($akun as $ak) : ?>
 
-                                        <?php
-                                        if ($ak['id'] == $tgs['user_id']) {
-                                            echo $ak['name'];
-                                        }
-                                        ?>
+                                            <?php
+                                            if ($ak['id'] == $tgs['user_id']) {
+                                                echo $ak['name'];
+                                            }
+                                            ?>
 
-                                    <?php endforeach; ?>
-                                </td>
-                                <td><?= $tgs['date_created']; ?></td>
-                                <td><?php if ($tgs['date_created'] < $penugasan->due_date) {
-                                        echo '<button type="button" class="btn btn-primary btn-sm">Tepat Waktu</button>';
-                                    } else {
-                                        echo '<button type="button" class="btn btn-secondary btn-sm">Terlambat</button>';
-                                    }; ?></td>
-                                <td><?= $tgs['nilai']; ?></td>
-                                <td>
-                                    <h5>
-                                        <a href="<?= base_url(); ?>teacher/buka_detail_tugas/<?= $tgs['id']; ?>" class="badge badge-success"> Buka </a>
-                                    </h5>
-                                </td>
+                                        <?php endforeach; ?>
+                                    </td>
+                                    <td><?= $tgs['date_created']; ?></td>
+                                    <td><?php if ($tgs['date_created'] < $penugasan->due_date) {
+                                            echo '<button type="button" class="btn btn-primary btn-sm">Tepat Waktu</button>';
+                                        } else {
+                                            echo '<button type="button" class="btn btn-secondary btn-sm">Terlambat</button>';
+                                        }; ?></td>
+                                    <td><?= $tgs['nilai']; ?></td>
+                                    <td>
+                                        <h5>
+                                            <a href="<?= base_url(); ?>teacher/buka_detail_tugas/<?= $tgs['id']; ?>" class="badge badge-success"> Buka </a>
+                                        </h5>
+                                    </td>
                         </tr>
                     <?php endif; ?>
-                    <?php $i++; ?>
-                <?php endforeach; ?>
+                <?php endif; ?>
+                <?php $i++; ?>
+            <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

@@ -20,6 +20,7 @@
                 <tbody>
                     <?php $i = 1; ?>
 
+
                     <?php foreach ($penugasan as $pngs) : ?>
                         <tr>
                             <?php if ($pngs['kelas_id'] == $user['kelas_id']) : ?>

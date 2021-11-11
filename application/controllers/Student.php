@@ -62,6 +62,7 @@ class Student extends CI_Controller
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
         $data['tugas'] = $this->Tugas_model->getTugas();
         $data['tema'] = $this->Tema_model->getTema();
+        $data['status'] = $this->Status_Tugas_model->getStatusTugas();
         $this->loadtemplatesfirst($data);
         $this->load->view('student/tugas', $data);
         $this->loadtemplateslast();
