@@ -7,9 +7,9 @@
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" class="" name='user_id' value="<?= $user['id']; ?>">
         <input type="hidden" class="" name='kelas_id' value="<?= $user['kelas_id']; ?>">
-        <div class="form-group">
-            <div class="form-row">
-                <div class="input-group mb-2 col-4">
+        <div class="form-group row">
+            <div class="col-4">
+                <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Kelas</label>
                     </div>
@@ -25,8 +25,8 @@
                     </select>
                 </div>
             </div>
-            <div class="form-row">
-                <div class="input-group mb-2 col-4">
+            <div class="col-3">
+                <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Tema</label>
                     </div>
@@ -39,30 +39,32 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Judul Penugasan</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="judul_penugasan">
-            <small id="contohJudul" class="form-text text-muted">CONTOH: Tugas Subtema 1 : Pembelajaran 1.1</small>
+                <label for="judulPgs">Judul Penugasan</label>
+                <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="nama_file">
+                <small id="contohJudulPgs" class="form-text text-muted">Contoh: Tugas Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group">
-            <label for="exampleInputEmail1">Deskripsi Penugasan</label>
-            <textarea class="form-control col-9" id="deskripsiPenugasan" rows="3" name="deskripsi"></textarea>
+            <label for="deskPenugasan">Deskripsi Penugasan</label>
+            <textarea class="form-control col-7" id="deskripsiPenugasan" rows="3" name="deskripsi"></textarea>
         </div>
-        <div class="form-row">
-
-            <div class="col-auto">
-                <label for="meeting-time">Tenggat Waktu :</label>
-                <input type="datetime-local" id="meeting-time" name="due_date">
-                <button type="submit" class="btn btn-success">
-                    Simpan
-                </button>
-            </div>
-        </div>
-        <br><br><br><br><br><br><br><br>
         <div class="form-group">
-            <div class="form-group">
+            <label for="meeting-time">Tenggat Pengumpulan Tugas</label>
+            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date">
+        </div>
+        <div class="form-group row">
+            <div class="col-6">
                 <a class="btn btn-primary" href="<?= base_url(); ?>teacher/penugasan" role="button">Kembali</a>
+            </div>
+            <div class="col-2">
+                <button type="submit" class="btn btn-success">Simpan</button>
             </div>
         </div>
         <?php echo form_close() ?>
     </form>
+
 </div>
+
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

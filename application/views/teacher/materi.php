@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
 
     <div class="row">
         <div class="col-9">
@@ -15,26 +15,30 @@
                 <thead>
                     <tr>
                         <th scope="col">No.</th>
+                        <th scope="col">Tema</th>
                         <th scope="col">Judul Materi</th>
                         <th scope="col">Waktu Unggah</th>
-                        <th scope="col">Status</th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
                     <?php foreach ($materi as $mtr) : ?>
-                        <tr>
-                            <th scope="row"><?= $i; ?></th>
+                        <?php if ($mtr['kelas_id'] == $user['kelas_id']) : ?>
+                            <tr>
+                                <?php foreach ($kelas as $kls) : ?>
+                                    <?php if ($kls['id'] == $user['kelas_id']) : ?>
+                                        <th scope="row"><?= $i; ?></th>
+                                        <td><?php foreach ($tema as $tm) : ?>
+                                                <?php
+                                                if ($tm['id'] == $mtr['tema_id']) {
+                                                    echo $tm['nama_tema'];
+                                                }
+                                                ?>
+                                            <?php endforeach; ?>
+                                        </td>
                             <td><?= $mtr['nama_file']; ?></td>
                             <td><?= $mtr['date_created']; ?></td>
-                            <td><?php $aktif = $mtr['is_active'];
-                                if ($aktif) {
-                                    echo '<button type="button" class="btn btn-primary btn-sm">Aktif</button>';
-                                } else {
-                                    echo '<button type="button" class="btn btn-secondary btn-sm">Tidak Aktif</button>';
-                                }
-                                ?></td>
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
@@ -43,6 +47,18 @@
                                 </h5>
                             </td>
                         </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    <?php $i++; ?>
+                <?php endif; ?>
+            <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<!-- MODAL HAPUS MATERI
                         <div class="modal fade" id="hapus_materi" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -60,15 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <?php $i++; ?>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-</div>
-
+                        -->
 <!-- /.container-fluid -->
 
 

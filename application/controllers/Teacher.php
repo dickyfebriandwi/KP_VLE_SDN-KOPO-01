@@ -13,6 +13,7 @@ class Teacher extends CI_Controller
         $this->load->model('User_model', '', true);
         $this->load->model('Tema_model', '', true);
         $this->load->model('Tugas_model', '', true);
+        $this->load->model('Kuis_model', '', true);
     }
 
     public function index()
@@ -28,7 +29,8 @@ class Teacher extends CI_Controller
 
     public function materi()
     {
-        $data['title'] = 'Daftar Materi';
+        $data['title'] = 'Materi';
+        $data['subtitle'] = 'Daftar Materi';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['materi'] = $this->Materi_model->getAllMateri();
 
@@ -164,6 +166,7 @@ class Teacher extends CI_Controller
     public function penugasan()
     {
         $data['title'] = 'Penugasan';
+        $data['subtitle'] = 'Daftar Penugasan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
         $data['tema'] = $this->Tema_model->getTema();
@@ -176,7 +179,7 @@ class Teacher extends CI_Controller
     public function tambah_penugasan()
     {
         $data['title'] = 'Penugasan';
-        $data['subtitle'] = 'Tambah Penugasan Baru';
+        $data['subtitle'] = 'Form Tambah Penugasan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
         $data['tema'] = $this->Tema_model->getTema();
@@ -282,10 +285,38 @@ class Teacher extends CI_Controller
     public function kuis()
     {
         $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Daftar Kuis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/kuis', $data);
         $this->loadtemplateslast();
+    }
+
+    public function tambah_kuis()
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Form Tambah Kuis';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_tambah_kuis', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function buka_daftar_kuis()
+    {
+
+    }
+
+    public function ubah_kuis()
+    {
+
+    }
+
+    public function hapus_kuis()
+    {
+
     }
 
     #KuisEnd
