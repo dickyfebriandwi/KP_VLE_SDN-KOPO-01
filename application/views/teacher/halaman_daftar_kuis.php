@@ -34,11 +34,11 @@
                                 <td><?php foreach ($status as $st) : ?>
                                         <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
                                             <?php if ($st['date_updated'] == null) : ?>
-                                                <button>Belum Mengerjakan</button>
+                                                <a class="badge badge-warning">Belum Mengerjakan</a>
                                             <?php elseif ($st['date_updated'] != null and $st['date_updated'] <= $tenggat) : ?>
-                                                <button>Tepat Waktu</button>
+                                                <a class="badge badge-success">Tepat Waktu</a>
                                             <?php elseif ($st['date_updated'] != null and $st['date_updated'] > $tenggat) : ?>
-                                                <button>Terlambat</button>
+                                                <a class="badge badge-danger">Terlambat</a>
                                             <?php endif; ?>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
@@ -49,7 +49,8 @@
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </td>
-                                <td><?php foreach ($nilai as $st) : ?>
+                                <td>
+                                    <?php foreach ($nilai as $st) : ?>
                                         <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
                                             <?= $st['nilai'] ?>
                                         <?php endif; ?>
@@ -59,8 +60,12 @@
                                     <h5><?php foreach ($status as $st) : ?>
                                             <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
                                                 <?php if ($st['date_updated'] != null) : ?>
-                                                    <button>Belum Mengerjakan</button>
-                                                    <a href="<?= base_url(); ?>teacher/daftar_kuis_siswa_detail/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
+                                                    <a href="<?= base_url(); ?>teacher/daftar_kuis_siswa_detail/
+                                                    <?php foreach ($nilai as $st) : ?>
+                                                        <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
+                                                            <?= $st['id'] ?>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>" class="badge badge-success"> Buka </a>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
