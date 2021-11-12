@@ -17,6 +17,13 @@ class User_model extends CI_model
         $ids = 3;
         return $this->db->get_where('user', array('role_id' => $ids))->result_array();
     }
+    function getUserSiswaByKelas($id)
+    {
+        $ids = 3;
+        $this->db->where("kelas", $id);
+        $this->db->where("role_id", $ids);
+        return $this->db->get('user')->result_array();
+    }
 
     function insertUserGuru()
     {

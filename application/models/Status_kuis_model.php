@@ -6,6 +6,12 @@ class Status_kuis_model extends CI_model
         return $this->db->get('status_kuis')->result_array();
     }
 
+    public function getStatusKuisById($id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->get("status_kuis");
+    }
+
     public function getStatusKuisByKelas($id)
     {
         $this->db->where("kelas_id", $id);

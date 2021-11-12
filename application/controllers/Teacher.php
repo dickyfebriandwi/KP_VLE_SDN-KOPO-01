@@ -15,6 +15,8 @@ class Teacher extends CI_Controller
         $this->load->model('Tugas_model', '', true);
         $this->load->model('Kuis_model', '', true);
         $this->load->model('Soal_model', '', true);
+        $this->load->model('Status_kuis_model', '', true);
+        $this->load->model('Nilai_kuis_model', '', true);
         $this->load->helper(array('url', 'form'));
     }
 
@@ -337,12 +339,16 @@ class Teacher extends CI_Controller
             $data_status = array();
             foreach ($akun_siswa as $key => $val) {
                 $data_status[] = array(
-                    "user_id_siswa" => $_POST['user_id'][$key],
-                    "kelas_id" => $_POST['kelas_id'][$key],
+                    "user_id_siswa" => $_POST['user_id_siswa'][$key],
+                    "kelas_id" => $_POST['kelas_id_siswa'][$key],
                     "kuis_id" => $this->db->insert_id()
                 );
             }
+            #untuk status ke siswa
             $this->db->insert_batch('status_kuis', $data_status);
+            #untuk nilai ke siswa
+            $this->db->insert_batch('nilai_kuis', $data_status);
+
             if ($data_tipe == "Pilihan Ganda") {
                 redirect(site_url("teacher/buat_soal_pg"));
             } else {
@@ -522,11 +528,6 @@ class Teacher extends CI_Controller
         }
     }
 
-
-    public function buka_daftar_kuis()
-    {
-    }
-
     public function hapus_kuis_essay($id)
     {
         $this->Kuis_model->deleteKuis($id);
@@ -541,8 +542,19 @@ class Teacher extends CI_Controller
         redirect(site_url("teacher/kuis"));
     }
 
-    public function buka_detail_kuis()
+    public function buka_daftar_kuis_siswa($id)
     {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Tabel Nilai Kuis';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['siswa'] = $this->User_model->getUserSiswa();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['kuis'] = $this->Kuis_model->getKuisById($id)->row();
+        $data['status'] = $this->Status_kuis_model->getStatusKuisByKuis($id)->result_array();
+        $data['nilai'] = $this->Nilai_kuis_model->getNilaiKuisByKuis($id)->result_array();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/halaman_daftar_kuis', $data);
+        $this->loadtemplateslast();
     }
 
     public function buka_tabel_nilai_kuis()

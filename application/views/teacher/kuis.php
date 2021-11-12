@@ -30,37 +30,33 @@
                     <?php foreach ($kuis as $ks) : ?>
                         <?php if ($ks['kelas_id'] == $user['kelas_id']) : ?>
                             <tr>
-                                <?php foreach ($kelas as $kls) : ?>
-                                    <?php if ($kls['id'] == $user['kelas_id']) : ?>
-                                        <th scope="row"><?= $i; ?></th>
-                                        <td><?php foreach ($tema as $tm) : ?>
-                                                <?php
-                                                if ($tm['id'] == $ks['tema_id']) {
-                                                    echo $tm['nama_tema'];
-                                                }
-                                                ?>
-                                            <?php endforeach; ?>
-                                        </td>
-                                        <td><?= $ks['judul_kuis']; ?></td>
-                                        <td><?= $ks['tipe_soal']; ?></td>
-                                        <td><?= $ks['due_date']; ?></td>
-                                        <td>
-                                            <h5>
-                                                <a href="<?= base_url(); ?>teacher/buka_daftar_kuis/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
-                                                <a href="<?= base_url(); ?>teacher/ubah_kuis/<?= $ks['id']; ?>" class="badge badge-info"> Ubah </a>
-                                                <?php if ($ks['tipe_soal'] == "Pilihan Ganda") : ?>
-                                                    <a href="<?= base_url(); ?>teacher/hapus_kuis_pg/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
-                                                <?php else : ?>
-                                                    <a href="<?= base_url(); ?>teacher/hapus_kuis_essay/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
-                                                <?php endif; ?>
-                                            </h5>
-                                        </td>
+                                <th scope="row"><?= $i; ?></th>
+                                <td><?php foreach ($tema as $tm) : ?>
+                                        <?php
+                                        if ($tm['id'] == $ks['tema_id']) {
+                                            echo $tm['nama_tema'];
+                                        }
+                                        ?>
+                                    <?php endforeach; ?>
+                                </td>
+                                <td><?= $ks['judul_kuis']; ?></td>
+                                <td><?= $ks['tipe_soal']; ?></td>
+                                <td><?= $ks['due_date']; ?></td>
+                                <td>
+                                    <h5>
+                                        <a href="<?= base_url(); ?>teacher/buka_daftar_kuis_siswa/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
+                                        <a href="<?= base_url(); ?>teacher/ubah_kuis/<?= $ks['id']; ?>" class="badge badge-info"> Ubah </a>
+                                        <?php if ($ks['tipe_soal'] == "Pilihan Ganda") : ?>
+                                            <a href="<?= base_url(); ?>teacher/hapus_kuis_pg/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                        <?php else : ?>
+                                            <a href="<?= base_url(); ?>teacher/hapus_kuis_essay/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                        <?php endif; ?>
+                                    </h5>
+                                </td>
                             </tr>
+                            <?php $i++; ?>
                         <?php endif; ?>
                     <?php endforeach; ?>
-                    <?php $i++; ?>
-                <?php endif; ?>
-            <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
