@@ -20,6 +20,7 @@
                         <th scope="col">No.</th>
                         <th scope="col">Tema</th>
                         <th scope="col">Judul Kuis</th>
+                        <th scope="col">Tipe Soal</th>
                         <th scope="col">Tenggat Pengumpulan</th>
                         <th scope="col">Opsi</th>
                     </tr>
@@ -41,12 +42,17 @@
                                             <?php endforeach; ?>
                                         </td>
                                         <td><?= $ks['judul_kuis']; ?></td>
+                                        <td><?= $ks['tipe_soal']; ?></td>
                                         <td><?= $ks['due_date']; ?></td>
                                         <td>
                                             <h5>
                                                 <a href="<?= base_url(); ?>teacher/buka_daftar_kuis/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
                                                 <a href="<?= base_url(); ?>teacher/ubah_kuis/<?= $ks['id']; ?>" class="badge badge-info"> Ubah </a>
-                                                <a href="<?= base_url(); ?>teacher/hapus_kuis/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                                <?php if ($ks['tipe_soal'] == "Pilihan Ganda") : ?>
+                                                    <a href="<?= base_url(); ?>teacher/hapus_kuis_pg/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                                <?php else : ?>
+                                                    <a href="<?= base_url(); ?>teacher/hapus_kuis_essay/<?= $ks['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                                <?php endif; ?>
                                             </h5>
                                         </td>
                             </tr>

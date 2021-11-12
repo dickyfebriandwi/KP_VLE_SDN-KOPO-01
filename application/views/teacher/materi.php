@@ -37,16 +37,16 @@
                                                 ?>
                                             <?php endforeach; ?>
                                         </td>
-                            <td><?= $mtr['nama_file']; ?></td>
-                            <td><?= $mtr['date_created']; ?></td>
-                            <td>
-                                <h5>
-                                    <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
-                                    <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
-                                    <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" data-toggle="modal" data-target="#hapus_materi" class="badge badge-danger"> Hapus </a>
-                                </h5>
-                            </td>
-                        </tr>
+                                        <td><?= $mtr['nama_file']; ?></td>
+                                        <td><?= $mtr['date_created']; ?></td>
+                                        <td>
+                                            <h5>
+                                                <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
+                                                <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
+                                                <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" data-toggle="modal" data-target="#hapus_materi" class="badge badge-danger"> Hapus </a>
+                                            </h5>
+                                        </td>
+                            </tr>
                         <?php endif; ?>
                     <?php endforeach; ?>
                     <?php $i++; ?>

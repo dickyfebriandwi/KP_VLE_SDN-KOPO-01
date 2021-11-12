@@ -7,13 +7,20 @@
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" class="" name='user_id' value="<?= $user['id']; ?>">
         <input type="hidden" class="" name='kelas_id' value="<?= $user['kelas_id']; ?>">
+        <?php foreach ($akun as $ak) : ?>
+            <?php if ($ak['kelas_id'] == $user['kelas_id']) : ?>
+                <input type="hidden" class="" name='user_id_siswa[]' value="<?= $ak['id']; ?>">
+                <input type="hidden" class="" name='kelas_id_siswa[]' value="<?= $user['kelas_id']; ?>">
+        <?php
+            endif;
+        endforeach; ?>
         <div class="form-group row">
             <div class="col-3">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Kelas</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01" name="kelas_id" readonly>
+                    <select class="custom-select" id="inputGroupSelect01" name="" readonly>
                         <?php foreach ($kelas as $kls) : ?>
                             <?php
                             if ($kls['id'] == $user['kelas_id']) {
@@ -39,9 +46,9 @@
             </div>
         </div>
         <div class="form-group">
-                <label for="judulKuis">Judul Kuis</label>
-                <input type="text" class="form-control col-6" id="judulKuis" placeholder="..." name="nama_file">
-                <small id="contohJudulKuis" class="form-text text-muted">Contoh: Kuis Subtema 1 : Pembelajaran 1.1</small>
+            <label for="judulKuis">Judul Kuis</label>
+            <input type="text" class="form-control col-6" id="judulKuis" placeholder="..." name="judul_kuis">
+            <small id="contohJudulKuis" class="form-text text-muted">Contoh: Kuis Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group row">
             <div class="col-4">
@@ -49,15 +56,9 @@
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Tipe Soal</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01" name="kelas_id">
-                        <?php foreach ($kelas as $kls) : ?>
-                            <?php
-                            if ($kls['id'] == $user['kelas_id']) {
-                                echo "<option selected readonly value='" . $kls['id'] . "'>" . "Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
-                                break;
-                            }
-                            ?>
-                        <?php endforeach; ?>
+                    <select class="custom-select" id="inputGroupSelect01" name="tipe_soal">
+                        <option value="Isian"> Soal Isian </option>
+                        <option value="Pilihan Ganda"> Soal Pilihan Ganda </option>
                     </select>
                 </div>
             </div>
@@ -67,7 +68,7 @@
                         <div class="input-group-text">
                             Jumlah Soal
                         </div>
-                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="">
+                        <input type="number" class="form-control" id="inlineFormInputGroup" placeholder="" name="jumlah_soal">
                     </div>
                 </div>
             </div>
@@ -81,7 +82,7 @@
                 <a class="btn btn-primary" href="<?= base_url(); ?>teacher/kuis" role="button">Kembali</a>
             </div>
             <div class="col-2">
-                <button type="submit" class="btn btn-success" href="<?= base_url(); ?>teacher/buat_soal_kuis">Simpan</button>
+                <button type="submit" class="btn btn-success">Buat Soal</button>
             </div>
         </div>
         <?php echo form_close() ?>

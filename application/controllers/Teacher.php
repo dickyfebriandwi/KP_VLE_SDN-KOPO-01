@@ -14,6 +14,8 @@ class Teacher extends CI_Controller
         $this->load->model('Tema_model', '', true);
         $this->load->model('Tugas_model', '', true);
         $this->load->model('Kuis_model', '', true);
+        $this->load->model('Soal_model', '', true);
+        $this->load->helper(array('url', 'form'));
     }
 
     public function index()
@@ -288,7 +290,10 @@ class Teacher extends CI_Controller
         $data['title'] = 'Kuis';
         $data['subtitle'] = 'Daftar Kuis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
         $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/kuis', $data);
         $this->loadtemplateslast();
@@ -299,27 +304,245 @@ class Teacher extends CI_Controller
         $data['title'] = 'Kuis';
         $data['subtitle'] = 'Form Tambah Kuis';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
         $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/form_tambah_kuis', $data);
         $this->loadtemplateslast();
     }
 
+    public function proses_tambah_kuis()
+    {
+        $akun_siswa = $this->input->post('user_id_siswa');
+        $data_status = array();
+
+        $data_tipe = $this->input->post("tipe_soal");
+        $this->session->set_flashdata('jumlah_soal', $this->input->post("jumlah_soal"));
+        $this->setValidationRulesTambahKuis();
+        if ($this->form_validation->run()) {
+            $data = array(
+                "user_id" => $this->input->post("user_id"),
+                "tema_id" => $this->input->post("tema_id"),
+                "kelas_id" => $this->input->post("kelas_id"),
+                "judul_kuis" => $this->input->post("judul_kuis"),
+                "tipe_soal" => $this->input->post("tipe_soal"),
+                "due_date" => date("Y-m-d H:i:s", strtotime($this->input->post("due_date")))
+            );
+            $this->db->set($data);
+            $this->db->insert("kuis");
+            $this->session->set_flashdata('kuis_id', $this->db->insert_id());
+
+            $data_status = array();
+            foreach ($akun_siswa as $key => $val) {
+                $data_status[] = array(
+                    "user_id_siswa" => $_POST['user_id'][$key],
+                    "kelas_id" => $_POST['kelas_id'][$key],
+                    "kuis_id" => $this->db->insert_id()
+                );
+            }
+            $this->db->insert_batch('status_kuis', $data_status);
+            if ($data_tipe == "Pilihan Ganda") {
+                redirect(site_url("teacher/buat_soal_pg"));
+            } else {
+                redirect(site_url("teacher/buat_soal_isian"));
+            }
+        } else {
+            redirect(site_url("teacher/tambah_tugas"));
+        }
+    }
+    public function buat_soal_pg()
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Buat Soal Pilihan Ganda';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['jml_soal'] = $this->session->flashdata('jumlah_soal');
+        $data['id_kuis'] = $this->session->flashdata('kuis_id');
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_buat_soal_pg', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_tambah_soal_pg()
+    {
+        $sl = $this->input->post('soal');
+        $data = array();
+        $this->setValidationRulesTambahSoalPG();
+        if ($this->form_validation->run()) {
+            foreach ($sl as $key => $val) {
+                $data[] = array(
+                    "user_id" => $_POST['user_id'][$key],
+                    "kelas_id" => $_POST['kelas_id'][$key],
+                    "kuis_id" => $_POST['kuis_id'][$key],
+                    "soal" => $_POST['soal'][$key],
+                    "a" => $_POST['opsiA'][$key],
+                    "b" => $_POST['opsiB'][$key],
+                    "c" => $_POST['opsiC'][$key],
+                    "d" => $_POST['opsiD'][$key],
+                    "kunci" => $_POST['kunci'][$key]
+                );
+            }
+            $this->db->insert_batch('soal_pg', $data);
+
+            redirect(site_url("teacher/kuis"));
+        } else {
+            redirect(site_url("teacher/buat_soal_pg"));
+        }
+    }
+
+    public function buat_soal_isian()
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Buat Soal Isian';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['jml_soal'] = $this->session->flashdata('jumlah_soal');
+        $data['id_kuis'] = $this->session->flashdata('kuis_id');
+
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_buat_soal_isian', $data);
+        $this->loadtemplateslast();
+    }
+    public function proses_tambah_soal_isian()
+    {
+        $sl = $this->input->post('soal');
+        $data = array();
+        $this->setValidationRulesTambahSoalEssay();
+        if ($this->form_validation->run()) {
+            foreach ($sl as $key => $val) {
+                $data[] = array(
+                    "user_id" => $_POST['user_id'][$key],
+                    "kelas_id" => $_POST['kelas_id'][$key],
+                    "kuis_id" => $_POST['kuis_id'][$key],
+                    "soal" => $_POST['soal'][$key]
+                );
+            }
+            $this->db->insert_batch('soal_essay', $data);
+
+            redirect(site_url("teacher/kuis"));
+        } else {
+            redirect(site_url("teacher/buat_soal_isian"));
+        }
+    }
+
+    public function ubah_kuis($id)
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Form Ubah Kuis';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getKuisById($id)->row();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['soal_isian'] = $this->Soal_model->getSoalEssay();
+        $data['soal_pg'] = $this->Soal_model->getSoalPG();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_ubah_info_kuis', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_kuis($id)
+    {
+        if ($this->Kuis_model->updateKuis($id)) {
+            redirect(site_url("teacher/kuis"));
+        } else {
+            redirect(site_url("teacher/ubah_kuis/" . $id));
+        }
+    }
+
+    public function ubah_soal_isian($id)
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Form Ubah Soal Isian';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getKuisById($id)->row();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['soal'] = $this->Soal_model->getSoalEssay();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_ubah_soal_kuis_isian', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_soal_isian($id)
+    {
+        $sl = $this->input->post('soal');
+        $data = array();
+        $this->setValidationRulesTambahSoalEssay();
+        if ($this->form_validation->run()) {
+            foreach ($sl as $key => $val) {
+                $data[] = array(
+                    "id" => $_POST['id'][$key],
+                    "soal" => $_POST['soal'][$key]
+                );
+            }
+            $this->db->update_batch('soal_essay', $data, 'id');
+            redirect(site_url("teacher/ubah_kuis/" . $id));
+        } else {
+            redirect(site_url("teacher/ubah_soal_isian/" . $id));
+        }
+    }
+
+    public function ubah_soal_pg($id)
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Form Ubah Soal Pilihan Ganda';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getKuisById($id)->row();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['soal'] = $this->Soal_model->getSoalPG();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/form_ubah_soal_kuis_pg', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_soal_pg($id)
+    {
+        $sl = $this->input->post('soal');
+        $data = array();
+        $this->setValidationRulesTambahSoalPG();
+        if ($this->form_validation->run()) {
+            foreach ($sl as $key => $val) {
+                $data[] = array(
+                    "id" => $_POST['id'][$key],
+                    "soal" => $_POST['soal'][$key],
+                    "a" => $_POST['opsiA'][$key],
+                    "b" => $_POST['opsiB'][$key],
+                    "c" => $_POST['opsiC'][$key],
+                    "d" => $_POST['opsiD'][$key],
+                    "kunci" => $_POST['kunci'][$key]
+                );
+            }
+            $this->db->update_batch('soal_pg', $data, 'id');
+            redirect(site_url("teacher/ubah_kuis/" . $id));
+        } else {
+            redirect(site_url("teacher/ubah_soal_pg/" . $id));
+        }
+    }
+
+
     public function buka_daftar_kuis()
     {
     }
 
-    public function ubah_kuis()
+    public function hapus_kuis_essay($id)
     {
+        $this->Kuis_model->deleteKuis($id);
+        $this->Soal_model->deleteSoalEssay($id);
+        redirect(site_url("teacher/kuis"));
     }
 
-    public function hapus_kuis()
+    public function hapus_kuis_pg($id)
     {
+        $this->Kuis_model->deleteKuis($id);
+        $this->Soal_model->deleteSoalPG($id);
+        redirect(site_url("teacher/kuis"));
     }
 
     public function buka_detail_kuis()
     {
-
     }
 
     public function buka_tabel_nilai_kuis()
@@ -335,16 +558,6 @@ class Teacher extends CI_Controller
         $this->loadtemplateslast();
     }
 
-    public function buat_soal_kuis()
-    {
-
-    }
-
-    public function ubah_soal_kuis()
-    {
-        
-    }
-
     #KuisEnd
 
     public function loadtemplatesfirst($data)
@@ -357,5 +570,31 @@ class Teacher extends CI_Controller
     public function loadtemplateslast()
     {
         $this->load->view('templates/footer');
+    }
+
+    protected function setValidationRulesTambahKuis()
+    {
+        $this->form_validation->set_rules('judul_kuis', 'Judul Kuis', 'required');
+
+
+        $this->form_validation->set_message('required', 'Kosong. Inputkan %s!');
+    }
+    protected function setValidationRulesTambahSoalEssay()
+    {
+        $this->form_validation->set_rules('soal[]', 'Soal', 'required');
+
+
+        $this->form_validation->set_message('required', 'Kosong. Inputkan %s!');
+    }
+    protected function setValidationRulesTambahSoalPG()
+    {
+        $this->form_validation->set_rules('soal[]', 'Soal', 'required');
+        $this->form_validation->set_rules('opsiA[]', 'Opsi A', 'required');
+        $this->form_validation->set_rules('opsiB[]', 'Opsi B', 'required');
+        $this->form_validation->set_rules('opsiC[]', 'Opsi C', 'required');
+        $this->form_validation->set_rules('opsiD[]', 'Opsi D', 'required');
+
+
+        $this->form_validation->set_message('required', 'Kosong. Inputkan %s!');
     }
 }
