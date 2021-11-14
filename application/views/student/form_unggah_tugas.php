@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $penugasan->judul_penugasan ?></h1>
 
     <?php echo form_open_multipart(site_url('student/proses_unggah_tugas/') . $penugasan->id); ?>
     <form method="post" enctype="multipart/form-data">
@@ -11,6 +11,11 @@
         <input type="hidden" class="" name='tema_id' value="<?= $penugasan->tema_id; ?>">
         <input type="hidden" class="" name='penugasan_id' value="<?= $penugasan->id; ?>">
         <input type="hidden" class="" name='nilai' value="0">
+        <input type="hidden" class="" name='penugasan_id_sendiri' value="<?php foreach ($status as $st) {
+                                                                                if ($st['user_id_siswa'] == $user['id']) {
+                                                                                    echo $st['id'];
+                                                                                }
+                                                                            } ?>">
         <div class="form-group">
             <h7 class="h7 mb-4 text-gray-800"><?= $penugasan->deskripsi_tugas ?></h7>
         </div>

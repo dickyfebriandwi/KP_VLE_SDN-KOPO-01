@@ -44,33 +44,33 @@
                                     <?php endforeach; ?>
                                 </td>
                                 <td><?php foreach ($status as $st) : ?>
-                                        <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
+                                        <?php if ($st['user_id_siswa'] == $sw['id'] && $kuis->id == $st['kuis_id']) : ?>
                                             <?= $st['date_updated'] ?>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </td>
                                 <td>
                                     <?php foreach ($nilai as $st) : ?>
-                                        <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
+                                        <?php if ($st['user_id_siswa'] == $sw['id'] && $kuis->id == $st['kuis_id']) : ?>
                                             <?= $st['nilai'] ?>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </td>
                                 <td>
-                                    <h5><?php foreach ($status as $st) : ?>
+                                    <h5>
+                                        <?php foreach ($nilai as $st) : ?>
                                             <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
-                                                <?php if ($st['date_updated'] != null) : ?>
-                                                    <a href="<?= base_url(); ?>teacher/daftar_kuis_siswa_detail/
-                                                    <?php foreach ($nilai as $st) : ?>
-                                                        <?php if ($st['user_id_siswa'] == $sw['id']) : ?>
-                                                            <?= $st['id'] ?>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; ?>" class="badge badge-success"> Buka </a>
+                                                <?php if ($kuis->tipe_soal == "Isian") : ?>
+                                                    <a href="<?= base_url(); ?>teacher/daftar_kuis_siswa_detail_essay/<?php if ($st['kuis_id'] == $kuis->id) {
+                                                                                                                            echo $st['id'];
+                                                                                                                        }; ?>" class="badge badge-success"> Buka </a>
+                                                <?php elseif ($st['nilai'] != null && $kuis->tipe_soal == "Pilihan Ganda") : ?>
+                                                    <a href="<?= base_url(); ?>teacher/daftar_kuis_siswa_detail_pg/<?php if ($st['kuis_id'] == $kuis->id) {
+                                                                                                                        echo $st['id'];
+                                                                                                                    }; ?>" class="badge badge-success"> Buka </a>
                                                 <?php endif; ?>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
-
-
                                     </h5>
                                 </td>
                             </tr>

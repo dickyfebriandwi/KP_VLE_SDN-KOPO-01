@@ -2,37 +2,17 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $title ?></h1>
-    
-    <form>
-    <div class="form-group">
-        <div class="form-row">
-            <div class="col-12">
-                    <label for="deskripsiPenugasan">Deskripsi Penugasan</label>
-                    <textarea class="form-control col-9" id="deskripsiPenugasan" rows="3"></textarea>
-            </div>
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <div class="form-row">
-            <div class="col-auto">
-                <div class="custom-file col-auto">
-                    <input type="file" class="custom-file-input" id="customFile">
-                    <label class="custom-file-label" for="customFile">Pilih file materi</label>
-                </div>
-            </div>
-            <div class="col-auto">
-                <a class="btn btn-success" href="#" role="button">Simpan</a>
-            </div>
-        </div>
-    </div>
-    <br><br><br><br><br><br><br><br>
-    <div class="form-group">
-        <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi" role="button">Kembali</a>
-    </div>
-    
-    </form>
+    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?= $penugasan->deskripsi_tugas ?></h1>
+
+    <a class="btn btn-primary" href="<?= base_url(); ?>student/tugas/" role="button">Kembali</a>
+    <br><br>
+    <iframe src="<?php foreach ($tugas as $tgs) {
+                        if ($penugasan->id == $tgs['penugasan_id'] && $tgs['user_id'] == $user['id']) {
+                            echo $tgs['url'];
+                        }
+                    }; ?>" style="width: 100%;height: 500px;"></iframe>
+    <br>
 
 </div>
 

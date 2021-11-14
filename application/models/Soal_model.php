@@ -9,6 +9,19 @@ class Soal_model extends CI_model
     {
         return $this->db->get('soal_pg')->result_array();
     }
+
+    public function getSoalPGByKuis($id)
+    {
+        $this->db->where("kuis_id", $id);
+        return $this->db->get('soal_pg')->result_array();
+    }
+
+    public function getSoalEssayByKuis($id)
+    {
+        $this->db->where("kuis_id", $id);
+        return $this->db->get('soal_essay')->result_array();
+    }
+
     public function deleteSoalEssay($id)
     {
         $this->db->where("kuis_id", $id);

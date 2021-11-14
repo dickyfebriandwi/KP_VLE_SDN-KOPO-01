@@ -16,7 +16,10 @@ class Teacher extends CI_Controller
         $this->load->model('Kuis_model', '', true);
         $this->load->model('Soal_model', '', true);
         $this->load->model('Status_kuis_model', '', true);
+        $this->load->model('Status_tugas_model', '', true);
+        $this->load->model('Jawaban_model', '', true);
         $this->load->model('Nilai_kuis_model', '', true);
+        #$this->load->model('Nilai_tugas_model', '', true);
         $this->load->helper(array('url', 'form'));
     }
 
@@ -188,6 +191,7 @@ class Teacher extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
         $data['tema'] = $this->Tema_model->getTema();
+        $data['akun'] = $this->User_model->getUserSiswa();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/form_tambah_penugasan', $data);
@@ -196,10 +200,40 @@ class Teacher extends CI_Controller
 
     public function proses_tambah_penugasan()
     {
-        if ($this->Penugasan_model->insertPenugasan()) {
+        $akun_siswa = $this->input->post('user_id_siswa');
+        $data_status = array();
+        $this->setValidationRulesTambahpenugasan();
+        if ($this->form_validation->run()) {
+            $data = array(
+                "user_id" => $this->input->post("user_id"),
+                "tema_id" => $this->input->post("tema_id"),
+                "kelas_id" => $this->input->post("kelas_id"),
+                "judul_penugasan" => $this->input->post("judul_penugasan"),
+                "deskripsi_tugas" => $this->input->post("deskripsi"),
+                "due_date" => date("Y-m-d H:i:s", strtotime($this->input->post("due_date")))
+            );
+            $this->db->set($data);
+            $this->db->insert("penugasan");
+            $this->session->set_flashdata('penugasan_id', $this->db->insert_id());
+
+            $data_status = array();
+            foreach ($akun_siswa as $key => $val) {
+                $data_status[] = array(
+                    "user_id_siswa" => $_POST['user_id_siswa'][$key],
+                    "kelas_id" => $_POST['kelas_id_siswa'][$key],
+                    "penugasan_id" => $this->db->insert_id()
+                );
+            }
+
+            #untuk status ke siswa
+            $this->db->insert_batch('status_tugas', $data_status);
+
+            #untuk nilai ke siswa
+            $this->db->insert_batch('nilai_penugasan', $data_status);
+
             redirect(site_url("teacher/penugasan"));
         } else {
-            redirect(site_url("teacher/tambah_tugas"));
+            redirect(site_url("teacher/tambah_penugasan"));
         }
     }
 
@@ -550,11 +584,56 @@ class Teacher extends CI_Controller
         $data['siswa'] = $this->User_model->getUserSiswa();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $data['kuis'] = $this->Kuis_model->getKuisById($id)->row();
-        $data['status'] = $this->Status_kuis_model->getStatusKuisByKuis($id)->result_array();
+        $data['status'] = $this->Status_kuis_model->getStatusKuisByKuis($id);
         $data['nilai'] = $this->Nilai_kuis_model->getNilaiKuisByKuis($id)->result_array();
+        $this->session->set_flashdata('id_kuis_detail_essay', $id);
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_daftar_kuis', $data);
         $this->loadtemplateslast();
+    }
+
+    public function daftar_kuis_siswa_detail_pg($id)
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Buka Kuis Pilihan Ganda';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['jawaban'] = $this->Jawaban_model->getJawabanByNilai($id);
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['status'] = $this->Status_kuis_model->getStatusKuis();
+        $data['nilai'] = $this->Nilai_kuis_model->getNilaiKuisById($id)->row();
+        $data['soal'] = $this->Soal_model->getSoalPG();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/halaman_kuis_pg', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function daftar_kuis_siswa_detail_essay($id)
+    {
+        $data['title'] = 'Kuis';
+        $data['subtitle'] = 'Buka Kuis Isian';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['jawaban'] = $this->Jawaban_model->getJawabanByNilai($id);
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['status'] = $this->Status_kuis_model->getStatusKuis();
+        $data['nilai'] = $this->Nilai_kuis_model->getNilaiKuisById($id)->row();
+        $data['soal'] = $this->Soal_model->getSoalEssay();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('teacher/halaman_kuis_essay', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_nilai_kuis_oleh_guru($id)
+    {
+        $data = $this->session->flashdata('id_kuis_detail_essay');
+        if ($this->Nilai_kuis_model->updateNilai($id)) {
+            redirect(site_url("teacher/buka_daftar_kuis_siswa/" . $data));
+        } else {
+            redirect(site_url("teacher/daftar_kuis_siswa_detail_essay/" . $id));
+        }
     }
 
     public function buka_tabel_nilai_kuis()
@@ -565,6 +644,7 @@ class Teacher extends CI_Controller
         $data['akun'] = $this->User_model->getUserSiswa();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['nilai'] = $this->Nilai_kuis_model->getNilaiKuis();
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_tabel_nilai_kuis', $data);
         $this->loadtemplateslast();
@@ -605,6 +685,14 @@ class Teacher extends CI_Controller
         $this->form_validation->set_rules('opsiB[]', 'Opsi B', 'required');
         $this->form_validation->set_rules('opsiC[]', 'Opsi C', 'required');
         $this->form_validation->set_rules('opsiD[]', 'Opsi D', 'required');
+
+
+        $this->form_validation->set_message('required', 'Kosong. Inputkan %s!');
+    }
+
+    protected function setValidationRulesTambahpenugasan()
+    {
+        $this->form_validation->set_rules('judul_penugasan', 'Judul Penugasan', 'required');
 
 
         $this->form_validation->set_message('required', 'Kosong. Inputkan %s!');

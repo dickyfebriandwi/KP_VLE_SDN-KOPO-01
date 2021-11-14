@@ -7,6 +7,13 @@
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" class="" name='user_id' value="<?= $user['id']; ?>">
         <input type="hidden" class="" name='kelas_id' value="<?= $user['kelas_id']; ?>">
+        <?php foreach ($akun as $ak) : ?>
+            <?php if ($ak['kelas_id'] == $user['kelas_id']) : ?>
+                <input type="hidden" class="" name='user_id_siswa[]' value="<?= $ak['id']; ?>">
+                <input type="hidden" class="" name='kelas_id_siswa[]' value="<?= $user['kelas_id']; ?>">
+        <?php
+            endif;
+        endforeach; ?>
         <div class="form-group row">
             <div class="col-4">
                 <div class="input-group mb-2">
@@ -39,9 +46,9 @@
             </div>
         </div>
         <div class="form-group">
-                <label for="judulPgs">Judul Penugasan</label>
-                <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="nama_file">
-                <small id="contohJudulPgs" class="form-text text-muted">Contoh: Tugas Subtema 1 : Pembelajaran 1.1</small>
+            <label for="judulPgs">Judul Penugasan</label>
+            <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="judul_penugasan">
+            <small id="contohJudulPgs" class="form-text text-muted">Contoh: Tugas Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group">
             <label for="deskPenugasan">Deskripsi Penugasan</label>

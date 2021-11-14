@@ -23,4 +23,13 @@ class Nilai_kuis_model extends CI_model
         $this->db->where("kuis_id", $id);
         return $this->db->get("nilai_kuis");
     }
+
+    public function updateNilai($id)
+    {
+        $data = array(
+            "nilai" => $this->input->post("nilai")
+        );
+        $this->db->where("id", $id);
+        return $this->db->update("nilai_kuis", $data);
+    }
 }
