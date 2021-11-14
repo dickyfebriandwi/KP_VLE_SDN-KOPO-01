@@ -10,6 +10,11 @@ class Tugas_model extends CI_model
         $this->db->where("id", $id);
         return $this->db->get('tugas');
     }
+    public function getTugasByPenugasan($id)
+    {
+        $this->db->where("Penugasan_id", $id);
+        return $this->db->get('tugas');
+    }
 
     public function updateNilai($id)
     {
