@@ -6,6 +6,9 @@
     <?php echo form_open_multipart(site_url('student/proses_jawab_kuis_pg/' . $kuis->id)) ?>
     <form method="post" enctype="multipart/form-data">
 
+        <div class="form-group">
+            <a class="btn btn-primary" href="<?= base_url(); ?>student/kuis/" role="button">Kembali</a>
+        </div>
         <!-- looping sebanyak jumlah soal -->
         <?php
         $i = 1;
@@ -78,12 +81,18 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="form-group row">
+                                        <div class="form-inline row">
                                             <?php if ($jwb['jawaban'] == $sl['kunci']) : ?>
-                                                <button type="button" class="btn btn-success">Jawaban Benar</button>
+                                                <div class="col-3">
+                                                    <button type="button" class="btn btn-success" disabled>Jawaban Benar</button>
+                                                </div>
                                             <?php else : ?>
-                                                <button type="button" class="btn btn-danger">Jawaban Salah</button>
-                                                <label> Jawaban yang benar adalah <?= $sl['kunci'] ?></label>
+                                                <div class="col-3">
+                                                    <button type="button" class="btn btn-danger" disabled>Jawaban Salah</button>
+                                                </div>
+                                                <div class="col-6">
+                                                    <h7> Jawaban yang benar adalah <?= $sl['kunci'] ?></h7>
+                                                </div>
                                             <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
@@ -91,16 +100,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> <br>
         <?php
                 $i++;
             endif;
         endforeach; ?>
         <!-- batas looping soal -->
 
-        <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>student/kuis/" role="button">Kembali</a>
-        </div>
         <?php echo form_close() ?>
     </form>
 

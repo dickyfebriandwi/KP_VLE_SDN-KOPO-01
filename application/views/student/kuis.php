@@ -35,7 +35,7 @@
                                             <?php if ($st['date_updated'] == null) : ?>
                                                 <a class="badge badge-warning">Belum Mengerjakan</a>
                                             <?php elseif ($st['date_updated'] != null and $st['date_updated'] <= $ks['due_date']) : ?>
-                                                <a class="badge badge-success">Tepat Waktu</a>
+                                                <a class="badge badge-primary">Tepat Waktu</a>
                                             <?php elseif ($st['date_updated'] != null and $st['date_updated'] > $ks['due_date']) : ?>
                                                 <a class="badge badge-danger">Terlambat</a>
                                             <?php endif; ?>

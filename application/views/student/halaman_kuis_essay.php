@@ -10,6 +10,9 @@
                                                                                 echo $nl['id'];
                                                                             }
                                                                         } ?>">
+        <div class="form-group">
+            <a href="<?= base_url(); ?>student/kuis/" class="btn btn-success">Kembali</a>
+        </div>
         <!-- looping soal -->
         <?php
         $i = 1;
@@ -31,15 +34,13 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                </div>
+                </div> <br>
         <?php
                 $i++;
             endif;
         endforeach; ?>
         <!-- batas looping soal -->
-        <div class="form-group">
-            <a href="<?= base_url(); ?>student/kuis/" class="btn btn-success">Kembali</a>
-        </div>
+        
         <?php echo form_close() ?>
     </form>
 
