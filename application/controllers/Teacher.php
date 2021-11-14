@@ -276,6 +276,7 @@ class Teacher extends CI_Controller
         $data['tugas'] = $this->Tugas_model->getTugas();
         $data['tema'] = $this->Tema_model->getTema();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $this->session->set_flashdata('id_penugasan', $id);
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_daftar_tugas', $data);
         $this->loadtemplateslast();
@@ -289,6 +290,7 @@ class Teacher extends CI_Controller
         $data['akun'] = $this->User_model->getUserSiswa();
         $data['tugas'] = $this->Tugas_model->getTugasById($id)->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+
         $this->loadtemplatesfirst($data);
         $this->load->view('teacher/halaman_buka_tugas', $data);
         $this->loadtemplateslast();
@@ -310,8 +312,9 @@ class Teacher extends CI_Controller
 
     public function proses_nilai_tugas($id)
     {
+        $idPenugasan = $this->session->flashdata('id_penugasan');
         if ($this->Tugas_model->updateNilai($id)) {
-            redirect(site_url("teacher/buka_detail_tugas/$id"));
+            redirect(site_url("teacher/buka_daftar_tugas/$idPenugasan"));
         } else {
             redirect(site_url("teacher/buka_detail_tugas/$id"));
         }
