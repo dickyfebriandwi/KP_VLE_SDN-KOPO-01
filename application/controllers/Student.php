@@ -26,10 +26,71 @@ class Student extends CI_Controller
     {
         $data['title'] = 'Beranda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+        $data['tugas'] = $this->Tugas_model->getTugas();
+        $data['tema'] = $this->Tema_model->getTema();
+        $data['statusT'] = $this->Status_tugas_model->getStatusTugas();
+        $data['statusK'] = $this->Status_kuis_model->getStatusKuis();
+        $data['kuis'] = $this->Kuis_model->getAllKuis();
         $this->loadtemplatesfirst($data);
         $this->load->view('student/index', $data);
         $this->loadtemplateslast();
     }
+
+    public function ubah_profile($id)
+    {
+        $data['title'] = '';
+        $data['subtitle'] = 'Ubah Akun';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserGuru();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('student/ubah_profile', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_akun($id)
+    {
+        $data = array(
+            "name" => $this->input->post("name"),
+            "email" => $this->input->post("email"),
+            "kelas_id" => $this->input->post("kelas_id"),
+            "nuptk_nisn" => $this->input->post("nuptk"),
+            "jabatan" => $this->input->post("jabatan"),
+        );
+
+        #config file upload
+        $config['upload_path'] = './assets/img/profile';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif';
+
+        $this->load->library('upload', $config);
+        if (empty($_FILES['image']['name'])) {
+            //
+            if ($this->User_model->updateAkun($id, $data)) {
+                $this->session->set_flashdata('success', 'Image berhasil diubah');
+                redirect(site_url("student"));
+            } else {
+                redirect(site_url("student/ubah_profile/$id"));
+            }
+        } else {
+            if (!$this->upload->do_upload('image')) {
+                $this->session->set_flashdata('error', 'File tidak sesuai. Masukkan file dengan format yang diterima');
+                redirect(site_url("student/ubah_profile/$id"));
+            } else {
+                $upload_data = $this->upload->data();
+                $data['image'] = base_url("assets/img/profile/") . $upload_data['file_name'];
+                if ($this->User_model->updateAkun($id, $data)) {
+                    $this->session->set_flashdata('success', 'Image berhasil diunggah');
+                    redirect(site_url("student"));
+                } else {
+                    redirect(site_url("student/ubah_profile/$id"));
+                }
+            }
+        }
+    }
+
 
     #MateriBegin
 
@@ -118,7 +179,7 @@ class Student extends CI_Controller
 
                 redirect(site_url("student/tugas"));
             } else {
-                redirect(site_url("student/unggah_tugas/$idPenugasan"));
+                redirect(site_url("student/unggah_tugas/$id"));
             }
         } else {
             if (!$this->upload->do_upload('url')) {
@@ -131,7 +192,7 @@ class Student extends CI_Controller
                     $this->session->set_flashdata('success', 'Tugas berhasil diunggah');
                     redirect(site_url("student/tugas"));
                 } else {
-                    redirect(site_url("student/unggah_tugas/$idPenugasan"));
+                    redirect(site_url("student/unggah_tugas/$id"));
                 }
             }
         }
@@ -156,6 +217,7 @@ class Student extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getPenugasanById($id)->row();
         $data['tugas'] = $this->Tugas_model->getTugasByPenugasan($id)->result_array();
+        $data['status'] = $this->Status_tugas_model->getStatusTugas();
         $this->loadtemplatesfirst($data);
         $this->load->view('student/halaman_ubah_tugas', $data);
         $this->loadtemplateslast();
@@ -163,6 +225,46 @@ class Student extends CI_Controller
 
     public function proses_ubah_tugas($id)
     {
+        $data = array(
+            'nilai' => $this->input->post('nilai')
+        );
+        $idTugas = $this->input->post("tugas_id_sendiri");
+        $idPenugasan = $this->input->post("status_id_sendiri");
+        $data_status = array(
+            "status" => 1
+        );
+        $this->db->set($data_status);
+        $this->db->where("id", $idPenugasan);
+        $this->db->update("status_tugas");
+        #config file upload
+        $config['upload_path'] = './assets/file/tugas';
+        $config['allowed_types'] = 'jpg|png|jpeg|mp4|docx|pptx|ppt|mkv|doc|pdf';
+
+        $this->load->library('upload', $config);
+        if (empty($_FILES['url']['name'])) {
+            //
+            if ($this->Tugas_model->updateTugas($idTugas, $data)) {
+                $this->session->set_flashdata('success', 'Tugas berhasil diubah');
+
+                redirect(site_url("student/tugas"));
+            } else {
+                redirect(site_url("student/ubah_tugas/$id"));
+            }
+        } else {
+            if (!$this->upload->do_upload('url')) {
+                $this->session->set_flashdata('error', 'File tidak sesuai. Masukkan file dengan format yang diterima');
+                redirect(site_url("student/tugas"));
+            } else {
+                $upload_data = $this->upload->data();
+                $data['url'] = base_url("assets/file/tugas/") . $upload_data['file_name'];
+                if ($this->Tugas_model->updateTugas($idTugas, $data)) {
+                    $this->session->set_flashdata('success', 'Tugas berhasil diunggah');
+                    redirect(site_url("student/tugas"));
+                } else {
+                    redirect(site_url("student/ubah_tugas/$id"));
+                }
+            }
+        }
     }
 
     #TugasEnd

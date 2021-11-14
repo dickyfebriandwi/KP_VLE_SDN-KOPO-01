@@ -9,15 +9,72 @@ class Admin extends CI_Controller
         login_privilege();
         $this->load->model('Kelas_model', '', true);
         $this->load->model('User_model', '', true);
+        $this->load->helper(array('url', 'form'));
     }
 
     public function index()
     {
         $data['title'] = 'Beranda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['guru'] = $this->User_model->getUserGuru();
+        $data['siswa'] = $this->User_model->getUserSiswa();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/index', $data);
         $this->loadtemplateslast();
+    }
+
+    public function ubah_profile($id)
+    {
+        $data['title'] = '';
+        $data['subtitle'] = 'Ubah Akun';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserGuru();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('admin/ubah_profile', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_akun($id)
+    {
+        $data = array(
+            "name" => $this->input->post("name"),
+            "email" => $this->input->post("email"),
+            #"kelas_id" => $this->input->post("kelas_id"),
+            "nuptk_nisn" => $this->input->post("nuptk"),
+            "jabatan" => $this->input->post("jabatan"),
+        );
+
+        #config file upload
+        $config['upload_path'] = './assets/img/profile';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif';
+
+        $this->load->library('upload', $config);
+        if (empty($_FILES['image']['name'])) {
+            //
+            if ($this->User_model->updateAkun($id, $data)) {
+                $this->session->set_flashdata('success', 'Image berhasil diubah');
+                redirect(site_url("admin"));
+            } else {
+                redirect(site_url("admin/ubah_profile/$id"));
+            }
+        } else {
+            if (!$this->upload->do_upload('image')) {
+                $this->session->set_flashdata('error', 'File tidak sesuai. Masukkan file dengan format yang diterima');
+                redirect(site_url("admin/ubah_profile/$id"));
+            } else {
+                $upload_data = $this->upload->data();
+                $data['image'] = base_url("assets/img/profile/") . $upload_data['file_name'];
+                if ($this->User_model->updateAkun($id, $data)) {
+                    $this->session->set_flashdata('success', 'Image berhasil diunggah');
+                    redirect(site_url("admin"));
+                } else {
+                    redirect(site_url("admin/ubah_profile/$id"));
+                }
+            }
+        }
     }
 
     #AkunBegin
@@ -93,19 +150,42 @@ class Admin extends CI_Controller
 
     public function proses_ubah_akun_guru($id)
     {
+        $data = array(
+            "name" => $this->input->post("name"),
+            "email" => $this->input->post("email"),
+            "kelas_id" => $this->input->post("kelas_id"),
+            "nuptk_nisn" => $this->input->post("nuptk"),
+            "jabatan" => $this->input->post("jabatan"),
+        );
 
-        #$config['upload_path'] = './assets/img/profile/';
-        #$config['allowed_types'] = 'gif|jpg|png';
-        #$config['max_size'] = 2000;
-        #$config['max_width'] = 2000;
-        #$config['max_height'] = 2000;
-        #$this->load->library('upload', $config);
-        #if (!$this->upload->do_upload('pp')) {
-        #    echo $this->upload->display_errors();
-        #} else {
-        #    $upload_data = $this->upload->data();
-        #    $data['image'] = base_url("/assets/img/profile/") . $upload_data['file_name'];
-        #}
+        #config file upload
+        $config['upload_path'] = './assets/img/profile';
+        $config['allowed_types'] = 'jpg|png|jpeg|gif';
+
+        $this->load->library('upload', $config);
+        if (empty($_FILES['image']['name'])) {
+            //
+            if ($this->User_model->updateGuru($id, $data)) {
+                $this->session->set_flashdata('success', 'Image berhasil diubah');
+                redirect(site_url("admin/buka_akun_guru/$id"));
+            } else {
+                redirect(site_url("admin/ubah_akun_guru/$id"));
+            }
+        } else {
+            if (!$this->upload->do_upload('image')) {
+                $this->session->set_flashdata('error', 'File tidak sesuai. Masukkan file dengan format yang diterima');
+                redirect(site_url("admin/buka_akun_guru/$id"));
+            } else {
+                $upload_data = $this->upload->data();
+                $data['image'] = base_url("aassets/img/profile/") . $upload_data['file_name'];
+                if ($this->User_model->updateGuru($id, $data)) {
+                    $this->session->set_flashdata('success', 'Image berhasil diunggah');
+                    redirect(site_url("admin/buka_akun_guru/$id"));
+                } else {
+                    redirect(site_url("admin/ubah_akun_guru/$id"));
+                }
+            }
+        }
 
         if ($this->User_model->updateGuru($id)) {
             redirect(site_url("admin/buka_akun_guru/$id"));

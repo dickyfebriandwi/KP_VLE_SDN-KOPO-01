@@ -4,7 +4,8 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="col-lg-8">
-        <form method="post" action="<?= base_url('admin/proses_ubah_akun_siswa/') . $akun->id; ?>">
+        <?php echo form_open_multipart(site_url('admin/proses_ubah_akun_siswa/') . $akun->id); ?>
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">NISN</label>
                 <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nisn" value="<?php echo $akun->nuptk_nisn; ?>">
@@ -42,7 +43,7 @@
                 <div class="col-sm-10">
                     <div class="row">
                         <div class="col-sm-3">
-                            <img src="<?= base_url('assets/img/profile/') . $akun->image; ?>" class="img-thumbnail">
+                            <img src="<?= $akun->image; ?>" class="img-thumbnail">
                         </div>
                         <div class="col-sm-9">
                             <div class="custom-file">
@@ -67,7 +68,7 @@
             <div class="form-group">
                 <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
             </div>
-
+            <?php echo form_close() ?>
         </form>
     </div>
 </div>

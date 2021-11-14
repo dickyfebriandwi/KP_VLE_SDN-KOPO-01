@@ -55,10 +55,10 @@
                                             <?php if ($st['user_id_siswa'] == $user['id'] && $st['penugasan_id'] == $pngs['id']) : ?>
                                                 <?php if ($st['date_updated'] == null) : ?>
                                                     <a href="<?= base_url(); ?>student/form_unggah_tugas/<?= $pngs['id']; ?>" class="badge badge-info"> Unggah </a>
-                                                <?php elseif ($st['date_updated'] != null and $st['date_updated'] > $jam) : ?>
+                                                <?php elseif ($st['date_updated'] != null and $pngs['due_date'] > $jam) : ?>
                                                     <a href="<?= base_url(); ?>student/detail_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
                                                     <a href="<?= base_url(); ?>student/ubah_tugas/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
-                                                <?php elseif ($st['date_updated'] != null and $st['date_updated'] <= $jam) : ?>
+                                                <?php elseif ($st['date_updated'] != null and $pngs['due_date'] <= $jam) : ?>
                                                     <a href="<?= base_url(); ?>student/detail_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
                                                 <?php endif; ?>
                                             <?php endif; ?>

@@ -30,7 +30,7 @@ class User_model extends CI_model
         $user = array(
             "name" => $this->input->post("name"),
             "email" => $this->input->post("email"),
-            "image" => "default.jpg",
+            "image" => "http://localhost/KP_VLE_SDN-KOPO-01/assets/img/profile/default.jpg",
             "password" => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
             "role_id" => 2,
             "is_active" => 1,
@@ -47,7 +47,7 @@ class User_model extends CI_model
         $user = array(
             "name" => $this->input->post("name"),
             "email" => $this->input->post("email"),
-            "image" => "default.jpg",
+            "image" => "http://localhost/KP_VLE_SDN-KOPO-01/assets/img/profile/default.jpg",
             "password" => password_hash($this->input->post("password"), PASSWORD_DEFAULT),
             "role_id" => 3,
             "is_active" => 1,
@@ -71,31 +71,20 @@ class User_model extends CI_model
         return $this->db->get('user');
     }
 
-    function updateGuru($id)
+    function updateGuru($id, $data)
     {
-        $data = array(
-            "id" => $id,
-            "name" => $this->input->post("name"),
-            "email" => $this->input->post("email"),
-            "kelas_id" => $this->input->post("kelas_id"),
-            "nuptk_nisn" => $this->input->post("nuptk"),
-            "jabatan" => $this->input->post("jabatan"),
-            "image" => $this->input->post("image")
-        );
         $this->db->where("id", $id);
         return $this->db->update("user", $data);
     }
 
-    function updateSiswa($id)
+    function updateAkun($id, $data)
     {
-        $data = array(
-            "id" => $id,
-            "name" => $this->input->post("name"),
-            "email" => $this->input->post("email"),
-            "kelas_id" => $this->input->post("kelas_id"),
-            "nuptk_nisn" => $this->input->post("nisn"),
-            "image" => $this->input->post("image")
-        );
+        $this->db->where("id", $id);
+        return $this->db->update("user", $data);
+    }
+
+    function updateSiswa($id, $data)
+    {
         $this->db->where("id", $id);
         return $this->db->update("user", $data);
     }

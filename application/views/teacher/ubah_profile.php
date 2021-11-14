@@ -4,10 +4,10 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="col-lg-8">
-        <form method="post" action="<?= base_url('admin/proses_ubah_akun_guru/') . $akun->id; ?>">
+        <form method="post" action="<?= base_url('admin/proses_ubah_akun/') . $akun->id; ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">NUPTK</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required max_length="16">
+                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required max_length="16" readonly>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama</label>

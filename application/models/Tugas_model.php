@@ -28,4 +28,10 @@ class Tugas_model extends CI_model
     {
         return $this->db->insert("tugas", $data);
     }
+
+    function updateTugas($id, $data)
+    {
+        $this->db->where("id", $id);
+        return $this->db->update("tugas", $data);
+    }
 }

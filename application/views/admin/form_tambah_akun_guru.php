@@ -6,7 +6,7 @@
 
     <form method="post" action="<?= base_url('admin/proses_tambah_akun_guru') ?>">
         <div class="form-group">
-            <label for="exampleInputEmail1">NISN</label>
+            <label for="exampleInputEmail1">NUPTK</label>
             <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk">
         </div>
         <div class="form-group">
