@@ -2,13 +2,16 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?php echo $materi['nama_file']; ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"> Materi <?php echo $materi['nama_file']; ?></h1>
 
-    <iframe src="<?= $materi['file_materi']; ?>" style="width: 100%;height: 500px;"></iframe>
+    <div class="col">
+        <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi/" role="button">Kembali</a>
+    </div>
     <br>
-    <a class="btn btn-primary" href="<?= base_url(); ?>teacher/materi/" role="button">Kembali</a>
-
-
+    <div class="col">
+        <iframe src="<?= $materi['file_materi']; ?>" style="width: 100%;height: 500px;"></iframe>
+    </div>
+    
 
 </div>
 

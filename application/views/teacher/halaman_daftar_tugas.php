@@ -3,15 +3,19 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $penugasan->judul_penugasan ?></h1>
-    <div class="col-2">
-        <a href="<?= base_url(); ?>teacher/penugasan" class="btn btn-primary mb-3">Kembali</a>
+    <div class="row">
+        <div class="col-auto">
+            <a href="<?= base_url(); ?>teacher/penugasan" class="btn btn-primary mb-3">Kembali</a>
+        </div>
     </div>
     <div class="row">
-        <div class="col-2">
-            <h3 class="h7 mb-4 text-gray-800">Tenggat Waktu : <?= $penugasan->due_date ?></h3>
+        <div class="col-auto">
+            <h6 class="h6 mb-4 text-gray-800">Tenggat Waktu : <?= $penugasan->due_date ?></h6>
         </div>
-        <div class="col-7">
-            <h1 class="h3 mb-4 text-gray-800">Deskripsi : <?= $penugasan->deskripsi_tugas ?></h1>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <h6 class="h6 mb-4 text-gray-800">Deskripsi : <?= $penugasan->deskripsi_tugas ?></h6>
         </div>
     </div>
     <div class="row">
@@ -67,3 +71,8 @@
         </div>
     </div>
 </div>
+
+<!-- /.container-fluid -->
+
+</div>
+<!-- End of Main Content -->

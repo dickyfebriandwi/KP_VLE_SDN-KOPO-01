@@ -7,6 +7,8 @@
     <form method="post" enctype="multipart/form-data">
 
         <?= "jumlah soal : " . $jml_soal . " ID Kuis : " . $id_kuis  ?>
+        <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+
         <!-- looping soal -->
         <?php for ($i = 1; $i <= $jml_soal; $i++) : ?>
             <input type="hidden" class="" name='user_id[]' value="<?= $user['id']; ?>">
