@@ -213,7 +213,7 @@ class Student extends CI_Controller
         } else {
             if (!$this->upload->do_upload('url')) {
                 $this->session->set_flashdata('error', 'File tidak sesuai. Masukkan file dengan format yang diterima');
-                redirect(site_url("teacher/materi"));
+                redirect(site_url("student/tugas"));
             } else {
                 $upload_data = $this->upload->data();
                 $data['url'] = base_url("assets/file/tugas/") . $upload_data['file_name'];
