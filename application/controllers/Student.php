@@ -213,7 +213,7 @@ class Student extends CI_Controller
     public function ubah_tugas($id)
     {
         $data['title'] = 'Tugas';
-        $data['subtitle'] = 'Ubah Tugas';
+        $data['subtitle'] = 'Form Ubah Tugas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getPenugasanById($id)->row();
         $data['tugas'] = $this->Tugas_model->getTugasByPenugasan($id)->result_array();
