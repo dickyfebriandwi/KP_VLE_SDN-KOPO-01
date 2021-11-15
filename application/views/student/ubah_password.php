@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
-
+    <?= $this->session->flashdata('message'); ?>
     <form method="post" action="<?= base_url('student/proses_ubah_password/') . $akun->id ?>">
         <div class="form-group">
             <label for="exampleInputEmail1">Password Baru</label>
