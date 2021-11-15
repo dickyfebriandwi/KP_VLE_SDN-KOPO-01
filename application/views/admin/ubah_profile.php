@@ -22,23 +22,6 @@
                 <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
             </div>
             <div class="form-group">
-                <div class="col-sm-2">Gambar</div>
-                <div class="col-sm-10">
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <img src="<?= $akun->image; ?>" class="img-thumbnail">
-                        </div>
-                        <div class="col-sm-9">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile" name="image" value="<?= $akun->image ?>">
-                                <label class="custom-file-label" for="customFile">Pilih file gambar</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="form-group">
                 <div class="form-row">
                     <div class="col-auto">
                         <button type="submit" class="btn btn-success">
