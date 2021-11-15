@@ -10,6 +10,11 @@ class Status_Tugas_model extends CI_model
         $this->db->where("id", $id);
         return $this->db->get('status_tugas');
     }
+    public function getStatusTugasByPenugasan($id)
+    {
+        $this->db->where("penugasan_id", $id);
+        return $this->db->get('status_tugas');
+    }
 
     function insertStatusTugas($data)
     {

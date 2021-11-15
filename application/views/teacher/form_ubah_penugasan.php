@@ -43,9 +43,9 @@
             </div>
         </div>
         <div class="form-group">
-                <label for="judulPgs">Judul Penugasan</label>
-                <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="nama_file" value="<?= $penugasan->judul_penugasan ?>">
-                <small id="contohJudulPgs" class="form-text text-muted">Contoh: Tugas Subtema 1 : Pembelajaran 1.1</small>
+            <label for="judulPgs">Judul Penugasan</label>
+            <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="judul_penugasan" value="<?= $penugasan->judul_penugasan ?>">
+            <small id="contohJudulPgs" class="form-text text-muted">Contoh: Tugas Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group">
             <label for="deskPenugasan">Deskripsi Penugasan</label>
