@@ -11,7 +11,7 @@
                                                                             }
                                                                         } ?>">
         <div class="form-group">
-            <a href="<?= base_url(); ?>student/kuis/" class="btn btn-success">Kembali</a>
+            <a href="<?= base_url(); ?>student/kuis/" class="btn btn-primary">Kembali</a>
         </div>
         <!-- looping soal -->
         <?php
