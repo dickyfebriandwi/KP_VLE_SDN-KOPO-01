@@ -91,6 +91,35 @@ class Student extends CI_Controller
         }
     }
 
+    public function ubah_password($id)
+    {
+        $data['title'] = '';
+        $data['subtitle'] = 'Ubah Password';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUser();
+        $data['akun'] = $this->User_model->getUserById($id)->row();
+        $this->loadtemplatesfirst($data);
+        $this->load->view('student/ubah_password', $data);
+        $this->loadtemplateslast();
+    }
+
+    public function proses_ubah_password($id)
+    {
+        $this->form_validation->set_rules('password', 'password', 'required|trim|min_length[8]|matches[password2]', [
+            'matches' => 'password tidak sama!!',
+            'min_length' => 'password harus minimal 8 karakter!!'
+        ]);
+        $this->form_validation->set_rules('password2', 'password2', 'required|trim|matches[password]');
+        if ($this->form_validation->run() == false) {
+            redirect(site_url("student/ubah_password/$id"));
+        } else {
+            $this->User_model->updatePassword($id);
+            $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">
+            Password berhasil diganti!! </div>');
+            redirect(site_url("student"));
+        }
+    }
+
 
     #MateriBegin
 

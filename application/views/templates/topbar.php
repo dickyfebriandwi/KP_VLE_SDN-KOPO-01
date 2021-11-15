@@ -42,6 +42,17 @@
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Ubah Profil
                         </a>
+                        <a class="dropdown-item" href="<?php
+                                                        if ($user['role_id'] == 1) {
+                                                            echo base_url() . 'admin/ubah_password/' . $user['id'];
+                                                        } elseif ($user['role_id'] == 2) {
+                                                            echo base_url() . 'teacher/ubah_password/' . $user['id'];
+                                                        } else {
+                                                            echo base_url() . 'student/ubah_password/' . $user['id'];
+                                                        } ?>">
+                            <i class="fas fa-key fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Ubah Password
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>

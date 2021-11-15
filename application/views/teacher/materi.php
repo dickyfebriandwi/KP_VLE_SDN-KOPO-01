@@ -43,7 +43,7 @@
                                             <h5>
                                                 <a href="<?= base_url(); ?>teacher/buka_materi/<?= $mtr['id']; ?>" class="badge badge-success"> Buka </a>
                                                 <a href="<?= base_url(); ?>teacher/ubah_materi/<?= $mtr['id']; ?>" class="badge badge-info"> Ubah </a>
-                                                <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" data-toggle="modal" data-target="#hapus_materi" class="badge badge-danger"> Hapus </a>
+                                                <a href="<?= base_url(); ?>teacher/hapus_materi/<?= $mtr['id']; ?>" class="badge badge-danger"> Hapus </a>
                                             </h5>
                                         </td>
                             </tr>
