@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <h1 class="h3 mb-4 text-gray-800">Buka <?= $kuis->judul_kuis ?></h1>
     <?php echo form_open_multipart(site_url('student/proses_jawab_kuis_essay/' . $kuis->id)) ?>
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" class="" name='nilai_id_sendiri' value="<?php foreach ($nilai as $nl) {
@@ -11,7 +11,7 @@
                                                                             }
                                                                         } ?>">
         <div class="form-group">
-            <a href="<?= base_url(); ?>student/kuis/" class="btn btn-primary">Kembali</a>
+            <a href="<?= base_url(); ?>student/kuis/" class="btn btn-info">Kembali</a>
         </div>
         <!-- looping soal -->
         <?php

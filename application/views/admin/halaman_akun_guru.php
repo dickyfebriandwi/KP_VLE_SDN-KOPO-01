@@ -58,6 +58,7 @@
             </table>
         </div>
     </div>
+    <a class="btn btn-info" href="<?= base_url(); ?>admin/akun" role="button">Kembali</a>
 
 </div>
 

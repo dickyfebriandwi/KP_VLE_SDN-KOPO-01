@@ -4,13 +4,11 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
-        <div class="col-9">
-            <a href="<?= base_url(); ?>admin/ubah_akun_siswa/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Akun Siswa</a>
+        <div class="col-2">
+            <a href="<?= base_url(); ?>admin/ubah_akun_siswa/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Info Akun</a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-9">
-            <a href="<?= base_url(); ?>admin/ubah_password_akun/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Password Siswa</a>
+        <div class="col-2">
+            <a href="<?= base_url(); ?>admin/ubah_password_akun/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Password</a>
         </div>
     </div>
 
@@ -47,9 +45,8 @@
             <label for="exampleInputEmail1">Alamat e-mail</label>
             <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" readonly>
         </div>
-        <br><br><br><br><br><br><br><br>
         <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_siswa" role="button">Kembali</a>
+            <a class="btn btn-info" href="<?= base_url(); ?>admin/buka_halaman_akun_siswa" role="button">Kembali</a>
         </div>
 
     </form>

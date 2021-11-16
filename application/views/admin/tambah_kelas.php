@@ -7,7 +7,7 @@
     <form class="user" method="post" action="<?= base_url('admin/proses_tambah_kelas') ?>">
         <div class="form-group">
             <div class="form-row">
-                <div class="input-group mb-3">
+                <div class="input-group mb-3 col-2">
                     <div class="input-group-prepend">
                         <label class="input-group-text" for="inputGroupSelect01">Kelas</label>
                     </div>
@@ -24,21 +24,21 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Rombongan Belajar</label>
-            <input type="text" class="form-control col-9" id="judulMateri" name="rombel" placeholder="...">
+            <input type="text" class="form-control col-3" id="judulMateri" name="rombel" placeholder="...">
             <small id="contohJudul" class="form-text text-muted">Contoh Rombel : A</small>
         </div>
         <div class="form-group">
             <div class="form-row">
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-primary btn-user btn-block">
-                        Tambah Kelas
-                    </button>
+                <div class="col-2">
+                    <a class="btn btn-info" href="<?= base_url(); ?>admin/kelas" role="button">Kembali</a>
+                </div>
+                <div class="col-3">
+                    <button type="submit" class="btn btn-success">Simpan</button>
                 </div>
             </div>
         </div>
-        <br><br><br><br><br><br><br><br>
         <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>admin/kelas" role="button">Kembali</a>
+            
         </div>
 
     </form>

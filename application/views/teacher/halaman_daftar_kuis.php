@@ -4,10 +4,14 @@
     <!-- Inisialisasi -->
     <?php $tenggat = $kuis->due_date ?>
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $kuis->judul_kuis ?></h1>
-    <h1 class="h3 mb-4 text-gray-800">Tipe Soal : <?= $kuis->tipe_soal ?></h1>
-    <h1 class="h3 mb-4 text-gray-800">Batas Penyelesaian : <?= $tenggat ?></h1>
-
+    <h3 class="h3 mb-4 text-gray-800"><?= $kuis->judul_kuis ?></h3>
+    <h6 class="h6 mb-1 text-gray-800">Tipe Soal : <?= $kuis->tipe_soal ?></h6>
+    <h6 class="h6 mb-4 text-gray-800">Batas Penyelesaian : <?= $tenggat ?></h6>
+    <div class="row">
+        <div class="col-auto">
+            <a href="<?= base_url(); ?>teacher/kuis" class="btn btn-info mb-3">Kembali</a>
+        </div>
+    </div>
 
     <div class="row">
         <div class="col-lg-12">

@@ -3,6 +3,9 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <div class="form-group">
+            <a class="btn btn-info" href="<?= base_url(); ?>teacher/kuis/" role="button">Kembali</a>
+        </div>
     <?php echo form_open_multipart(site_url('student/proses_jawab_kuis_pg/')) ?>
     <form method="post" enctype="multipart/form-data">
 
@@ -104,9 +107,6 @@
         endforeach; ?>
         <!-- batas looping soal -->
         <br>
-        <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>teacher/kuis/" role="button">Kembali</a>
-        </div>
         <?php echo form_close() ?>
     </form>
 

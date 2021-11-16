@@ -3,6 +3,9 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <div class="form-group">
+            <a href="<?= base_url(); ?>teacher/kuis/" class="btn btn-info">Kembali</a>
+        </div>
     <?php echo form_open_multipart(site_url('teacher/proses_nilai_kuis_oleh_guru/' . $nilai->id)) ?>
     <form method="post" enctype="multipart/form-data">
         <!-- looping soal -->
@@ -26,20 +29,23 @@
                             <?php endif; ?>
                         <?php endforeach; ?>
                     </div>
-                </div>
+                </div> <br>
         <?php
                 $i++;
             endif;
         endforeach; ?>
         <!-- batas looping soal -->
-        <div class="form-group">
-            <input type="text" name="nilai" id="" value="<?= $nilai->nilai ?>">
-            <button type="submit" class="btn btn-success">Ubah Nilai</button>
-        </div>
-        <div class="form-group">
 
-            <a href="<?= base_url(); ?>teacher/kuis/" class="btn btn-info">Kembali</a>
+        <div class="form-group mb-2 mr-sm-2">
+            <label class="form-control-label">Nilai :</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control col-1" placeholder="Nilai" value="<?= $nilai->nilai ?>">
+                <div class="input-group-append">
+                    <button class="btn btn-success" type="submit">Simpan Nilai</button>
+                </div>
+            </div>
         </div>
+        
         <?php echo form_close() ?>
     </form>
 

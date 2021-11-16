@@ -7,25 +7,22 @@
     <form method="post" action="<?= base_url('student/proses_ubah_password/') . $akun->id ?>">
         <div class="form-group">
             <label for="exampleInputEmail1">Password Baru</label>
-            <input type="password" class="form-control col-9" id="judulMateri" placeholder="..." name="password">
+            <input type="password" class="form-control col-5" id="judulMateri" placeholder="..." name="password">
             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Ulangi Password Baru</label>
-            <input type="password" class="form-control col-9" id="judulMateri" placeholder="..." name="password2">
+            <input type="password" class="form-control col-5" id="judulMateri" placeholder="..." name="password2">
         </div>
         <div class="form-group">
             <div class="form-row">
-                <div class="col-auto">
+                <div class="col-5">
+                    <a class="btn btn-info" href="<?= base_url(); ?>student" role="button">Kembali</a>
                     <button type="submit" class="btn btn-success">
                         Simpan
                     </button>
                 </div>
             </div>
-        </div>
-        <br><br><br><br><br><br><br><br>
-        <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>student" role="button">Kembali</a>
         </div>
 
     </form>

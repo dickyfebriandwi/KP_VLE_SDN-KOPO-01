@@ -35,7 +35,7 @@
         </div>
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-primary" href="<?= base_url(); ?>student/tugas" role="button">Kembali</a>
+                <a class="btn btn-info" href="<?= base_url(); ?>student/tugas" role="button">Kembali</a>
             </div>
         </div>
         <?php echo form_close() ?>

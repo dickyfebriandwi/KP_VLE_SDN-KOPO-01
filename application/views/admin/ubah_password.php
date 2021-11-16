@@ -17,15 +17,12 @@
         <div class="form-group">
             <div class="form-row">
                 <div class="col-auto">
+                    <a class="btn btn-info" href="<?= base_url(); ?>admin" role="button">Kembali</a>
                     <button type="submit" class="btn btn-success">
                         Simpan
                     </button>
                 </div>
             </div>
-        </div>
-        <br><br><br><br><br><br><br><br>
-        <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>admin" role="button">Kembali</a>
         </div>
 
     </form>

@@ -111,6 +111,7 @@ class Admin extends CI_Controller
     public function akun()
     {
         $data['title'] = 'Akun';
+        $data['subtitle'] = 'Kelola Akun Pengguna';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/akun', $data);
@@ -367,6 +368,7 @@ class Admin extends CI_Controller
     public function kelas()
     {
         $data['title'] = 'Kelas';
+        $data['subtitle'] = 'Kelola Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);

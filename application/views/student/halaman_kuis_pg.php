@@ -2,12 +2,12 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <h1 class="h3 mb-4 text-gray-800">Buka <?= $kuis->judul_kuis ?></h1>
     <?php echo form_open_multipart(site_url('student/proses_jawab_kuis_pg/' . $kuis->id)) ?>
     <form method="post" enctype="multipart/form-data">
 
         <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>student/kuis/" role="button">Kembali</a>
+            <a class="btn btn-info" href="<?= base_url(); ?>student/kuis/" role="button">Kembali</a>
         </div>
         <!-- looping sebanyak jumlah soal -->
         <?php

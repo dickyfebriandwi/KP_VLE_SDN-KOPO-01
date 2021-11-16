@@ -8,16 +8,6 @@
         <div class="col-9">
             <a href="<?= base_url(); ?>admin/tambah_akun_siswa" class="btn btn-primary mb-3">Tambah Akun Siswa</a>
         </div>
-        <div class="col">
-            <div class="dropdown float-right">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Kelas</button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Kelas 1</button>
-                    <button class="dropdown-item" type="button">Kelas 2</button>
-                    <button class="dropdown-item" type="button">Kelas 3</button>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
@@ -74,7 +64,7 @@
             </table>
         </div>
     </div>
-
+    <a class="btn btn-info" href="<?= base_url(); ?>admin/akun" role="button">Kembali</a>
 </div>
 
 <!-- /.container-fluid -->

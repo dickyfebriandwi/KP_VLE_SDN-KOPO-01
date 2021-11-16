@@ -5,17 +5,17 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $penugasan->judul_penugasan ?></h1>
     <div class="row">
         <div class="col-auto">
-            <a href="<?= base_url(); ?>teacher/penugasan" class="btn btn-primary mb-3">Kembali</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-auto">
             <h6 class="h6 mb-4 text-gray-800">Tenggat Waktu : <?= $penugasan->due_date ?></h6>
         </div>
     </div>
     <div class="row">
         <div class="col-auto">
             <h6 class="h6 mb-4 text-gray-800">Deskripsi : <?= $penugasan->deskripsi_tugas ?></h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <a href="<?= base_url(); ?>teacher/penugasan" class="btn btn-info mb-3">Kembali</a>
         </div>
     </div>
     <div class="row">

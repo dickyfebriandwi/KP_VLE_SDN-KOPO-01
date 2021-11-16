@@ -37,7 +37,7 @@ class Teacher extends CI_Controller
     public function ubah_profile($id)
     {
         $data['title'] = '';
-        $data['subtitle'] = 'Ubah Akun';
+        $data['subtitle'] = 'Ubah Profil Anda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUserGuru();
         $data['akun'] = $this->User_model->getUserById($id)->row();
@@ -90,7 +90,7 @@ class Teacher extends CI_Controller
     public function ubah_password($id)
     {
         $data['title'] = '';
-        $data['subtitle'] = 'Ubah Password';
+        $data['subtitle'] = 'Ubah Password Anda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUser();
         $data['akun'] = $this->User_model->getUserById($id)->row();
