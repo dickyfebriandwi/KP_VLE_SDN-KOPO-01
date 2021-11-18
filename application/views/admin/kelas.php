@@ -29,10 +29,10 @@
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>admin/ubah_kelas/<?= $kls['id']; ?>" class="badge badge-success"> Ubah </a>
-                                    <a href="<?= base_url(); ?>admin/hapus_kelas/<?= $kls['id']; ?>" data-toggle="modal" data-target="#hapus_kelas" class="badge badge-danger"> Hapus </a>
+                                    <a href="<?= base_url(); ?>admin/hapus_kelas/<?= $kls['id']; ?>" data-toggle="modal" data-target="#hapus_kelas<?= $kls['id']?>" class="badge badge-danger"> Hapus </a>
                                     
                                     <!-- Hapus Materi Modal-->
-                                    <div class="modal fade" id="hapus_kelas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="hapus_kelas<?= $kls['id']?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
