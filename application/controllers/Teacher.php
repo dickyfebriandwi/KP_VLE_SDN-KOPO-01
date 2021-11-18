@@ -90,7 +90,7 @@ class Teacher extends CI_Controller
     public function ubah_password($id)
     {
         $data['title'] = '';
-        $data['subtitle'] = 'Ubah Password Anda';
+        $data['subtitle'] = 'Form Ubah Password';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUser();
         $data['akun'] = $this->User_model->getUserById($id)->row();
@@ -684,6 +684,7 @@ class Teacher extends CI_Controller
         $data['title'] = 'Kuis';
         $data['subtitle'] = 'Buka Kuis Pilihan Ganda';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
         $data['kuis'] = $this->Kuis_model->getAllKuis();
         $data['tema'] = $this->Tema_model->getTema();
         $data['jawaban'] = $this->Jawaban_model->getJawabanByNilai($id);
@@ -701,6 +702,7 @@ class Teacher extends CI_Controller
         $data['title'] = 'Kuis';
         $data['subtitle'] = 'Buka Kuis Isian';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['akun'] = $this->User_model->getUserSiswa();
         $data['kuis'] = $this->Kuis_model->getAllKuis();
         $data['tema'] = $this->Tema_model->getTema();
         $data['jawaban'] = $this->Jawaban_model->getJawabanByNilai($id);

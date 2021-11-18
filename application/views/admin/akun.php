@@ -8,14 +8,14 @@
         <div class="col-lg-3">
         </div>
         <div class="col-lg-3">
-            <a href="<?= base_url('admin/buka_halaman_akun_guru'); ?>" class="btn btn-primary btn-lg btn-block btn-huge">Kelola Akun Guru
+            <a href="<?= base_url('admin/buka_halaman_akun_guru'); ?>" class="btn btn-danger btn-lg btn-block btn-huge">Kelola Akun Guru
             <div class="col-auto">
                 <i class="fas fa-user fa-2x text-gray-300"></i>
             </div>
             </a>
         </div>
         <div class="col-lg-3">
-            <a href="<?= base_url('admin/buka_halaman_akun_siswa'); ?>" class="btn btn-primary btn-lg btn-block btn-huge">Kelola Akun Siswa
+            <a href="<?= base_url('admin/buka_halaman_akun_siswa'); ?>" class="btn btn-danger btn-lg btn-block btn-huge">Kelola Akun Siswa
             <div class="col-auto">
                 <i class="fas fa-users fa-2x text-gray-300"></i>
             </div>

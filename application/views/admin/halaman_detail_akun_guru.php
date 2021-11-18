@@ -4,10 +4,10 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
-        <div class="col-2">
+        <div class="col-auto">
             <a href="<?= base_url(); ?>admin/ubah_akun_guru/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Info Akun</a>
         </div>
-        <div class="col-2">
+        <div class="col-auto">
             <a href="<?= base_url(); ?>admin/ubah_password_akun/<?= $akun->id; ?>" class="btn btn-primary mb-3">Ubah Password</a>
         </div>
     </div>     
@@ -15,11 +15,11 @@
     <form>
         <div class="form-group">
             <label for="exampleInputEmail1">NUPTK</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?> " readonly>
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?> " readonly>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Nama</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="name" value="<?php echo $akun->name; ?>" readonly>
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="name" value="<?php echo $akun->name; ?>" readonly>
         </div>
         <div class="form-group">
             <div class="form-row">
@@ -42,11 +42,11 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Jabatan</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>" readonly>
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>" readonly>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" readonly>
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" readonly>
         </div>
         <div class="form-group">
             <a class="btn btn-info" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>

@@ -46,15 +46,13 @@
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
                                         <?php
                                         $i = 0;
-                                        foreach ($penugasan as $pngs) {
-                                            if ($pngs['kelas_id'] == $user['kelas_id']) {
+                                        
                                                 foreach ($statusT as $st) {
-                                                    if ($st['user_id_siswa'] == $user['id'] && $st['date_updated'] == null) {
+                                                    if ($st['user_id_siswa'] == $user['id'] && $st['date_updated'] == null && $st['kelas_id'] == $user['kelas_id']) {
                                                         $i++;
                                                     }
                                                 }
-                                            }
-                                        }
+                                           
                                         echo $i; ?>
                                     </div>
                                 </div>
@@ -79,15 +77,14 @@
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
                                 <?php
                                 $i = 0;
-                                foreach ($kuis as $ks) {
-                                    if ($ks['kelas_id'] == $user['kelas_id']) {
+                                
                                         foreach ($statusK as $st) {
-                                            if ($st['user_id_siswa'] == $user['id'] && $st['date_updated'] == null) {
+                                            if ($st['user_id_siswa'] == $user['id'] && $st['date_updated'] == null && $st['kelas_id'] == $user['kelas_id']) {
                                                 $i++;
                                             }
                                         }
-                                    }
-                                }
+                                    
+                                
                                 echo $i; ?>
                             </div>
                         </div>

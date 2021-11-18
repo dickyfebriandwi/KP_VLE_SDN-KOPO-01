@@ -7,11 +7,11 @@
     <form method="post" action="<?= base_url('admin/proses_tambah_akun_guru') ?>">
         <div class="form-group">
             <label for="exampleInputEmail1">NUPTK</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk">
         </div>
-        <div class="form-group">
+        <div class="form-group mb-4">
             <label for="exampleInputEmail1">Nama</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="name">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="name">
         </div>
         <div class="form-group">
             <div class="form-row">
@@ -29,30 +29,28 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Jabatan</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="jabatan">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="jabatan">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="email">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Password</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="password123" readonly name="password" value="password123">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="password123" readonly name="password" value="password123">
         </div>
         <div class="form-group">
             <div class="form-row">
-                <div class="col-auto">
+                <div class="col-3">
+                    <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
+                </div>
+                <div class="col-4">
                     <button type="submit" class="btn btn-success">
                         Simpan
                     </button>
                 </div>
             </div>
         </div>
-        <br><br><br><br><br><br><br><br>
-        <div class="form-group">
-            <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
-        </div>
-
     </form>
 
 </div>

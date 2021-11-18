@@ -7,11 +7,11 @@
         <form method="post" action="<?= base_url('admin/proses_ubah_akun_guru/') . $akun->id; ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">NUPTK</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required max_length="16">
+                <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required max_length="16">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="name" value="<?php echo $akun->name; ?>" required>
+                <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="name" value="<?php echo $akun->name; ?>" required>
             </div>
             <div class="form-group">
                 <div class="form-row">
@@ -35,24 +35,23 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Jabatan</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>">
+                <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Alamat e-mail</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
+                <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
             </div>
             <div class="form-group">
                 <div class="form-row">
-                    <div class="col-auto">
+                    <div class="col-3">
+                        <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
+                    </div>
+                    <div class="col-5">
                         <button type="submit" class="btn btn-success">
                             Ubah
                         </button>
                     </div>
                 </div>
-            </div>
-            <br><br><br><br><br><br><br><br>
-            <div class="form-group">
-                <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
             </div>
 
         </form>

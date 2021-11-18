@@ -104,7 +104,7 @@
         </div>
         <div class="form-group row">
             <div class="col-5">
-                <a class="btn btn-primary" href="<?= base_url(); ?>teacher/kuis" role="button">Kembali</a>
+                <a class="btn btn-info" href="<?= base_url(); ?>teacher/kuis" role="button">Kembali</a>
             </div>
             <div class="col-5">
                 <a class="btn btn-primary" href="
@@ -115,7 +115,7 @@
                 } ?>" role="button">Ubah Soal</a>
             </div>
             <div class="col-2">
-                <button type="submit" class="btn btn-success">Ubah Kuis</button>
+                <button type="submit" class="btn btn-success">Ubah</button>
             </div>
         </div>
         <?php echo form_close() ?>

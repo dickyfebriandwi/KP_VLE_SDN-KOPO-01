@@ -226,7 +226,7 @@ class Admin extends CI_Controller
     public function ubah_password_akun($id)
     {
         $data['title'] = 'Akun';
-        $data['subtitle'] = 'Form Ubah Akun Guru';
+        $data['subtitle'] = 'Form Ubah Password Akun Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUser();
         $data['akun'] = $this->User_model->getUserById($id)->row();
@@ -379,7 +379,7 @@ class Admin extends CI_Controller
     public function tambah_kelas()
     {
         $data['title'] = 'Kelas';
-        $data['subtitle'] = 'Tambah Kelas';
+        $data['subtitle'] = 'Form Tambah Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/tambah_kelas', $data);
@@ -398,7 +398,7 @@ class Admin extends CI_Controller
     public function ubah_kelas($id)
     {
         $data['title'] = 'Kelas';
-        $data['subtitle'] = 'Ubah Kelas';
+        $data['subtitle'] = 'Form Ubah Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['kelas'] = $this->Kelas_model->getKelas();
         $data['kelas'] = $this->Kelas_model->getKelasById($id)->row();

@@ -2,7 +2,11 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?php foreach ($akun as $ak){
+        if($ak['id'] == $nilai->user_id_siswa){
+            echo "Nama : ". $ak['name'];
+        }
+    }?></h1>
     <div class="form-group">
             <a href="<?= base_url(); ?>teacher/kuis/" class="btn btn-info">Kembali</a>
         </div>
