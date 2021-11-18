@@ -5,7 +5,7 @@ class Kuis_model extends CI_model
     {
         return $this->db->get('kuis')->result_array();
     }
-
+    #contoh
     public function getLastKuis()
     {
         $this->db->select('id');

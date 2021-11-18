@@ -17,7 +17,7 @@ class Nilai_kuis_model extends CI_model
         $this->db->where("kelas_id", $id);
         return $this->db->get("nilai_kuis");
     }
-
+    #contoh
     public function getNilaiKuisByKuis($id)
     {
         $this->db->where("kuis_id", $id);
