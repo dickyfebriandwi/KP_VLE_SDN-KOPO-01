@@ -7,7 +7,7 @@
         <form method="post" action="<?= base_url('student/proses_ubah_akun/') . $akun->id; ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">NISN</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" max_length="16" readonly>
+                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" minlength="10" maxlength="10" readonly>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama</label>

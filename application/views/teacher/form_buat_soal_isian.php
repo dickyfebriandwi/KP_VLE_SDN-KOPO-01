@@ -6,7 +6,7 @@
     <?php echo form_open_multipart(site_url('teacher/proses_tambah_soal_isian')) ?>
     <form method="post" enctype="multipart/form-data">
 
-        <?= "Jumlah soal : " . $jml_soal  ?>
+        <!--<?= "Jumlah soal : " . $jml_soal  ?>-->
 
         <!-- looping soal -->
         <?php for ($i = 1; $i <= $jml_soal; $i++) : ?>
@@ -19,13 +19,15 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <input type="text" class="form-control col-auto" id="soal1" placeholder="Masukan soal" name="soal[]">
+                        <input type="text" class="form-control col-auto" id="soal1" placeholder="Masukan soal" name="soal[]" required>
                     </div>
                 </div>
-            </div> <br>
+            </div><br>
         <?php endfor; ?>
         <!-- batas looping soal -->
+        <br>
         <div class="form-group">
+            <br>
             <button type="submit" class="btn btn-success">Simpan</button>
         </div>
         <?php echo form_close() ?>

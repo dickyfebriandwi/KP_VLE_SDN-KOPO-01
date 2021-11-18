@@ -38,15 +38,15 @@
             </div>
         </div>
         <div class="form-group">
-                <label for="judulMateri">Judul Materi</label>
-                <input type="text" class="form-control col-6" id="judulMateri" placeholder="..." name="nama_file">
-                <small id="contohJudul" class="form-text text-muted">Contoh: Subtema 1 : Pembelajaran 1.1</small>
+            <label for="judulMateri">Judul Materi</label>
+            <input type="text" class="form-control col-6" id="judulMateri" placeholder="..." name="nama_file" required>
+            <small id="contohJudul" class="form-text text-muted">Contoh: Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group">
             <label for="fileMateri">Pilih File Materi</label>
             <div class="custom-file">
                 <div class="col-6">
-                    <input type="file" class="custom-file-input" id="fileMateri" name="file_materi">
+                    <input type="file" class="custom-file-input" id="fileMateri" name="file_materi" required>
                     <label class="custom-file-label" for="fileMateri"></label>
                 </div>
             </div>

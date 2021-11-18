@@ -10,6 +10,7 @@ class Admin extends CI_Controller
         $this->load->model('Kelas_model', '', true);
         $this->load->model('User_model', '', true);
         $this->load->helper(array('url', 'form'));
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -97,11 +98,11 @@ class Admin extends CI_Controller
         ]);
         $this->form_validation->set_rules('password2', 'password2', 'required|trim|matches[password]');
         if ($this->form_validation->run() == false) {
+            $this->session->set_flashdata('ubah_password_sendiri', '<div class="alert alert-danger" role="alert">Password gagal diganti !! </div>');
             redirect(site_url("admin/ubah_password/$id"));
         } else {
             $this->User_model->updatePassword($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">
-            Password berhasil diganti!! </div>');
+            $this->session->set_flashdata('ubah_password_sendiri', '<div class="alert alert-primary" role="alert">Password berhasil diganti!! </div>');
             redirect(site_url("admin"));
         }
     }
@@ -142,9 +143,18 @@ class Admin extends CI_Controller
 
     public function proses_tambah_akun_guru()
     {
-        if ($this->User_model->insertUserGuru()) {
-            redirect(site_url("admin/buka_halaman_akun_guru"));
+        $this->form_validation->set_rules('email', 'email', 'is_unique[user.email]', [
+            'is_unique' => 'Email sudah terdaftar!!'
+        ]);
+        if ($this->form_validation->run()) {
+            if ($this->User_model->insertUserGuru()) {
+                redirect(site_url("admin/buka_halaman_akun_guru"));
+            } else {
+                $this->session->set_flashdata('tambah_akun', '<div class="alert alert-danger" role="alert">Gagal menambahkan akun guru </div>');
+                redirect(site_url("admin/tambah_akun_guru"));
+            }
         } else {
+            $this->session->set_flashdata('tambah_akun', '<div class="alert alert-danger" role="alert">Gagal menambahkan akun guru </div>');
             redirect(site_url("admin/tambah_akun_guru"));
         }
     }
@@ -259,9 +269,21 @@ class Admin extends CI_Controller
 
     public function proses_tambah_akun_siswa()
     {
-        if ($this->User_model->insertUserSiswa()) {
-            redirect(site_url("admin/buka_halaman_akun_siswa"));
+        $this->form_validation->set_rules('email', 'email', 'is_unique[user.email]', [
+            'is_unique' => 'Email sudah terdaftar!!',
+        ]);
+        $this->form_validation->set_rules('nisn', 'nisn', 'is_unique[user.nuptk_nisn]', [
+            'is_unique' => 'NISN sudah terdaftar!!',
+        ]);
+        if ($this->form_validation->run()) {
+            if ($this->User_model->insertUserSiswa()) {
+                redirect(site_url("admin/buka_halaman_akun_siswa"));
+            } else {
+                $this->session->set_flashdata('tambah_akun_siswa', '<div class="alert alert-danger" role="alert">Gagal menambahkan akun siswa </div>');
+                redirect(site_url("admin/tambah_akun_siswa"));
+            }
         } else {
+            $this->session->set_flashdata('tambah_akun_siswa', '<div class="alert alert-danger" role="alert">Gagal menambahkan akun siswa </div>');
             redirect(site_url("admin/tambah_akun_siswa"));
         }
     }

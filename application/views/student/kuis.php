@@ -44,7 +44,7 @@
                                 </td>
                                 <td>
                                     <?php foreach ($nilai as $nl) : ?>
-                                        <?php if ($nl['kuis_id'] == $ks['id'] && $nl['user_id_siswa'] == $user['id']) : ?>
+                                        <?php if ($nl['kuis_id'] == $ks['id'] && $nl['user_id_siswa'] == $user['id'] && $jam > $ks['due_date']) : ?>
                                             <?= $nl['nilai'] ?>
                                         <?php endif; ?>
                                     <?php endforeach; ?>
@@ -59,13 +59,13 @@
                                                     <?php else : ?>
                                                         <a href="<?= base_url(); ?>student/jawab_detail_kuis_essay/<?= $ks['id']; ?>" class="badge badge-info"> Mulai </a>
                                                     <?php endif; ?>
-                                                <?php elseif ($st['date_updated'] != null and $st['date_updated'] > $jam) : ?>
+                                                <?php elseif ($st['date_updated'] != null and $st['date_updated'] > $jam && $jam > $ks['due_date']) : ?>
                                                     <?php if ($ks['tipe_soal'] == "Pilihan Ganda") : ?>
                                                         <a href="<?= base_url(); ?>student/buka_detail_kuis_pg/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
                                                     <?php else : ?>
                                                         <a href="<?= base_url(); ?>student/buka_detail_kuis_essay/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
                                                     <?php endif; ?>
-                                                <?php elseif ($st['date_updated'] != null and $st['date_updated'] <= $jam) : ?>
+                                                <?php elseif ($st['date_updated'] != null and $st['date_updated'] <= $jam && $jam > $ks['due_date']) : ?>
                                                     <?php if ($ks['tipe_soal'] == "Pilihan Ganda") : ?>
                                                         <a href="<?= base_url(); ?>student/buka_detail_kuis_pg/<?= $ks['id']; ?>" class="badge badge-success"> Buka </a>
                                                     <?php else : ?>

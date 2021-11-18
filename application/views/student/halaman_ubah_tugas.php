@@ -24,11 +24,11 @@
             <div class="form-row">
                 <div class="col-auto">
                     <div class="custom-file col-auto">
-                        <input type="file" class="custom-file-input" id="customFile" name="url" value="<?php foreach ($tugas as $tgs) {
-                                                                                                            if ($tgs['penugasan_id'] == $penugasan->id && $tgs['user_id'] == $user['id']) {
-                                                                                                                echo $tgs['url'];
-                                                                                                            }
-                                                                                                        } ?>">
+                        <input type="file" class="custom-file-input" id="customFile" name="url" required value="<?php foreach ($tugas as $tgs) {
+                                                                                                                    if ($tgs['penugasan_id'] == $penugasan->id && $tgs['user_id'] == $user['id']) {
+                                                                                                                        echo $tgs['url'];
+                                                                                                                    }
+                                                                                                                } ?>">
                         <label class="custom-file-label" for="customFile">Pilih file tugas</label>
                     </div>
                     <small id="contohJudul" class="form-text text-danger">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>

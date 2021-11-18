@@ -47,7 +47,7 @@
         </div>
         <div class="form-group">
             <label for="judulKuis">Judul Kuis</label>
-            <input type="text" class="form-control col-6" id="judulKuis" placeholder="..." name="judul_kuis" value="<?= $kuis->judul_kuis; ?>">
+            <input type="text" class="form-control col-6" id="judulKuis" placeholder="..." name="judul_kuis" value="<?= $kuis->judul_kuis; ?>" required>
             <small id="contohJudulKuis" class="form-text text-muted">Contoh: Kuis Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group row">
@@ -100,7 +100,7 @@
         </div>
         <div class="form-group">
             <label for="meeting-time">Tenggat Pengumpulan Kuis</label>
-            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date" value="<?php echo date('Y-m-d\TH:i:s', strtotime($kuis->due_date)) ?>">
+            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date" value="<?php echo date('Y-m-d\TH:i:s', strtotime($kuis->due_date)) ?>" required>
         </div>
         <div class="form-group row">
             <div class="col-5">

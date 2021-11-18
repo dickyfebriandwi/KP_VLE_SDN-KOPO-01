@@ -3,16 +3,16 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
-    <!-- <?= $this->session->flashdata('message'); ?> -->
+    <?= $this->session->flashdata('ubah_password_sendiri'); ?>
     <form method="post" action="<?= base_url('teacher/proses_ubah_password/') . $akun->id ?>">
         <div class="form-group">
             <label for="exampleInputEmail1">Password Baru</label>
-            <input type="password" class="form-control col-4" id="judulMateri" placeholder="..." name="password" min_length="8" max_length="32" required>
+            <input type="password" class="form-control col-4" id="judulMateri" placeholder="..." name="password" minlength="8" maxlength="32" required>
             <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Ulangi Password Baru</label>
-            <input type="password" class="form-control col-4" id="judulMateri" placeholder="..." name="password2" min_length="8" max_length="32" required>
+            <input type="password" class="form-control col-4" id="judulMateri" placeholder="..." name="password2" minlength="8" maxlength="32" required>
         </div>
         <div class="form-group">
             <div class="form-row">

@@ -6,7 +6,7 @@
     <?php echo form_open_multipart(site_url('teacher/proses_tambah_soal_pg')) ?>
     <form method="post" enctype="multipart/form-data">
 
-        <?= "jumlah soal : " . $jml_soal . " ID Kuis : " . $id_kuis  ?>
+        <!--<?= "jumlah soal : " . $jml_soal . " ID Kuis : " . $id_kuis  ?>-->
         <!-- looping sebanyak jumlah soal -->
         <?php for ($i = 1; $i <= $jml_soal; $i++) : ?>
             <input type="hidden" class="" name='user_id[]' value="<?= $user['id']; ?>">
@@ -21,7 +21,7 @@
                 <div class="card-body">
                     <div class="form-group">
                         <div class="row">
-                            <input type="text" class="form-control col-auto" id="soal1" placeholder="..." name="soal[]">
+                            <input type="text" class="form-control col-auto" id="soal1" placeholder="..." name="soal[]" required>
                         </div>
                     </div>
                     <div class="row">
@@ -29,25 +29,25 @@
                             <div class="form-group row">
                                 <label for="opsiA" class="col-sm-2 col-form-label">Opsi A :</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="opsiA" name="opsiA[]">
+                                    <input type="text" class="form-control" id="opsiA" name="opsiA[]" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="opsiB" class="col-sm-2 col-form-label">Opsi B :</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="opsiB" name="opsiB[]">
+                                    <input type="text" class="form-control" id="opsiB" name="opsiB[]" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="opsiC" class="col-sm-2 col-form-label">Opsi C :</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="opsiC" name="opsiC[]">
+                                    <input type="text" class="form-control" id="opsiC" name="opsiC[]" required>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="opsiD" class="col-sm-2 col-form-label">Opsi D :</label>
                                 <div class="col-sm-5">
-                                    <input type="text" class="form-control" id="opsiD" name="opsiD[]">
+                                    <input type="text" class="form-control" id="opsiD" name="opsiD[]" required>
                                 </div>
                             </div>
                         </div>

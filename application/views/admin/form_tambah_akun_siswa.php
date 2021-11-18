@@ -3,15 +3,18 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
-
-    <form method="post" action="<?= base_url('admin/proses_tambah_akun_siswa') ?>">
+    <?php if ($this->session->flashdata('tambah_akun_siswa')) {
+        echo $this->session->flashdata('tambah_akun_siswa');
+    } ?>
+    <?php echo form_open_multipart(site_url('admin/proses_tambah_akun_siswa')); ?>
+    <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">NISN</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nisn">
+            <input type="text" class="form-control col-9" id="nisn" placeholder="..." name="nisn" maxlength="10" minlenght="10" required>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Nama</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="name">
+            <input type="text" class="form-control col-9" id="name" placeholder="..." name="name" required>
         </div>
         <div class="form-group">
             <div class="form-row">
@@ -29,10 +32,10 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
-            <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email">
+            <input type="text" class="form-control col-9" id="email" placeholder="..." name="email" required>
             <div class="form-group">
                 <label for="exampleInputEmail1">Password</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="password123" readonly name="password" value="password123">
+                <input type="text" class="form-control col-9" id="password" placeholder="password123" readonly name="password" value="password123">
             </div>
             <div class="form-group">
                 <div class="form-row">
@@ -47,7 +50,7 @@
             <div class="form-group">
                 <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
             </div>
-
+            <?php echo form_close() ?>
     </form>
 
 </div>

@@ -8,11 +8,11 @@
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">NISN</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nisn" value="<?php echo $akun->nuptk_nisn; ?>">
+                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nisn" value="<?php echo $akun->nuptk_nisn; ?>" minlength="10" maxlength="10" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="name" value="<?php echo $akun->name; ?>">
+                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="name" value="<?php echo $akun->name; ?>" required>
             </div>
             <div class="form-group">
                 <div class="form-row">
@@ -36,7 +36,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Alamat e-mail</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>">
+                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
             </div>
             <div class="form-group">
                 <div class="form-row">

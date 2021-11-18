@@ -10,7 +10,9 @@
     </div>
     <div class="row">
         <div class="col-auto">
-            <pre><h6 class="h6 mb-4 text-gray-800">Deskripsi : <?= $penugasan->deskripsi_tugas ?></h6></pre>
+            <h6 class="h6 mb-4 text-gray-800">Deskripsi :
+                <pre><?= $penugasan->deskripsi_tugas ?></pre>
+            </h6>
         </div>
     </div>
     <div class="row">

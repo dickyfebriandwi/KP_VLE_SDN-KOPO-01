@@ -1,6 +1,6 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+    <?php $jam = date('Y-m-d\TH:i'); ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <?php echo form_open_multipart(site_url('teacher/proses_ubah_penugasan/') . $penugasan->id); ?>
@@ -44,16 +44,16 @@
         </div>
         <div class="form-group">
             <label for="judulPgs">Judul Penugasan</label>
-            <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="judul_penugasan" value="<?= $penugasan->judul_penugasan ?>">
+            <input type="text" class="form-control col-7" id="judulPenugasan" placeholder="..." name="judul_penugasan" value="<?= $penugasan->judul_penugasan ?>" required>
             <small id="contohJudulPgs" class="form-text text-muted">Contoh: Tugas Subtema 1 : Pembelajaran 1.1</small>
         </div>
         <div class="form-group">
             <label for="deskPenugasan">Deskripsi Penugasan</label>
-            <textarea class="form-control col-7" id="deskripsiPenugasan" rows="3" name="deskripsi" value="<?= $penugasan->deskripsi_tugas ?>" required></textarea>
+            <textarea class="form-control col-7" id="deskripsiPenugasan" rows="3" name="deskripsi" value="<?php echo date('Y-m-d\TH:i:s', strtotime($penugasan->due_date)) ?>" required><?= $penugasan->deskripsi_tugas ?></textarea>
         </div>
         <div class="form-group">
             <label for="meeting-time">Tenggat Pengumpulan Tugas</label>
-            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date" value="<?= $penugasan->due_date ?>" required>
+            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date" value="<?= $penugasan->due_date; ?>" required min="<?= $jam ?>">
         </div>
         <div class="form-group row">
             <div class="col-6">

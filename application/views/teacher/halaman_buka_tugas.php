@@ -42,7 +42,7 @@
                     <div class="input-group-text ">Nilai
                     </div>
                 </div>
-                <input type="text" class="form-control col-2" id="inlineFormInputGroupUsername2" name="nilai" value="<?= $tugas['nilai'] ?>">
+                <input type="number" class="form-control col-2" id="inlineFormInputGroupUsername2" name="nilai" value="<?= $tugas['nilai'] ?>" max="100" min="0">
 
 
             </div>

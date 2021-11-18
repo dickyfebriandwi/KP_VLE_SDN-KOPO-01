@@ -7,7 +7,7 @@
         <form method="post" action="<?= base_url('admin/proses_ubah_akun/') . $akun->id; ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">NUPTK</label>
-                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required max_length="16">
+                <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required maxlength="16" minlength="16">
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama</label>
@@ -22,12 +22,12 @@
                 <input type="text" class="form-control col-9" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
             </div>
             <div class="form-group row">
-                    <div class="col-8">
-                        <a class="btn btn-info" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
-                        <button type="submit" class="btn btn-success">
-                            Ubah
-                        </button>
-                    </div>
+                <div class="col-8">
+                    <a class="btn btn-info" href="<?= base_url(); ?>admin" role="button">Kembali</a>
+                    <button type="submit" class="btn btn-success">
+                        Ubah
+                    </button>
+                </div>
             </div>
 
         </form>

@@ -20,6 +20,7 @@ class Student extends CI_Controller
         $this->load->model('Jawaban_model', '', true);
         $this->load->model('Nilai_kuis_model', '', true);
         $this->load->helper(array('url', 'form'));
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -111,11 +112,11 @@ class Student extends CI_Controller
         ]);
         $this->form_validation->set_rules('password2', 'password2', 'required|trim|matches[password]');
         if ($this->form_validation->run() == false) {
+            $this->session->set_flashdata('ubah_password_siswa', '<div class="alert alert-danger" role="alert">Password gagal diganti !! </div>');
             redirect(site_url("student/ubah_password/$id"));
         } else {
             $this->User_model->updatePassword($id);
-            $this->session->set_flashdata('message', '<div class="alert alert-primary" role="alert">
-            Password berhasil diganti!! </div>');
+            $this->session->set_flashdata('ubah_password_siswa', '<div class="alert alert-primary" role="alert">Password berhasil diganti!! </div>');
             redirect(site_url("student"));
         }
     }

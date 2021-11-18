@@ -23,7 +23,7 @@
             <div class="form-row">
                 <div class="col-auto">
                     <div class="custom-file col-auto">
-                        <input type="file" class="custom-file-input" id="customFile" name="url">
+                        <input type="file" class="custom-file-input" id="customFile" name="url" required>
                         <label class="custom-file-label" for="customFile">Pilih file tugas</label>
                     </div>
                     <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>

@@ -3,15 +3,18 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
-
-    <form method="post" action="<?= base_url('admin/proses_tambah_akun_guru') ?>">
+    <?php if ($this->session->flashdata('tambah_akun')) {
+        echo $this->session->flashdata('tambah_akun');
+    } ?>
+    <?php echo form_open_multipart(site_url('admin/proses_tambah_akun_guru')); ?>
+    <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">NUPTK</label>
-            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk" minlength="16" maxlength="16" required>
         </div>
         <div class="form-group mb-4">
             <label for="exampleInputEmail1">Nama</label>
-            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="name">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="name" required>
         </div>
         <div class="form-group">
             <div class="form-row">
@@ -33,7 +36,8 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
-            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="email">
+            <input type="text" class="form-control col-4" id="email" placeholder="..." name="email" required>
+            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Password</label>
@@ -51,6 +55,7 @@
                 </div>
             </div>
         </div>
+        <?php echo form_close() ?>
     </form>
 
 </div>
