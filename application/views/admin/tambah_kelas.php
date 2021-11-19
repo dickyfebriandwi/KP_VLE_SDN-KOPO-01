@@ -24,7 +24,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Rombongan Belajar</label>
-            <input type="text" class="form-control col-3" id="judulMateri" name="rombel" placeholder="...">
+            <input type="text" class="form-control col-3" id="judulMateri" name="rombel" placeholder="..." required>
             <small id="contohJudul" class="form-text text-muted">Contoh Rombel : A</small>
         </div>
         <div class="form-group">
