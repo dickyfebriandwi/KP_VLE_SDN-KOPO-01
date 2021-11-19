@@ -95,7 +95,10 @@
         <!-- batas looping soal -->
 
         <div class="form-group">
-            <button type="submit" class="btn btn-success">Simpan</button>
+            <button type="submit" class="btn btn-success">Ubah</button>
+        </div>
+        <div class="col-5">
+            <a class="btn btn-primary" href="<?= base_url(); ?>teacher/ubah_kuis/<?= $kuis->id ?>" role="button">Kembali</a>
         </div>
         <?php echo form_close() ?>
     </form>

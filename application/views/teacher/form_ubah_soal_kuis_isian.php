@@ -41,7 +41,7 @@
         <?php echo form_close() ?>
     </form>
     <!-- debug -->
-    <?= "jumlah soal : " . $i - 1 . "  ID Kuis : " . $kuis->id  ?>
+    <!--<?= "jumlah soal : " . $i - 1 . "  ID Kuis : " . $kuis->id  ?>-->
 
 </div>
 

@@ -83,8 +83,15 @@ class User_model extends CI_model
         return $this->db->update("user", $data);
     }
 
-    function updateSiswa($id, $data)
+    function updateSiswa($id)
     {
+        $data = array(
+            "name" => $this->input->post("name"),
+            "email" => $this->input->post("email"),
+            "kelas_id" => $this->input->post("kelas_id"),
+            "nuptk_nisn" => $this->input->post("nisn"),
+            "jabatan" => $this->input->post("jabatan")
+        );
         $this->db->where("id", $id);
         return $this->db->update("user", $data);
     }

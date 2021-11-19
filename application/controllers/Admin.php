@@ -318,6 +318,7 @@ class Admin extends CI_Controller
 
     public function proses_ubah_akun_siswa($id)
     {
+
         if ($this->User_model->updateSiswa($id)) {
             redirect(site_url("admin/buka_akun_siswa/$id"));
         } else {
