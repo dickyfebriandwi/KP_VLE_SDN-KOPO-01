@@ -9,6 +9,16 @@
         <input type="hidden" class="" name='user_id' value="<?= $user['id']; ?>">
         <input type="hidden" class="" name='kelas_id' value="<?= $user['kelas_id']; ?>">
         <div class="form-group row">
+            <div class="col-5">
+                <a class="btn btn-primary" href="
+                <?php if ($kuis->tipe_soal == 'Isian') {
+                    echo  base_url() . 'teacher/ubah_soal_isian/' . $kuis->id;
+                } else {
+                    echo base_url() . 'teacher/ubah_soal_pg/' . $kuis->id;
+                } ?>" role="button">Ubah Soal</a>
+            </div>
+        </div>
+        <div class="form-group row">
             <div class="col-3">
                 <div class="input-group mb-2">
                     <div class="input-group-prepend">
@@ -105,14 +115,6 @@
         <div class="form-group row">
             <div class="col-5">
                 <a class="btn btn-info" href="<?= base_url(); ?>teacher/kuis" role="button">Kembali</a>
-            </div>
-            <div class="col-5">
-                <a class="btn btn-primary" href="
-                <?php if ($kuis->tipe_soal == 'Isian') {
-                    echo  base_url() . 'teacher/ubah_soal_isian/' . $kuis->id;
-                } else {
-                    echo base_url() . 'teacher/ubah_soal_pg/' . $kuis->id;
-                } ?>" role="button">Ubah Soal</a>
             </div>
             <div class="col-2">
                 <button type="submit" class="btn btn-success">Ubah</button>

@@ -67,7 +67,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div><br>
         <?php endfor; ?>
         <!-- batas looping soal -->
 

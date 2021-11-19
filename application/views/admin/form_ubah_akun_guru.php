@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Alamat e-mail</label>
-                <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
+                <input type="email" class="form-control col-4" id="judulMateri" placeholder="..." name="email" value="<?php echo $akun->email; ?>" required>
             </div>
             <div class="form-group">
                 <div class="form-row">
