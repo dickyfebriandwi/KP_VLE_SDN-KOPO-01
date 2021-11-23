@@ -1,6 +1,8 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php $jam = date('Y-m-d H:i:s'); ?>
+    <?php
+    date_default_timezone_set('Asia/Jakarta');
+    $jam = date('Y-m-d H:i:s'); ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
@@ -55,10 +57,10 @@
                                             <?php if ($st['user_id_siswa'] == $user['id'] && $st['penugasan_id'] == $pngs['id']) : ?>
                                                 <?php if ($st['date_updated'] == null) : ?>
                                                     <a href="<?= base_url(); ?>student/form_unggah_tugas/<?= $pngs['id']; ?>" class="badge badge-info"> Unggah </a>
-                                                <?php elseif ($st['date_updated'] != null and $pngs['due_date'] > $jam) : ?>
+                                                <?php elseif ($st['date_updated'] != null && $pngs['due_date'] > $jam) : ?>
                                                     <a href="<?= base_url(); ?>student/detail_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
                                                     <a href="<?= base_url(); ?>student/ubah_tugas/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
-                                                <?php elseif ($st['date_updated'] != null and $pngs['due_date'] <= $jam) : ?>
+                                                <?php elseif ($st['date_updated'] != null && $pngs['due_date'] <= $jam) : ?>
                                                     <a href="<?= base_url(); ?>student/detail_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
                                                 <?php endif; ?>
                                             <?php endif; ?>

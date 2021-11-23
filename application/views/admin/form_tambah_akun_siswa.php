@@ -48,7 +48,7 @@
             </div>
             <br><br><br><br><br><br><br><br>
             <div class="form-group">
-                <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
+                <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_siswa" role="button">Kembali</a>
             </div>
             <?php echo form_close() ?>
     </form>

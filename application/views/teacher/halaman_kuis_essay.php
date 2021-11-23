@@ -2,14 +2,14 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800"><?php foreach ($akun as $ak){
-        if($ak['id'] == $nilai->user_id_siswa){
-            echo "Nama : ". $ak['name'];
-        }
-    }?></h1>
+    <h1 class="h3 mb-4 text-gray-800"><?php foreach ($akun as $ak) {
+                                            if ($ak['id'] == $nilai->user_id_siswa) {
+                                                echo "Nama : " . $ak['name'];
+                                            }
+                                        } ?></h1>
     <div class="form-group">
-            <a href="<?= base_url(); ?>teacher/kuis/" class="btn btn-info">Kembali</a>
-        </div>
+        <a href="<?= base_url(); ?>teacher/kuis/" class="btn btn-info">Kembali</a>
+    </div>
     <?php echo form_open_multipart(site_url('teacher/proses_nilai_kuis_oleh_guru/' . $nilai->id)) ?>
     <form method="post" enctype="multipart/form-data">
         <!-- looping soal -->
@@ -43,13 +43,13 @@
         <div class="form-group mb-2 mr-sm-2">
             <label class="form-control-label">Nilai :</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control col-1" placeholder="Nilai" value="<?= $nilai->nilai ?>">
+                <input type="number" class="form-control col-1" placeholder="Nilai" name="nilai" value="<?= $nilai->nilai ?>" min="0" max="100">
                 <div class="input-group-append">
                     <button class="btn btn-success" type="submit">Simpan Nilai</button>
                 </div>
             </div>
         </div>
-        
+
         <?php echo form_close() ?>
     </form>
 

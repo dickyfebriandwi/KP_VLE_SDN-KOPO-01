@@ -64,9 +64,11 @@
                                         </h5>
                                     </td>
                         </tr>
+                        <?php $i++; ?>
                     <?php endif; ?>
+
                 <?php endif; ?>
-                <?php $i++; ?>
+
             <?php endforeach; ?>
                 </tbody>
             </table>

@@ -1,6 +1,8 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <?php $jam = date('Y-m-d H:i:s'); ?>
+    <?php
+    date_default_timezone_set('Asia/Jakarta');
+    $jam = date('Y-m-d H:i:s'); ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
