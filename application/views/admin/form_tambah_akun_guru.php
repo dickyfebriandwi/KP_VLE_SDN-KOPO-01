@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Jabatan</label>
-            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="jabatan">
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="jabatan" value="Guru Kelas" readonly>
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
