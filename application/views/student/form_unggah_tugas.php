@@ -26,7 +26,7 @@
                         <input type="file" class="custom-file-input" id="customFile" name="url" required>
                         <label class="custom-file-label" for="customFile">Pilih file tugas</label>
                     </div>
-                    <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>
+                    <small id="contohJudul" class="form-text text-muted">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx, mp4, mp3, aac</small>
                 </div>
                 <div class="col-auto">
                     <button type='submit' class='btn btn-success'>Unggah</button>

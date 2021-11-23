@@ -9,13 +9,25 @@ class User_model extends CI_model
     function getUserGuru()
     {
         $ids = 2;
-        return $this->db->get_where('user', array('role_id' => $ids))->result_array();
+        $this->db->from("user");
+        $this->db->where("role_id", $ids);
+        $this->db->order_by('kelas_id', 'asc');
+        $this->db->order_by('name', 'asc');
+        $query = $this->db->get();
+        return $query->result_array();
+        #return $this->db->get_where('user', array('role_id' => $ids))->result_array();
     }
 
     function getUserSiswa()
     {
         $ids = 3;
-        return $this->db->get_where('user', array('role_id' => $ids))->result_array();
+        $this->db->from("user");
+        $this->db->where("role_id", $ids);
+        $this->db->order_by('kelas_id', 'asc');
+        $this->db->order_by('name', 'asc');
+        $query = $this->db->get();
+        return $query->result_array();
+        #return $this->db->get_where('user', array('role_id' => $ids))->result_array();
     }
     function getUserSiswaByKelas($id)
     {

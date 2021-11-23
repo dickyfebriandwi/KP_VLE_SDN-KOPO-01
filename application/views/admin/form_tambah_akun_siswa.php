@@ -10,7 +10,7 @@
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">NISN</label>
-            <input type="text" class="form-control col-9" id="nisn" placeholder="..." name="nisn" maxlength="10" minlenght="10" required>
+            <input type="text" class="form-control col-9" id="nisn" placeholder="..." name="nisn" maxlength="10" minlenght="10" required pattern="[0-9]+">
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Nama</label>
@@ -32,7 +32,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
-            <input type="text" class="form-control col-9" id="email" placeholder="..." name="email" required>
+            <input type="email" class="form-control col-9" id="email" placeholder="..." name="email" required>
             <div class="form-group">
                 <label for="exampleInputEmail1">Password</label>
                 <input type="text" class="form-control col-9" id="password" placeholder="password123" readonly name="password" value="password123">

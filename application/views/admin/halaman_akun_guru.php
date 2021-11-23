@@ -17,6 +17,7 @@
                         <th scope="col">No.</th>
                         <th scope="col">NUPTK</th>
                         <th scope="col">Nama</th>
+                        <th scope="col">Kelas</th>
                         <th scope="col">Opsi</th>
                     </tr>
                 </thead>
@@ -27,6 +28,12 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $gr['nuptk_nisn']; ?></td>
                             <td><?= $gr['name']; ?></td>
+                            <td><?php foreach ($kelas as $kls) : ?>
+                                    <?php if ($gr['kelas_id'] == $kls['id']) {
+                                        echo "Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'];
+                                    } ?>
+                                <?php endforeach; ?>
+                            </td>
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>admin/buka_akun_guru/<?= $gr['id']; ?>" class="badge badge-success"> Buka </a>

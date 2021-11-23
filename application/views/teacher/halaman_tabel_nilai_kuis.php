@@ -35,11 +35,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
+                    <?php $k = 1; ?>
                     <?php foreach ($akun as $ak) : ?>
                         <tr>
                             <?php if ($ak['kelas_id'] == $user['kelas_id']) : ?>
-                                <th scope="row"><?= $i; ?></th>
+                                <th scope="row"><?= $k; ?></th>
                                 <td><?= $ak['nuptk_nisn']; ?></td>
                                 <td><?= $ak['name']; ?></td>
                                 <?php foreach ($kuis as $ks) : ?>
@@ -51,9 +51,10 @@
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                                <?php $k++; ?>
                             <?php endif; ?>
                         </tr>
-                        <?php $i++; ?>
+
                     <?php endforeach; ?>
                 </tbody>
             </table>

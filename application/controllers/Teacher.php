@@ -156,7 +156,8 @@ class Teacher extends CI_Controller
 
         #config file upload
         $config['upload_path'] = './assets/file/materi';
-        $config['allowed_types'] = 'jpg|png|jpeg|mp4|docx|pptx|ppt|mkv|doc|pdf';
+        $config['allowed_types'] = 'jpg|png|jpeg|mp4|docx|pptx|ppt|mkv|doc|pdf|zip|rar|mp3|aac';
+        $config['max_size'] = 100000;
 
         $this->load->library('upload', $config);
         if (empty($_FILES['file_materi']['name'])) {
@@ -218,7 +219,8 @@ class Teacher extends CI_Controller
 
         #config file upload
         $config['upload_path'] = './assets/file/materi';
-        $config['allowed_types'] = 'jpg|png|jpeg|mp4|docx|pptx|ppt|mkv|doc|pdf';
+        $config['allowed_types'] = 'jpg|png|jpeg|mp4|docx|pptx|ppt|mkv|doc|pdf|zip|rar|mp3|aac';
+        $config['max_size'] = 100000;
 
         $this->load->library('upload', $config);
         if (empty($_FILES['file_materi']['name'])) {

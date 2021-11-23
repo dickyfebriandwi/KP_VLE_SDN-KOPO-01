@@ -125,6 +125,7 @@ class Admin extends CI_Controller
         $data['subtitle'] = 'Akun Guru';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['guru'] = $this->User_model->getUserGuru();
+        $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/halaman_akun_guru', $data);
         $this->loadtemplateslast();
@@ -148,6 +149,7 @@ class Admin extends CI_Controller
         ]);
         if ($this->form_validation->run()) {
             if ($this->User_model->insertUserGuru()) {
+                $this->session->set_flashdata('tambah_akun', '');
                 redirect(site_url("admin/buka_halaman_akun_guru"));
             } else {
                 $this->session->set_flashdata('tambah_akun', '<div class="alert alert-danger" role="alert">Gagal menambahkan akun guru </div>');
@@ -277,6 +279,7 @@ class Admin extends CI_Controller
         ]);
         if ($this->form_validation->run()) {
             if ($this->User_model->insertUserSiswa()) {
+                $this->session->set_flashdata('tambah_akun_siswa', '');
                 redirect(site_url("admin/buka_halaman_akun_siswa"));
             } else {
                 $this->session->set_flashdata('tambah_akun_siswa', '<div class="alert alert-danger" role="alert">Gagal menambahkan akun siswa </div>');

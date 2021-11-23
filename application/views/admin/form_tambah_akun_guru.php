@@ -10,7 +10,7 @@
     <form method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">NUPTK</label>
-            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk" minlength="16" maxlength="16" required>
+            <input type="text" class="form-control col-4" id="judulMateri" placeholder="..." name="nuptk" minlength="16" maxlength="16" required pattern="[0-9]+">
         </div>
         <div class="form-group mb-4">
             <label for="exampleInputEmail1">Nama</label>
@@ -36,7 +36,7 @@
         </div>
         <div class="form-group">
             <label for="exampleInputEmail1">Alamat e-mail</label>
-            <input type="text" class="form-control col-4" id="email" placeholder="..." name="email" required>
+            <input type="email" class="form-control col-4" id="email" placeholder="..." name="email" required>
             <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
         <div class="form-group">

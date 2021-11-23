@@ -7,7 +7,7 @@
         <form method="post" action="<?= base_url('teacher/proses_ubah_akun/') . $akun->id; ?>">
             <div class="form-group">
                 <label for="exampleInputEmail1">NUPTK</label>
-                <input type="text" class="form-control col-5" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required maxlength="16" minlength="16">
+                <input type="text" class="form-control col-5" id="judulMateri" placeholder="..." name="nuptk" value="<?php echo $akun->nuptk_nisn; ?>" required maxlength="16" minlength="16" readonly>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Nama</label>
@@ -24,8 +24,6 @@
                                 <?php
                                 if ($kls['id'] == $akun->kelas_id) {
                                     echo "<option selected value=" . $kls['id'] . ">Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
-                                } else {
-                                    echo "<option value=" . $kls['id'] . ">Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
                                 };
                                 ?>
                             <?php endforeach; ?>
@@ -35,7 +33,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Jabatan</label>
-                <input type="text" class="form-control col-5" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>">
+                <input type="text" class="form-control col-5" id="judulMateri" placeholder="..." name="jabatan" value="<?php echo $akun->jabatan; ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Alamat e-mail</label>

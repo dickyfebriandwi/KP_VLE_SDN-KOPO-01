@@ -50,7 +50,7 @@
                     <label class="custom-file-label" for="fileMateri"></label>
                 </div>
             </div>
-            <small id="ekstensiFile" class="form-text text-danger">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>
+            <small id="ekstensiFile" class="form-text text-danger">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx, mp4, mp3, aac, zip, rar</small>
         </div>
         <div class="form-group row">
             <div class="col-5">

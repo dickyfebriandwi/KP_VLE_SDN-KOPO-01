@@ -31,7 +31,7 @@
                                                                                                                 } ?>">
                         <label class="custom-file-label" for="customFile">Pilih file tugas</label>
                     </div>
-                    <small id="contohJudul" class="form-text text-danger">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx</small>
+                    <small id="contohJudul" class="form-text text-danger">Format file pdf, docx, doc, png, jpg, jpeg, ppt, pptx, mp4, mp3, aac, zip, rar</small>
                 </div>
                 <div class="col-auto">
                     <button type='submit' class='btn btn-success'>Ubah</button>

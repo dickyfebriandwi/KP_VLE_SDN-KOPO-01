@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">Tabel Nilai Tugas - Kelas 
+    <h1 class="h3 mb-4 text-gray-800">Tabel Nilai Tugas - Kelas
         <?php foreach ($kelas as $kls) : ?>
             <?php if ($kls['id'] == $user['kelas_id']) {
                 echo $kls['tingkat'] . " Rombel " . $kls['rombel'];
@@ -35,11 +35,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
+                    <?php $k = 1; ?>
                     <?php foreach ($akun as $ak) : ?>
                         <tr>
                             <?php if ($ak['kelas_id'] == $user['kelas_id']) : ?>
-                                <th scope="row"><?= $i; ?></th>
+                                <th scope="row"><?= $k; ?></th>
                                 <td><?= $ak['nuptk_nisn']; ?></td>
                                 <td><?= $ak['name']; ?></td>
                                 <?php foreach ($penugasan as $pngs) : ?>
@@ -51,9 +51,10 @@
                                         <?php endforeach; ?>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
+                                <?php $k++; ?>
                             <?php endif; ?>
                         </tr>
-                        <?php $i++; ?>
+
                     <?php endforeach; ?>
                 </tbody>
             </table>
