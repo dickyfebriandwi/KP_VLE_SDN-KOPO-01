@@ -5,7 +5,8 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
         <div class="col-9">
-            <a href="<?= base_url(); ?>admin/tambah_kelas" class="btn btn-primary mb-3">Tambah Kelas</a>
+            <a href="<?= base_url(); ?>admin/tambah_kelas" class="btn btn-primary mb-3">
+            <i class="fas fa-plus text-gray-100"></i> Tambah Kelas</a>
         </div>
     </div>
     <div class="row">

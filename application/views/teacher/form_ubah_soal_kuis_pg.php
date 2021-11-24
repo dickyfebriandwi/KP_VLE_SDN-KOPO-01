@@ -87,19 +87,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><br>
         <?php
                 $i++;
             endif;
         endforeach; ?>
         <!-- batas looping soal -->
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Ubah</button>
+        <div class="form-group row">
+            <div class="col-11">
+                <a class="btn btn-info" href="<?= base_url(); ?>teacher/ubah_kuis/<?= $kuis->id ?>" role="button">Kembali</a>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-success">Ubah</button>
+            </div>
         </div>
-        <div class="col-5">
-            <a class="btn btn-primary" href="<?= base_url(); ?>teacher/ubah_kuis/<?= $kuis->id ?>" role="button">Kembali</a>
-        </div>
+
         <?php echo form_close() ?>
     </form>
 

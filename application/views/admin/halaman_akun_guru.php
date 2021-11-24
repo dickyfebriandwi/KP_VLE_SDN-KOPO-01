@@ -6,7 +6,8 @@
 
     <div class="row">
         <div class="col-9">
-            <a href="<?= base_url(); ?>admin/tambah_akun_guru" class="btn btn-primary mb-3">Tambah Akun Guru</a>
+            <a href="<?= base_url(); ?>admin/tambah_akun_guru" class="btn btn-primary mb-3">
+            <i class="fas fa-plus text-gray-100"></i> Tambah Akun Guru</a>
         </div>
     </div>
     <div class="row">

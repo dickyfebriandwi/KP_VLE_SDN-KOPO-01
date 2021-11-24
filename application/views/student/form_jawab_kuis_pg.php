@@ -3,6 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
+    <h1 class="h6 mb-4 text-danger">Jawabanmu tidak tersimpan secara otomatis. Harap mengklik tombol "Selesai" jika kamu sudah selesai mengerjakan kuis.</h1>
     <?php echo form_open_multipart(site_url('student/proses_jawab_kuis_pg/' . $kuis->id)) ?>
     <form method="post" enctype="multipart/form-data">
         <input type="hidden" class="" name='nilai_id_sendiri' value="<?php foreach ($nilai as $nl) {
@@ -72,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div><br>
         <?php
                 $i++;
             endif;

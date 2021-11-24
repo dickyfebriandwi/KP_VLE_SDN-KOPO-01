@@ -6,7 +6,8 @@
 
     <div class="row">
         <div class="col-10">
-            <a href="<?= base_url(); ?>teacher/tambah_kuis" class="btn btn-primary mb-3">Tambah Kuis</a>
+            <a href="<?= base_url(); ?>teacher/tambah_kuis" class="btn btn-primary mb-3">
+            <i class="fas fa-plus text-gray-100"></i> Tambah Kuis</a>
         </div>
         <div class="col-auto">
             <a href="<?= base_url(); ?>teacher/buka_tabel_nilai_kuis" class="btn btn-success mb-3">Tabel Nilai Kuis</a>

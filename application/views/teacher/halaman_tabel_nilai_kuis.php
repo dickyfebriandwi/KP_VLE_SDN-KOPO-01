@@ -11,7 +11,7 @@
     </h1>
     <div class="row">
         <div class="col-2">
-            <a href="<?= base_url(); ?>teacher/kuis" class="btn btn-primary mb-3">Kembali</a>
+            <a href="<?= base_url(); ?>teacher/kuis" class="btn btn-info mb-3">Kembali</a>
         </div>
     </div>
     <div class="row">

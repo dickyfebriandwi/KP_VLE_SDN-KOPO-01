@@ -17,7 +17,7 @@
         <div class="form-group">
             <div class="form-row">
                 <div class="col-4">
-                    <a class="btn btn-primary" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
+                    <a class="btn btn-info" href="<?= base_url(); ?>admin/buka_halaman_akun_guru" role="button">Kembali</a>
                 </div>
                 <div class="col-5">
                     <button type="submit" class="btn btn-success">
