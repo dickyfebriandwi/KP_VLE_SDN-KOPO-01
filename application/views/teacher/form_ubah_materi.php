@@ -16,8 +16,6 @@
                             <?php
                             if ($kls['id'] == $materi->kelas_id) {
                                 echo "<option selected value=" . $kls['id'] . ">Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
-                            } else {
-                                echo "<option value=" . $kls['id'] . ">Kelas " . $kls['tingkat'] . " Rombel " . $kls['rombel'] . "</option>";
                             };
                             ?>
                         <?php endforeach; ?>
