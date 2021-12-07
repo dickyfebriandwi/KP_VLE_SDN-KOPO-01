@@ -1,6 +1,11 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
+    <!-- Inisialisasi -->
+    <?php
+    $tenggat = $kuis->due_date;
+    date_default_timezone_set('Asia/Jakarta');
+    $jam = date('Y-m-d H:i:s');
+    ?>
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $penugasan->judul_penugasan ?></h1>
     <div class="row">
@@ -60,7 +65,9 @@
                                     <td><?= $tgs['nilai']; ?></td>
                                     <td>
                                         <h5>
-                                            <a href="<?= base_url(); ?>teacher/buka_detail_tugas/<?= $tgs['id']; ?>" class="badge badge-success"> Buka </a>
+                                            <?php if ($jam > $tenggat) : ?>
+                                                <a href="<?= base_url(); ?>teacher/buka_detail_tugas/<?= $tgs['id']; ?>" class="badge badge-success"> Buka </a>
+                                            <?php endif; ?>
                                         </h5>
                                     </td>
                         </tr>

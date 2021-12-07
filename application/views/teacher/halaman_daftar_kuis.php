@@ -2,7 +2,11 @@
 <div class="container-fluid">
 
     <!-- Inisialisasi -->
-    <?php $tenggat = $kuis->due_date ?>
+    <?php
+    $tenggat = $kuis->due_date;
+    date_default_timezone_set('Asia/Jakarta');
+    $jam = date('Y-m-d H:i:s');
+    ?>
     <!-- Page Heading -->
     <h3 class="h3 mb-4 text-gray-800"><?= $kuis->judul_kuis ?></h3>
     <h6 class="h6 mb-1 text-gray-800">Tipe Soal : <?= $kuis->tipe_soal ?></h6>

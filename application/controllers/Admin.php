@@ -147,6 +147,9 @@ class Admin extends CI_Controller
         $this->form_validation->set_rules('email', 'email', 'is_unique[user.email]', [
             'is_unique' => 'Email sudah terdaftar!!'
         ]);
+        $this->form_validation->set_rules('unptk', 'unptk', 'is_unique[user.nuptk_nisn]', [
+            'is_unique' => 'UNPTK sudah terdaftar!!',
+        ]);
         if ($this->form_validation->run()) {
             if ($this->User_model->insertUserGuru()) {
                 $this->session->set_flashdata('tambah_akun', '');
