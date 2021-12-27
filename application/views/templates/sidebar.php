@@ -2,10 +2,10 @@
 <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
         <div class="sidebar-brand-icon">
             <!--<i class="fas fa-graduation-cap"></i>-->
-            <img width="40px" height="40px" src="<?php echo base_url('assets/img/sidebar/logo.png'); ?>"/>
+            <img width="40px" height="40px" src="<?php echo base_url('assets/img/sidebar/logo.png'); ?>" />
         </div>
         <div class="sidebar-brand-text mx-3"> SDN Kopo 01 </div>
     </a>

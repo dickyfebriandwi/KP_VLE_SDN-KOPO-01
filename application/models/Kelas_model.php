@@ -12,6 +12,7 @@ class Kelas_model extends CI_model
         $this->db->from("kelas");
         $this->db->order_by('tingkat', 'asc');
         $this->db->order_by('rombel', 'asc');
+        $this->db->order_by('tahun', 'asc');
         $query = $this->db->get();
         return $query->result_array();
     }
@@ -20,7 +21,8 @@ class Kelas_model extends CI_model
     {
         $kelas = array(
             "tingkat" => $this->input->post("tingkat"),
-            "rombel" => $this->input->post("rombel")
+            "rombel" => $this->input->post("rombel"),
+            "tahun" => $this->input->post("tahun")
         );
         return $this->db->insert("kelas", $kelas);
     }
@@ -34,7 +36,8 @@ class Kelas_model extends CI_model
     {
         $data = array(
             "tingkat" => $this->input->post("tingkat"),
-            "rombel" => $this->input->post("rombel")
+            "rombel" => $this->input->post("rombel"),
+            "tahun" => $this->input->post("tahun")
         );
         $this->db->where("id", $id);
         return $this->db->update("Kelas", $data);

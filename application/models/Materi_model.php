@@ -3,7 +3,10 @@ class Materi_model extends CI_model
 {
     public function getAllMateri()
     {
-        return $this->db->get('materi')->result_array();
+        $this->db->from("materi");
+        $this->db->order_by('tema_id', 'asc');
+        $query = $this->db->get();
+        return $query->result_array();
     }
     function insertMateri($data)
     {

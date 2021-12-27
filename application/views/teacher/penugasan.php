@@ -1,5 +1,18 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    <?php
+    foreach ($penugasan as $pngs) {
+        if ($pngs['kelas_id'] == $user['kelas_id']) {
+            $id = $pngs['id'];
+            $bantu[$id] = FALSE;
+            foreach ($tugas as $tgs) {
+                if ($pngs["id"] == $tgs["penugasan_id"]) {
+                    $bantu[$id] = TRUE;
+                }
+            }
+        }
+    }
+    ?>
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
@@ -7,7 +20,7 @@
     <div class="row">
         <div class="col-10">
             <a href="<?= base_url(); ?>teacher/tambah_penugasan" class="btn btn-primary mb-3">
-            <i class="fas fa-plus text-gray-100"></i> Tambah Penugasan</a>
+                <i class="fas fa-plus text-gray-100"></i> Tambah Penugasan</a>
         </div>
         <div class="col-auto">
             <a href="<?= base_url(); ?>teacher/buka_tabel_nilai_tugas" class="btn btn-success mb-3">Tabel Nilai Tugas</a>
@@ -29,6 +42,10 @@
                     <?php $i = 1; ?>
                     <?php foreach ($penugasan as $pngs) : ?>
                         <?php if ($pngs['kelas_id'] == $user['kelas_id']) : ?>
+                            <?php
+                            $tenggat = $pngs['due_date'];
+                            date_default_timezone_set('Asia/Jakarta');
+                            $jam = date('Y-m-d H:i:s'); ?>
                             <tr>
                                 <?php foreach ($kelas as $kls) : ?>
                                     <?php if ($kls['id'] == $user['kelas_id']) : ?>
@@ -46,8 +63,12 @@
                                         <td>
                                             <h5>
                                                 <a href="<?= base_url(); ?>teacher/buka_daftar_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
-                                                <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
-                                                <a href="<?= base_url(); ?>teacher/hapus_penugasan/<?= $pngs['id']; ?>" data-toggle="modal" data-target="#hapus_penugasan<?= $pngs['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                                <?php if ($jam < $tenggat) : ?>
+                                                    <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
+                                                <?php endif; ?>
+                                                <?php if (!$bantu[$pngs['id']]) : ?>
+                                                    <a href="<?= base_url(); ?>teacher/hapus_penugasan/<?= $pngs['id']; ?>" data-toggle="modal" data-target="#hapus_penugasan<?= $pngs['id']; ?>" class="badge badge-danger"> Hapus </a>
+                                                <?php endif; ?>
                                                 <!-- MODAL HAPUS PENUGASAN-->
                                                 <div class="modal fade" id="hapus_penugasan<?= $pngs['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">

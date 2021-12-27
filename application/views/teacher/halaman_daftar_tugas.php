@@ -2,7 +2,7 @@
 <div class="container-fluid">
     <!-- Inisialisasi -->
     <?php
-    $tenggat = $kuis->due_date;
+    $tenggat = $penugasan->due_date;
     date_default_timezone_set('Asia/Jakarta');
     $jam = date('Y-m-d H:i:s');
     ?>

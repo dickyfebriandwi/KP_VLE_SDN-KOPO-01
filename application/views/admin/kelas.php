@@ -1,12 +1,23 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
+    <?php
+    foreach ($kelas as $kls) {
+        $id = $kls['id'];
+        $bantu[$id] = FALSE;
+        foreach ($siswa as $sw) {
+            if ($kls["id"] == $sw["kelas_id"]) {
+                $bantu[$id] = TRUE;
+            }
+        }
+    }
+    ?>
 
     <!-- Page Heading -->
     <h1 class="h3 mb-4 text-gray-800"><?= $subtitle ?></h1>
     <div class="row">
         <div class="col-9">
             <a href="<?= base_url(); ?>admin/tambah_kelas" class="btn btn-primary mb-3">
-            <i class="fas fa-plus text-gray-100"></i> Tambah Kelas</a>
+                <i class="fas fa-plus text-gray-100"></i> Tambah Kelas</a>
         </div>
     </div>
     <div class="row">
@@ -17,6 +28,7 @@
                         <th scope="col">No.</th>
                         <th scope="col">Tingkat</th>
                         <th scope="col">Rombel</th>
+                        <th scope="col">Tahun</th>
                         <th scope="col">Aksi</th>
                     </tr>
                 </thead>
@@ -27,11 +39,13 @@
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $kls['tingkat']; ?></td>
                             <td><?= $kls['rombel']; ?></td>
+                            <td><?= $kls['tahun']; ?></td>
                             <td>
                                 <h5>
                                     <a href="<?= base_url(); ?>admin/ubah_kelas/<?= $kls['id']; ?>" class="badge badge-success"> Ubah </a>
-                                    <a href="<?= base_url(); ?>admin/hapus_kelas/<?= $kls['id']; ?>" data-toggle="modal" data-target="#hapus_kelas<?= $kls['id'] ?>" class="badge badge-danger"> Hapus </a>
-
+                                    <?php if (!$bantu[$kls["id"]]) : ?>
+                                        <a href="<?= base_url(); ?>admin/hapus_kelas/<?= $kls['id']; ?>" data-toggle="modal" data-target="#hapus_kelas<?= $kls['id'] ?>" class="badge badge-danger"> Hapus </a>
+                                    <?php endif; ?>
                                     <!-- Hapus Materi Modal-->
                                     <div class="modal fade" id="hapus_kelas<?= $kls['id'] ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">

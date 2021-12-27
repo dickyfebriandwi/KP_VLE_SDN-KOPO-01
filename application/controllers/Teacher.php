@@ -264,6 +264,7 @@ class Teacher extends CI_Controller
         $data['subtitle'] = 'Daftar Penugasan';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['penugasan'] = $this->Penugasan_model->getAllPenugasan();
+        $data['tugas'] = $this->Tugas_model->getTugas();
         $data['tema'] = $this->Tema_model->getTema();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
@@ -418,6 +419,7 @@ class Teacher extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['akun'] = $this->User_model->getUserSiswa();
         $data['kuis'] = $this->Kuis_model->getAllKuis();
+        $data['status'] = $this->Status_kuis_model->getStatusKuis();
         $data['tema'] = $this->Tema_model->getTema();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);

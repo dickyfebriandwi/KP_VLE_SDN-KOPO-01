@@ -39,17 +39,17 @@
             endif;
         endforeach; ?>
         <!-- batas looping soal -->
-
-        <div class="form-group mb-2 mr-sm-2">
-            <label class="form-control-label">Nilai :</label>
-            <div class="input-group mb-3">
-                <input type="number" class="form-control col-1" placeholder="Nilai" name="nilai" value="<?= $nilai->nilai ?>" min="0" max="100">
-                <div class="input-group-append">
-                    <button class="btn btn-success" type="submit">Simpan Nilai</button>
+        <?php if ($nilai->nilai == 0) : ?>
+            <div class="form-group mb-2 mr-sm-2">
+                <label class="form-control-label">Nilai :</label>
+                <div class="input-group mb-3">
+                    <input type="number" class="form-control col-1" placeholder="Nilai" name="nilai" value="<?= $nilai->nilai ?>" min="0" max="100">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="submit">Simpan Nilai</button>
+                    </div>
                 </div>
             </div>
-        </div>
-
+        <?php endif; ?>
         <?php echo form_close() ?>
     </form>
 

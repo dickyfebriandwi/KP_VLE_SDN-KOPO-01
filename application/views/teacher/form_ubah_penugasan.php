@@ -49,11 +49,11 @@
         </div>
         <div class="form-group">
             <label for="deskPenugasan">Deskripsi Penugasan</label>
-            <textarea class="form-control col-7" id="deskripsiPenugasan" rows="3" name="deskripsi" value="<?php echo date('Y-m-d\TH:i:s', strtotime($penugasan->due_date)) ?>" required><?= $penugasan->deskripsi_tugas ?></textarea>
+            <textarea class="form-control col-7" id="deskripsiPenugasan" rows="3" name="deskripsi" value="" required><?= $penugasan->deskripsi_tugas ?></textarea>
         </div>
         <div class="form-group">
             <label for="meeting-time">Tenggat Pengumpulan Tugas</label>
-            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date" value="<?= $penugasan->due_date; ?>" required min="<?= $jam ?>">
+            <input type="datetime-local" class="form-control col-3" id="meeting-time" name="due_date" value="<?php echo date('Y-m-d\TH:i:s', strtotime($penugasan->due_date)) ?>" required min="<?= $jam ?>">
         </div>
         <div class="form-group row">
             <div class="col-6">

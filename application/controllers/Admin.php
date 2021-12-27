@@ -399,6 +399,7 @@ class Admin extends CI_Controller
         $data['title'] = 'Kelas';
         $data['subtitle'] = 'Kelola Kelas';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['siswa'] = $this->User_model->getUserSiswa();
         $data['kelas'] = $this->Kelas_model->getKelasASC();
         $this->loadtemplatesfirst($data);
         $this->load->view('admin/kelas', $data);
