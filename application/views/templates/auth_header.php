@@ -3,7 +3,11 @@
 
 <head>
     <style>
-        
+        body {
+            background-image: url("<?= base_url('assets/img/bg/'); ?>bg.jpg");
+            background-repeat: repeat;
+            background-position: top;
+        }
     </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,4 +26,4 @@
 
 </head>
 
-<body class="bg-gradient-danger">
+<body class="">
