@@ -3,7 +3,11 @@ class Kuis_model extends CI_model
 {
     public function getAllKuis()
     {
-        return $this->db->get('kuis')->result_array();
+        #return $this->db->get('kuis')->result_array();
+        $this->db->from("kuis");
+        $this->db->order_by('tema_id', 'asc');
+        $query = $this->db->get();
+        return $query->result_array();
     }
     #contoh
     public function getLastKuis()

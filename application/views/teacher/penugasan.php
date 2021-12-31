@@ -63,7 +63,7 @@
                                         <td>
                                             <h5>
                                                 <a href="<?= base_url(); ?>teacher/buka_daftar_tugas/<?= $pngs['id']; ?>" class="badge badge-success"> Buka </a>
-                                                <?php if ($jam < $tenggat) : ?>
+                                                <?php if (!$bantu[$pngs['id']]) : ?>
                                                     <a href="<?= base_url(); ?>teacher/ubah_penugasan/<?= $pngs['id']; ?>" class="badge badge-info"> Ubah </a>
                                                 <?php endif; ?>
                                                 <?php if (!$bantu[$pngs['id']]) : ?>

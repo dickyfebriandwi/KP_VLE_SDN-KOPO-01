@@ -3,7 +3,11 @@ class Penugasan_model extends CI_model
 {
     public function getAllPenugasan()
     {
-        return $this->db->get('penugasan')->result_array();
+        #return $this->db->get('penugasan')->result_array();
+        $this->db->from("penugasan");
+        $this->db->order_by('tema_id', 'asc');
+        $query = $this->db->get();
+        return $query->result_array();
     }
     public function getPenugasanKelas($id)
     {
